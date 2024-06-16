@@ -12,9 +12,16 @@
 // 800 Black or Extra Bold or Heavy;
 // 900 Extra Black or Fat or Ultra Black
 
-@include font-face('Roboto', '../fonts/Roboto/Roboto-Thin', 200, ttf);
-@include font-face('Roboto', '../fonts/Roboto/Roboto-Light', 300, ttf);
-@include font-face('Roboto', '../fonts/Roboto/Roboto-Regular', 400, ttf);
-@include font-face('Roboto', '../fonts/Roboto/Roboto-Medium', 500, ttf);
-@include font-face('Roboto', '../fonts/Roboto/Roboto-Bold', 700, ttf);
-@include font-face('Roboto', '../fonts/Roboto/Roboto-Black', 900, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Thin', 200, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Light', 300, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Regular', 400, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Medium', 500, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Bold', 700, normal, ttf);
+@include font-face('Roboto', '../fonts/Roboto/Roboto-Black', 900, normal, ttf);
+
+@include font-face('Montserrat', '../fonts/Montserrat/Montserrat-VariableFont_wght', 200, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat/Montserrat-VariableFont_wght', 300, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat/Montserrat-VariableFont_wght', 400, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat/Montserrat-VariableFont_wght', 500, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat/Montserrat-VariableFont_wght', 700, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat/Montserrat-VariableFont_wght', 900, normal, ttf);

@@ -2,7 +2,6 @@
 // String Replace
 // =============================================================================
 @use "sass:string";
-;
 @use "sass:map";
 @use "sass:list";
 
@@ -57,4 +56,10 @@
   line-height: $line-height;
   font-weight: $font-weight;
   font-style: $font-style;
+}
+
+@mixin mobile {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
 }

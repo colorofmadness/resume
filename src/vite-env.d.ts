@@ -8,6 +8,15 @@ declare module '*.vue' {
   export default component;
 }
 
+declare module 'vue-router' {
+  interface RouteMeta {
+    title: string;
+    ext: string;
+    menuTitle: string;
+    showInNav?: boolean;
+  }
+}
+
 declare module '*.scss';
 declare module '*.png';
 

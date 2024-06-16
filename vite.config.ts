@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
-import { fileURLToPath, URL } from 'node:url';
-import vue from '@vitejs/plugin-vue';
-import createSvgSpritePlugin from 'vite-plugin-svg-sprite';
+import { defineConfig } from "vite";
+import { fileURLToPath, URL } from "node:url";
+import vue from "@vitejs/plugin-vue";
+import createSvgSpritePlugin from "vite-plugin-svg-sprite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,8 +17,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
       '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
-      '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
-      '@ui': fileURLToPath(new URL('./src/components/ui', import.meta.url))
+      '@components': fileURLToPath(new URL('./src/components', import.meta.url))
     }
   }
 });

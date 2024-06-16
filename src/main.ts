@@ -9,12 +9,6 @@ import App from './App.vue';
 // Create vue app
 const app = createApp(App);
 
-// setup icons
-const modules = import.meta.glob('./assets/icons/*.svg');
-Object.values(modules).forEach(async (el) => {
-  await el();
-});
-
 // Register plugins
 app.use(router);
 app.use(pinia);

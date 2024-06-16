@@ -25,6 +25,16 @@
     "eslint-plugin-import-helpers"
   ],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "info",
+          "error"
+        ]
+      }
+    ],
     "vue/multi-word-component-names": "off",
     "import/no-extraneous-dependencies": [
       "error",
@@ -70,7 +80,8 @@
         "ts": "never"
       }
     ],
-    "@typescript-eslint/no-non-null-assertion": "off"
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   },
   "settings": {
     "import/resolver": {

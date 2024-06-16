@@ -1,3 +1,77 @@
 :root {
   --main-font: 'Roboto', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+  --transition: 0.2s ease;
+
+  --z-index-content: 10;
+  --z-index-header: 50;
+  --z-index-modal: 100;
+
+
+  --h1-size: 4.210rem; /* 67.36px */
+  --h2-size: 3.158rem; /* 50.56px */
+  --h3-size: 2.369rem; /* 37.92px */
+  --h4-size: 1.777rem; /* 28.48px */
+  --h5-size: 1.333rem; /* 21.28px */
+  --small-size: 0.750rem; /* 12px */
+}
+
+:root[data-theme="light"] {
+  --text: #12161c;
+  --text-contrast: #e3e7ed;
+  --background: #e6e6ed;
+  --primary: #22252b;
+  --accent: #2d4bff;
+  --border: rgba(0, 0, 0, 0.1);
+  --primary-5: rgba(34, 37, 43, 0.05);
+  --primary-10: rgba(34, 37, 43, 0.1);
+  --primary-15: rgba(34, 37, 43, 0.15);
+  --primary-20: rgba(34, 37, 43, 0.2);
+  --primary-25: rgba(34, 37, 43, 0.25);
+  --primary-30: rgba(34, 37, 43, 0.3);
+  --primary-35: rgba(34, 37, 43, 0.35);
+  --primary-40: rgba(34, 37, 43, 0.4);
+  --primary-45: rgba(34, 37, 43, 0.45);
+  --primary-50: rgba(34, 37, 43, 0.5);
+  --primary-55: rgba(34, 37, 43, 0.55);
+  --primary-60: rgba(34, 37, 43, 0.6);
+  --primary-65: rgba(34, 37, 43, 0.65);
+  --primary-70: rgba(34, 37, 43, 0.7);
+  --primary-75: rgba(34, 37, 43, 0.75);
+  --primary-80: rgba(34, 37, 43, 0.8);
+  --primary-85: rgba(34, 37, 43, 0.85);
+  --primary-90: rgba(34, 37, 43, 0.9);
+  --primary-95: rgba(34, 37, 43, 0.95);
+  --text-80: rgba(18, 22, 28, 0.8);
+  --text-50: rgba(18, 22, 28, 0.5);
+}
+
+:root[data-theme="dark"] {
+  --text: #e3e7ed;
+  --text-contrast: #12161c;
+  --background: #121212;
+  --primary: #dde7ff;
+  --accent: #3664fe;
+  --border: rgba(255, 255, 255, 0.1);
+  --primary-5: rgba(221, 231, 255, 0.05);
+  --primary-10: rgba(221, 231, 255, 0.1);
+  --primary-15: rgba(221, 231, 255, 0.15);
+  --primary-20: rgba(221, 231, 255, 0.2);
+  --primary-25: rgba(221, 231, 255, 0.25);
+  --primary-30: rgba(221, 231, 255, 0.3);
+  --primary-35: rgba(221, 231, 255, 0.35);
+  --primary-40: rgba(221, 231, 255, 0.4);
+  --primary-45: rgba(221, 231, 255, 0.45);
+  --primary-50: rgba(221, 231, 255, 0.5);
+  --primary-55: rgba(221, 231, 255, 0.55);
+  --primary-60: rgba(221, 231, 255, 0.6);
+  --primary-65: rgba(221, 231, 255, 0.65);
+  --primary-70: rgba(221, 231, 255, 0.7);
+  --primary-75: rgba(221, 231, 255, 0.75);
+  --primary-80: rgba(221, 231, 255, 0.8);
+  --primary-85: rgba(221, 231, 255, 0.85);
+  --primary-90: rgba(221, 231, 255, 0.9);
+  --primary-95: rgba(221, 231, 255, 0.95);
+  --text-80: rgba(227, 231, 237, 0.8);
+  --text-50: rgba(227, 231, 237, 0.5);
 }

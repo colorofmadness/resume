@@ -1,0 +1,45 @@
+@use '@/assets/style/mixins' as *;
+
+.primary-layout {
+  width: 100%;
+  position: relative;
+  z-index: var(--z-index-content);
+  height: 100%;
+  overflow: hidden;
+
+  &:before {
+    --size: 60px;
+    --line: color-mix(in lch, var(--text) 15%, transparent);
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size), linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+    mask: linear-gradient(-15deg, transparent 40%, white);
+    top: 0;
+    transform-style: flat;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    width: 100%;
+
+    @include mobile {
+      padding: 40px 16px;
+    }
+  }
+}
+
+.ps {
+  height: 100%;
+}
+
+.sig {
+  position: absolute;
+  bottom: 80px;
+  right: 70px;
+}

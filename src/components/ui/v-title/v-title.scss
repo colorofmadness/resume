@@ -1,0 +1,15 @@
+.title {
+  color: var(--title-color, var(--accent));
+
+  &--accent {
+    --title-color: var(--accent)
+  }
+
+  &--text {
+    --title-color: var(--text)
+  }
+
+  &--text-80 {
+    --title-color: var(--text-80)
+  }
+}

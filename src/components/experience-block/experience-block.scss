@@ -1,0 +1,32 @@
+@use '@assets/style/mixins' as *;
+
+.exp-block {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 100px;
+
+  @include mobile {
+    gap: 50px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    width: 100%;
+  }
+}
+
+.resume-block {
+  display: flex;
+  gap: 36px;
+
+  &__date {
+    max-width: 290px;
+  }
+
+  &__container {
+    width: 100%;
+  }
+}
