@@ -12,7 +12,7 @@
           <li>View</li>
           <li>Tools</li>
           <li>Window</li>
-          <li @click="useGlobalStore().isDark = !useGlobalStore().isDark">changeTheme</li>
+          <li @click="store.changeTheme()">changeTheme</li>
         </ul>
       </nav>
     </transition>
@@ -57,6 +57,7 @@ import PrimaryLayout from '@/layouts/primary-layout';
 
 import useGlobalStore from '@/store/global';
 
+const store = useGlobalStore();
 const { isOpen, openModal, closeModal } = useIsOpen(true);
 const currentView = shallowRef<TLinks | null>(null);
 
@@ -70,33 +71,52 @@ const calculatePosition = (element: HTMLElement) => {
   };
 };
 
-const animation = (fromHero: HTMLElement, toHero: HTMLElement) => {
+const animation = (fromHero: HTMLElement, toHero: HTMLElement, span: number) => {
   const { body } = document;
   const clone = fromHero.cloneNode(true);
   const from = calculatePosition(fromHero);
   const to = calculatePosition(toHero);
 
   const onComplete = () => {
-    gsap.set(toHero, { visibility: 'visible' });
-
     body.removeChild(clone);
   };
 
-  const tl = gsap.timeline({ onComplete });
-  tl.set([fromHero, toHero], { visibility: 'hidden' });
-  tl.set(clone, {
-    position: 'fixed',
-    ...from
-  }).to(clone, {
-    x: to.left - from.left,
-    y: to.top - from.top,
-    width: to.width,
-    height: to.height,
-    ease: 'power1',
-    duration: 0.5
+  const onStart = () => {
+    body.appendChild(clone);
+  };
+
+  const tl = gsap.timeline({
+    onComplete,
+    onStart,
+    defaults: {
+      duration: 0.5,
+      ease: 'power1'
+    }
   });
 
-  body.appendChild(clone);
+  tl.set([fromHero, toHero], { visibility: 'hidden' })
+    .fromTo(
+      clone,
+      {
+        position: 'fixed',
+        ...from
+      },
+      {
+        x: to.left - from.left,
+        y: to.top - from.top,
+        width: to.width,
+        height: to.height
+      },
+      'scale1'
+    )
+    .to(
+      clone.firstChild,
+      {
+        scale: !isOpen.value ? 1 : (1 / 20) * span
+      },
+      'scale1'
+    )
+    .set(toHero, { visibility: 'visible' });
 };
 
 const openMenu = () => {
@@ -106,7 +126,7 @@ const openMenu = () => {
   if (!to || !from) return;
 
   openModal();
-  animation(from, to);
+  animation(from, to, currentView.value.style['--span']);
   currentView.value = null;
 };
 
@@ -116,8 +136,8 @@ const selectView = (link: TLinks) => {
   const to = document.getElementById('current');
   if (!to || !from) return;
 
-  animation(from, to);
   closeModal();
+  animation(from, to, link.style['--span']);
 };
 </script>
 

@@ -1,11 +1,11 @@
 <template>
   <section :id="id" :class="['section', { 'section--active': current }]">
-    <div class="section__header">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
     <div class="section__content">
+      <div class="section__header">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <slot />
     </div>
   </section>

@@ -1,6 +1,8 @@
 <template>
   <router-view v-slot="{ Component }">
     <!--    <v-header />-->
+    <div id="transition-element" />
+
     <transition mode="out-in" name="fade">
       <component :is="Component" />
     </transition>
@@ -9,8 +11,17 @@
 
 <script lang="ts" setup>
 import { RouterView } from 'vue-router';
-
-import useGlobalStore from '@/store/global';
-
-useGlobalStore();
 </script>
+
+<style>
+#transition-element {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  z-index: var(--z-index-modal);
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+</style>
