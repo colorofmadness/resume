@@ -1,19 +1,20 @@
 <template>
-  <router-view v-slot="{ Component }">
-    <!--    <v-header />-->
-    <div id="transition-element" />
-
-    <transition mode="out-in" name="fade">
-      <component :is="Component" />
-    </transition>
-  </router-view>
+  <default-layout>
+    <router-view v-slot="{ Component }">
+      <transition mode="out-in" name="fade">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </default-layout>
 </template>
 
 <script lang="ts" setup>
 import { RouterView } from 'vue-router';
+
+import DefaultLayout from '@/layouts/default-layout';
 </script>
 
-<style>
+<style lang="scss">
 #transition-element {
   width: 100%;
   height: 100%;

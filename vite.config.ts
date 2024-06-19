@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
-import { fileURLToPath, URL } from "node:url";
-import vue from "@vitejs/plugin-vue";
-import createSvgSpritePlugin from "vite-plugin-svg-sprite";
+import { defineConfig } from 'vite';
+import { fileURLToPath, URL } from 'node:url';
+import vue from '@vitejs/plugin-vue';
+import createSvgSpritePlugin from 'vite-plugin-svg-sprite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     createSvgSpritePlugin({
       include: '**/icons/**/*.svg',
-      symbolId: '[name]'
+      symbolId: '[name]-[hash]'
     })
   ],
   resolve: {

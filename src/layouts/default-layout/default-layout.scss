@@ -1,0 +1,28 @@
+.frame {
+  position: relative;
+  padding: 8px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.frame-main {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-areas:
+    'header top'
+    'header content'
+    'bottom bottom';
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: 40px 1fr 40px;
+  border: 1px solid #444444;
+  border-radius: 4px;
+}
+
+.frame-content {
+  grid-area: content;
+  height: 100%;
+  position: relative;
+  z-index: var(--z-index-content);
+  overflow: hidden;
+}

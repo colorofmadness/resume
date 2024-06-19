@@ -4,8 +4,7 @@
   width: 100%;
   position: relative;
   z-index: var(--z-index-content);
-  height: 100%;
-  overflow: hidden;
+  overflow: auto;
 
   &:before {
     --size: 60px;
@@ -29,7 +28,7 @@
     width: 100%;
 
     @include mobile {
-      padding: 40px 16px;
+      padding: 40px 16px 70px;
     }
   }
 }

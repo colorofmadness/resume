@@ -1,7 +1,12 @@
 :root {
+  --app-cursor-default: url('@/assets/icons/cursor/normal.svg');
   --main-font: 'Roboto', sans-serif;
   --secondary-font: 'Montserrat', sans-serif;
   --transition: 0.2s ease;
+
+  --danger: #ff5f56;
+  --success: #27c93f;
+  --warning: #ffbd2e;
 
   --z-index-content: 10;
   --z-index-header: 50;

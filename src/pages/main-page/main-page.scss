@@ -4,19 +4,28 @@
 
 .grid-container {
   height: 100%;
-  background-image: url('@assets/images/background-light.jpg');
+  position: relative;
+  //background-image: url('@assets/images/background-light.jpg');
   background-size: cover;
   display: grid;
   grid-template-columns: repeat(var(--grid-size), 1fr);
   grid-template-rows: repeat(var(--grid-size), 1fr);
 
   [data-theme='dark'] & {
-    background-image: url('@assets/images/background-dark.jpg');
+    //background-image: url('@assets/images/background-dark.jpg');
+  }
+
+  &__button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    translate: -50%;
+    z-index: var(--z-index-modal);
   }
 }
 
 .navigation {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 10;
   padding: 0;

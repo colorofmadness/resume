@@ -3,6 +3,7 @@ import { Component, defineAsyncComponent } from 'vue';
 export type TLinks = {
   id: string;
   name: string;
+  icon: string;
   style: {
     '--x': number;
     '--y': number;
@@ -13,7 +14,8 @@ export type TLinks = {
 
 export const LINKS: TLinks[] = [
   {
-    id: '#about',
+    id: 'about',
+    icon: 'menu/about',
     name: 'Обо мне',
     style: {
       '--x': 2,
@@ -23,7 +25,8 @@ export const LINKS: TLinks[] = [
     component: defineAsyncComponent(() => import('@components/about-block'))
   },
   {
-    id: '#resume',
+    id: 'resume',
+    icon: 'menu/work',
     name: 'Резюме',
     style: {
       '--x': 2,
@@ -33,7 +36,8 @@ export const LINKS: TLinks[] = [
     component: defineAsyncComponent(() => import('@components/experience-block'))
   },
   {
-    id: '#tech',
+    id: 'tech',
+    icon: 'menu/techs',
     name: 'Тех стек',
     style: {
       '--x': 13,
@@ -43,7 +47,8 @@ export const LINKS: TLinks[] = [
     component: defineAsyncComponent(() => import('@components/tech-block'))
   },
   {
-    id: '#projects',
+    id: 'projects',
+    icon: 'menu/projects',
     name: 'Портфолио',
     style: {
       '--x': 11,
@@ -53,7 +58,8 @@ export const LINKS: TLinks[] = [
     component: defineAsyncComponent(() => import('@components/projects-block'))
   },
   {
-    id: '#contacts',
+    id: 'contacts',
+    icon: 'menu/contact',
     name: 'Контакты',
     style: {
       '--x': 14,

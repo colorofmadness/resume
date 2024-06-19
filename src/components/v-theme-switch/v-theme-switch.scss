@@ -1,0 +1,9 @@
+@use '@assets/style/mixins' as *;
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+}

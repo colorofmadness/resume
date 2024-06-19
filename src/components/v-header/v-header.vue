@@ -1,22 +1,25 @@
 <template>
-  <header class="header">
-    <div class="header__title">
-      colorofmadness/{{ route.meta.title }}
-      <span>{{ route.meta.ext }}</span>
+  <header class="frame-header">
+    <div class="frame-header__logo">
+      <a href="/">
+        <v-icon name="logo" />
+      </a>
     </div>
-    <div class="header__actions">
-      <v-theme-switch />
-      <v-header-menu />
-    </div>
+    <nav class="frame-header__menu">
+      <ul class="frame-header__menu-list">
+        <li v-for="link of LINKS" :key="link.id">
+          <router-link :to="link.id" class="frame-header__menu-link" data-tip="Обо мне">
+            <v-icon :name="link.icon" :size="18" />
+          </router-link>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
 <script lang="ts" setup>
-import { useRoute } from 'vue-router';
-import VThemeSwitch from '@components/v-header/v-theme-switch';
-import VHeaderMenu from '@components/v-header/v-header-menu';
-
-const route = useRoute();
+import { VIcon } from '@components/ui';
+import { LINKS } from '@components/main-page/const';
 </script>
 
 <style lang="scss" scoped src="./v-header.scss" />

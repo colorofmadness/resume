@@ -1,0 +1,32 @@
+.frame-top {
+  grid-area: top;
+  display: grid;
+  padding: 0 16px;
+  border-bottom: 1px solid #444444;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+
+  &__name {
+    grid-column-start: 2;
+    justify-self: center;
+  }
+
+  &__actions {
+    display: flex;
+    justify-self: end;
+    align-items: center;
+    grid-column-start: 3;
+    gap: 8px;
+
+    button {
+      cursor: pointer;
+      color: #7d7d7d;
+      transition: var(--transition);
+
+      &:hover {
+        color: var(--text);
+      }
+    }
+  }
+}

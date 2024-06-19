@@ -4805,13 +4805,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"perfect-scrollbar@npm:^1.5.5":
-  version: 1.5.5
-  resolution: "perfect-scrollbar@npm:1.5.5"
-  checksum: 10c0/10f0c3a1205328b22e232be4ee9f0e832e96fb5b6c524d1d04e11f97ad910018c1c0659af145e0ae0dc2b41e67a96df12787de5366ff5ba86034339071ca722b
-  languageName: node
-  linkType: hard
-
 "picocolors@npm:^1.0.0":
   version: 1.0.0
   resolution: "picocolors@npm:1.0.0"
@@ -6166,7 +6159,6 @@ __metadata:
     vue: "npm:^3.4.27"
     vue-router: "npm:^4.3.2"
     vue-tsc: "npm:^2.0.16"
-    vue3-perfect-scrollbar: "npm:^2.0.0"
   languageName: unknown
   linkType: soft
 
@@ -6606,17 +6598,6 @@ __metadata:
   bin:
     vue-tsc: bin/vue-tsc.js
   checksum: 10c0/00a040efe77fa0970e4a4f1c55740bf7c8106a071e4bc5157d0fe84c4873bbfeccab535e9c2f2c0d9649b70affeeb348d6bbe67689fe932480796324f488e5a7
-  languageName: node
-  linkType: hard
-
-"vue3-perfect-scrollbar@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "vue3-perfect-scrollbar@npm:2.0.0"
-  dependencies:
-    perfect-scrollbar: "npm:^1.5.5"
-  peerDependencies:
-    vue: ^3.0.0
-  checksum: 10c0/3ec1d93040168ee37238e49c66c9f8261b3b5b4faaf7a78ab475dd675617b48ab571d222a294e41f43a67818a6683a3c9aacc9a5127581784a94da56639b8304
   languageName: node
   linkType: hard
 

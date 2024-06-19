@@ -1,19 +1,11 @@
 <template>
   <main class="primary-layout">
-    <perfect-scrollbar>
-      <div class="primary-layout__container">
-        <slot />
-      </div>
-    </perfect-scrollbar>
-    <v-icon :height="124" :width="364" class="sig" name="sig" />
+    <div class="primary-layout__container">
+      <slot />
+    </div>
   </main>
 </template>
 
-<script lang="ts" setup>
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar';
-
-import 'vue3-perfect-scrollbar/style.css';
-import { VIcon } from '@components/ui';
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" src="./primary-layout.scss" />

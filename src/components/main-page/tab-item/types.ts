@@ -1,4 +1,4 @@
-export default interface ITabItemProps {
+export interface ITabItemProps {
   id: string;
   current?: boolean;
 }

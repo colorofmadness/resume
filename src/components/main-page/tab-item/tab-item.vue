@@ -1,18 +1,13 @@
 <template>
   <section :id="id" :class="['section', { 'section--active': current }]">
     <div class="section__content">
-      <div class="section__header">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
       <slot />
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import ITabItemProps from '@components/main-page/tab-item/types';
+import type { ITabItemProps } from './types';
 
 defineProps<ITabItemProps>();
 </script>
