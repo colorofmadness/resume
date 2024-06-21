@@ -5,11 +5,11 @@
   flex-direction: column;
   height: var(--v-card-height, 100%);
   overflow: hidden;
-  border: 1px solid #444444;
+  border: 1px solid var(--border);
 
   &__header {
     display: flex;
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid var(--border);
     padding: 0 16px;
     gap: 16px;
     align-items: center;
@@ -17,7 +17,7 @@
 
     &-actions {
       margin-left: auto;
-      color: #444444;
+      color: var(--border);
       display: flex;
       gap: 8px;
     }

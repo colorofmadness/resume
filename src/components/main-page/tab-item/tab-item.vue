@@ -1,12 +1,14 @@
 <template>
-  <section :id="id" :class="['section', { 'section--active': current }]">
+  <v-screen :id="id" :class="['section', { 'section--active': current }]">
     <div class="section__content">
       <slot />
     </div>
-  </section>
+  </v-screen>
 </template>
 
 <script lang="ts" setup>
+import { VScreen } from '@components/ui';
+
 import type { ITabItemProps } from './types';
 
 defineProps<ITabItemProps>();

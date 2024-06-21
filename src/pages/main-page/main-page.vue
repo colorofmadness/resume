@@ -3,12 +3,7 @@
     <nav v-if="store.isOpen" class="navigation">
       <ul class="navigation__list">
         <li v-for="link of LINKS" :key="link.id" :style="link.style" class="navigation__list-item">
-          <router-link
-            :to="'#' + link.id"
-            class="navigation__list-link"
-            title="Home"
-            @click="selectView(link)"
-          />
+          <router-link :to="`#${link.id}`" class="navigation__list-link" title="Home" />
         </li>
       </ul>
     </nav>
@@ -23,18 +18,14 @@
         <component :is="currentView?.component" />
       </primary-layout>
     </tab-item>
-
-    <transition v-if="!store.isOpen" appear mode="in-out" name="fade">
-      <v-button class="grid-container__button" @click="openMenu">Назад</v-button>
-    </transition>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { shallowRef } from 'vue';
+import { onMounted, shallowRef, watch } from 'vue';
 import TabItem from '@components/main-page/tab-item/tab-item.vue';
 import { LINKS, type TLinks } from '@components/main-page/const';
-import { VButton } from '@components/ui';
+import { useRoute } from 'vue-router';
 
 import PrimaryLayout from '@/layouts/primary-layout';
 
@@ -44,6 +35,7 @@ import animation from './animation';
 
 const store = useGlobalStore();
 const currentView = shallowRef<TLinks | null>(null);
+const route = useRoute();
 
 const openMenu = () => {
   if (!currentView.value) return;
@@ -57,6 +49,38 @@ const selectView = (link: TLinks) => {
   animation(link.id, 'current', link.style['--span']);
   store.closeModal();
 };
+
+const findLinkByHash = (hash: string): TLinks | undefined => {
+  return LINKS.find((el) => el.id === hash.slice(1));
+};
+
+onMounted(() => {
+  if (route.hash) {
+    const link: TLinks | undefined = findLinkByHash(route.hash);
+    if (!link) return;
+    selectView(link);
+  }
+});
+
+watch(
+  () => route.hash,
+  (value, oldValue) => {
+    if (value !== oldValue) {
+      const link: TLinks | undefined = findLinkByHash(value);
+      let timeout = 0;
+
+      if (currentView.value) {
+        openMenu();
+        timeout = 300;
+      }
+
+      if (!link) return;
+      setTimeout(() => {
+        selectView(link);
+      }, timeout);
+    }
+  }
+);
 </script>
 
 <style lang="scss" src="./main-page.scss" />

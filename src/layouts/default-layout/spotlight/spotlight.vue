@@ -1,17 +1,20 @@
 <template>
-  <div class="frame-absolute">
-    <div class="frame-absolute__spotlight-box">
-      <div class="frame-absolute__spotlight" />
+  <transition name="fade">
+    <div v-show="globalStore.isOpen" class="frame-absolute">
+      <div v-for="i of 2" :key="i" class="frame-absolute__spotlight-box">
+        <div class="frame-absolute__spotlight" />
+      </div>
     </div>
-    <div class="frame-absolute__spotlight-box">
-      <div class="frame-absolute__spotlight" />
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import gsap from 'gsap';
+
+import useGlobalStore from '@/store/global';
+
+const globalStore = useGlobalStore();
 
 onMounted(() => {
   const tl = gsap.timeline({

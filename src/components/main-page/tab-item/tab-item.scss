@@ -2,12 +2,27 @@
   position: relative;
   overflow: hidden;
   grid-area: var(--y, 1) / var(--x, 1) / span var(--span, 1) / span var(--span, 1);
-  filter: drop-shadow(0.5rem 1rem 1rem hsl(0 0% 10% / 0.75));
+  filter: drop-shadow(8px 16px 16px hsl(0 0% 10% / 0.75));
+  --v-card-padding: 0;
+  background: var(--background);
+
+  &:deep(.card__content) {
+    height: 100%;
+  }
 
   &--active {
     z-index: 2;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
+
+    border-width: 0;
+    border-radius: 0;
+
+    &:deep(.card__header) {
+      height: 0;
+      visibility: hidden;
+      opacity: 0;
+    }
 
 
     & .section__content {
@@ -52,8 +67,8 @@
     scale: calc(1 / var(--grid-size) * var(--span));
     transform-origin: 0 0;
     background: var(--background);
-    width: 100vw;
-    height: 100vh;
+    width: calc(100vw - 58px);
+    height: calc(100vh - 98px);
     overflow: hidden;
     position: relative;
     display: grid;

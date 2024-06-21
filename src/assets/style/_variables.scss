@@ -1,5 +1,4 @@
 :root {
-  --app-cursor-default: url('@/assets/icons/cursor/normal.svg');
   --main-font: 'Roboto', sans-serif;
   --secondary-font: 'Montserrat', sans-serif;
   --transition: 0.2s ease;
@@ -7,6 +6,9 @@
   --danger: #ff5f56;
   --success: #27c93f;
   --warning: #ffbd2e;
+
+  --gray: #7d7d7d;
+  --border: #444444;
 
   --z-index-content: 10;
   --z-index-header: 50;
@@ -27,7 +29,6 @@
   --background: #e6e6ed;
   --primary: #22252b;
   --accent: #2d4bff;
-  --border: rgba(0, 0, 0, 0.1);
   --primary-5: rgba(34, 37, 43, 0.05);
   --primary-10: rgba(34, 37, 43, 0.1);
   --primary-15: rgba(34, 37, 43, 0.15);
@@ -57,7 +58,6 @@
   --background: #121212;
   --primary: #dde7ff;
   --accent: #3664fe;
-  --border: rgba(255, 255, 255, 0.1);
   --primary-5: rgba(221, 231, 255, 0.05);
   --primary-10: rgba(221, 231, 255, 0.1);
   --primary-15: rgba(221, 231, 255, 0.15);

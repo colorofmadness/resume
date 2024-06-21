@@ -5,5 +5,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: var(--transition);
 
+  &:hover {
+    scale: 1.2;
+    color: var(--accent);
+  }
 }

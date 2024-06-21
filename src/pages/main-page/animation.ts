@@ -23,7 +23,7 @@ const animation = (fromId: string, toId: string, span: number) => {
 
   if (!toHero || !fromHero) return;
 
-  const clone = fromHero.cloneNode(true);
+  const clone = fromHero.cloneNode(true) as HTMLElement;
   const from = calculatePosition(fromHero);
   const to = calculatePosition(toHero);
 
@@ -56,12 +56,23 @@ const animation = (fromId: string, toId: string, span: number) => {
         x: to.left - from.left,
         y: to.top - from.top,
         width: to.width,
-        height: to.height
+        height: to.height,
+        borderWidth: store.isOpen ? '0px' : '1px'
       },
       'scale1'
     )
     .to(
-      clone.firstChild,
+      clone.querySelector('.card__header'),
+      {
+        translateY: store.isOpen ? '-100%' : 0,
+        height: store.isOpen ? 0 : '40px',
+        visibility: store.isOpen ? 'hidden' : 'visible',
+        opacity: store.isOpen ? 0 : 1
+      },
+      'scale1'
+    )
+    .to(
+      clone.querySelector('.section__content'),
       {
         borderRadius: store.isOpen ? 0 : 16,
         scale: store.isOpen ? 1 : (1 / 20) * span

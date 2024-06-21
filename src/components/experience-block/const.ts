@@ -93,7 +93,7 @@ export const RESUME_LIST: Resume[] = [
     tech: 'React/TypeScript, Redux, webpack, scss, Laravel.'
   },
   {
-    company: 'Аутсорс',
+    company: 'Амадо/Аутсорс',
     date: {
       start: new Date('8/1/22'),
       end: new Date('2/1/23')
@@ -114,7 +114,7 @@ export const RESUME_LIST: Resume[] = [
     tech: 'Vue 2, Pinia, GraphQL, vite, scss'
   },
   {
-    company: 'Аутсорс',
+    company: 'Амадо/Аутсорс',
     date: {
       start: new Date('4/1/21'),
       end: new Date('4/1/22')
