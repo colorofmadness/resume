@@ -1,9 +1,14 @@
 <template>
-  <v-title>ОБО МНЕ</v-title>
+  <div class="about-block container">
+    <v-screen>
+      <template #title>Фото</template>
+      <img alt="" src="" />
+    </v-screen>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { VTitle } from '@components/ui';
+import { VScreen } from '@components/ui';
 </script>
 
 <style lang="scss" scoped src="./about-block.scss" />

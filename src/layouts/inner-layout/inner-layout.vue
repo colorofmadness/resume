@@ -8,4 +8,4 @@
 
 <script lang="ts" setup></script>
 
-<style lang="scss" src="./primary-layout.scss" />
+<style lang="scss" src="./inner-layout.scss" />

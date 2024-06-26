@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-show="globalStore.isOpen" class="frame-absolute">
+    <div v-show="isOpen" class="frame-absolute">
       <div v-for="i of 2" :key="i" class="frame-absolute__spotlight-box">
         <div class="frame-absolute__spotlight" />
       </div>
@@ -11,10 +11,12 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import gsap from 'gsap';
+import { storeToRefs } from 'pinia';
 
 import useGlobalStore from '@/store/global';
 
-const globalStore = useGlobalStore();
+const store = useGlobalStore();
+const { isOpen } = storeToRefs(store);
 
 onMounted(() => {
   const tl = gsap.timeline({

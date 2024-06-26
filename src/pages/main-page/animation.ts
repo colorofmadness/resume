@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { useElementBounding } from '@vueuse/core';
+import { storeToRefs } from 'pinia';
 
 import useGlobalStore from '@/store/global';
 
@@ -15,6 +16,7 @@ const calculatePosition = (element: HTMLElement) => {
 
 const animation = (fromId: string, toId: string, span: number) => {
   const store = useGlobalStore();
+  const { isOpen } = storeToRefs(store);
 
   const { body } = document;
 
@@ -43,7 +45,6 @@ const animation = (fromId: string, toId: string, span: number) => {
       ease: 'power1'
     }
   });
-
   tl.set([fromHero, toHero], { visibility: 'hidden' })
     .fromTo(
       clone,
@@ -57,25 +58,25 @@ const animation = (fromId: string, toId: string, span: number) => {
         y: to.top - from.top,
         width: to.width,
         height: to.height,
-        borderWidth: store.isOpen ? '0px' : '1px'
+        borderWidth: isOpen.value ? '0px' : '1px'
       },
       'scale1'
     )
     .to(
       clone.querySelector('.card__header'),
       {
-        translateY: store.isOpen ? '-100%' : 0,
-        height: store.isOpen ? 0 : '40px',
-        visibility: store.isOpen ? 'hidden' : 'visible',
-        opacity: store.isOpen ? 0 : 1
+        translateY: isOpen.value ? '-100%' : 0,
+        height: isOpen.value ? 0 : '40px',
+        visibility: isOpen.value ? 'hidden' : 'visible',
+        opacity: isOpen.value ? 0 : 1
       },
       'scale1'
     )
     .to(
       clone.querySelector('.section__content'),
       {
-        borderRadius: store.isOpen ? 0 : 16,
-        scale: store.isOpen ? 1 : (1 / 20) * span
+        borderRadius: isOpen.value ? 0 : 16,
+        scale: isOpen.value ? 1 : (1 / 20) * span
       },
       'scale1'
     )

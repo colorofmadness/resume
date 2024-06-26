@@ -1,6 +1,6 @@
 <template>
-  <div class="tech-block">
-    <v-title>Технический стэк</v-title>
+  <div class="tech-block container">
+    <v-title :is="isMobile ? 'h2' : 'h1'">Технический стэк</v-title>
 
     <div class="tech-block__content">
       <tech-list
@@ -15,9 +15,12 @@
 
 <script lang="ts" setup>
 import VTitle from '@components/ui/v-title/v-title.vue';
+import { useScreenSize } from '@/composables';
 
 import TechList from './tech-list';
 import MOCK_DATA from './const';
+
+const { isMobile } = useScreenSize();
 </script>
 
 <style lang="scss" scoped src="./tech-block.scss" />

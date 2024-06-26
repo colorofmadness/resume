@@ -1,8 +1,8 @@
 <template>
-  <div class="exp-block">
+  <div class="exp-block container">
     <div class="exp-block__title">
-      <v-title>Опыт работы</v-title>
-      <v-title :is="'h2'" color="text-80">
+      <v-title :is="isMobile ? 'h2' : 'h1'">Опыт работы</v-title>
+      <v-title :is="isMobile ? 'h3' : 'h2'" color="text-80">
         {{ getWorkTime(new Date('12/1/2020')) }}
       </v-title>
     </div>
@@ -43,10 +43,13 @@ import { VTitle } from '@components/ui';
 import { RESUME_LIST } from '@components/experience-block/const';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { useScreenSize } from '@/composables';
 
 import dateFormat from '@/helpers/format';
 
 dayjs.extend(relativeTime);
+
+const { isMobile } = useScreenSize();
 
 const getWorkTime = (startDate: Date, endDate: Date = new Date()) => {
   return dayjs(startDate).from(endDate, true);

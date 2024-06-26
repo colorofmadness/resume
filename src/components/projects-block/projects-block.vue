@@ -1,5 +1,7 @@
 <template>
-  <v-title>Проекты</v-title>
+  <div class="container">
+    <v-title>Проекты</v-title>
+  </div>
 </template>
 
 <script lang="ts" setup>

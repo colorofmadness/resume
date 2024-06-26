@@ -1,6 +1,6 @@
 <template>
   <div class="grid-container">
-    <nav v-if="store.isOpen" class="navigation">
+    <nav v-if="isOpen" class="navigation">
       <ul class="navigation__list">
         <li v-for="link of LINKS" :key="link.id" :style="link.style" class="navigation__list-item">
           <router-link :to="`#${link.id}`" class="navigation__list-link" title="Home" />
@@ -8,15 +8,15 @@
       </ul>
     </nav>
     <tab-item v-for="link of LINKS" :id="link.id" :key="link.id" :style="link.style">
-      <primary-layout>
+      <inner-layout>
         <component :is="link.component" />
-      </primary-layout>
+      </inner-layout>
     </tab-item>
 
     <tab-item id="current" :style="[currentView?.style, { visibility: 'hidden' }]" current>
-      <primary-layout>
+      <inner-layout>
         <component :is="currentView?.component" />
-      </primary-layout>
+      </inner-layout>
     </tab-item>
   </div>
 </template>
@@ -26,28 +26,32 @@ import { onMounted, shallowRef, watch } from 'vue';
 import TabItem from '@components/main-page/tab-item/tab-item.vue';
 import { LINKS, type TLinks } from '@components/main-page/const';
 import { useRoute } from 'vue-router';
+import { storeToRefs } from 'pinia';
 
-import PrimaryLayout from '@/layouts/primary-layout';
+import InnerLayout from '@/layouts/inner-layout';
 
 import useGlobalStore from '@/store/global';
 
 import animation from './animation';
 
 const store = useGlobalStore();
+const { openModal, closeModal } = store;
+const { isOpen } = storeToRefs(store);
+
 const currentView = shallowRef<TLinks | null>(null);
 const route = useRoute();
 
 const openMenu = () => {
   if (!currentView.value) return;
   animation('current', currentView.value.id, currentView.value.style['--span']);
-  store.openModal();
+  openModal();
   currentView.value = null;
 };
 
 const selectView = (link: TLinks) => {
   currentView.value = link;
   animation(link.id, 'current', link.style['--span']);
-  store.closeModal();
+  closeModal();
 };
 
 const findLinkByHash = (hash: string): TLinks | undefined => {
