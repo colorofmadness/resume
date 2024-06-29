@@ -1,4 +1,14 @@
-const MOCK_DATA = [
+export type TTechItem = {
+  name: string;
+  icon: string;
+};
+
+export type TTechList = {
+  title: string;
+  items: TTechItem[];
+};
+
+const MOCK_DATA: TTechList[] = [
   {
     title: 'Языки',
     items: [
@@ -11,7 +21,7 @@ const MOCK_DATA = [
         icon: 'tech/css'
       },
       {
-        name: 'SASS',
+        name: 'SCSS',
         icon: 'tech/sass'
       },
       {

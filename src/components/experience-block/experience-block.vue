@@ -18,20 +18,26 @@
         <div class="resume-block__container">
           <v-title is="h4" color="text">{{ resume.company }}</v-title>
           <v-title is="h5" color="text-80">{{ resume.role }}</v-title>
-          <div class="resume-block__about">
-            <p>{{ resume.about.target }}</p>
-            <p v-if="resume.about.command">Состав команды: {{ resume.about.command }}</p>
-          </div>
-          <div class="resume-block__task">
-            <p>Задачи:</p>
-            <ol class="resume-block__task-list">
-              <li v-for="(task, i) of resume.task" :key="i">
-                {{ task }}
-              </li>
-            </ol>
-          </div>
+          <p v-if="resume.city || resume.site" class="resume-block__info">
+            {{ resume.city }},
+            <a v-if="resume.site" :href="resume.site" target="_blank">{{ resume.site }}</a>
+          </p>
+          <div v-for="(about, index) of resume.about" :key="index" class="resume-block__item">
+            <div class="resume-block__about">
+              <p>{{ index + 1 }}. {{ about.target }}</p>
+              <p v-if="about.command">- Состав команды: {{ about.command }}</p>
+            </div>
+            <div v-if="about.task?.length" class="resume-block__task">
+              <p>- Задачи:</p>
+              <ol class="resume-block__task-list">
+                <li v-for="(task, i) of about.task" :key="i">
+                  {{ task }}
+                </li>
+              </ol>
+            </div>
 
-          <p>- Стек технологий: {{ resume.tech }}</p>
+            <p v-if="about.tech">- Стек технологий: {{ about.tech }}</p>
+          </div>
         </div>
       </div>
     </div>

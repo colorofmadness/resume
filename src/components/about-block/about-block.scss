@@ -5,8 +5,67 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  :deep(.title) {
+    text-align: center;
+  }
+
+  :deep(.card__content) {
+    background: color-mix(in srgb, var(--background) 75%, transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  :deep(.card__header) {
+    background: color-mix(in srgb, var(--background) 90%, transparent);
+    backdrop-filter: blur(4px);
+  }
 }
 
 .wrapper {
   --v-card-height: 100%;
+  position: absolute;
+  width: 100%;
+
+  &-photo {
+    max-width: 282px;
+
+    :deep(.card__content) {
+      aspect-ratio: 1 / 1;
+    }
+
+    :deep(.v-image) {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-about {
+    max-width: 667px;
+  }
+
+  &-colab {
+    max-width: 570px;
+  }
+
+  &-social {
+    max-width: 284px;
+  }
+
+  &-tech {
+    max-width: 450px;
+  }
+
+  &__list {
+    list-style-position: inside;
+    padding: 16px;
+    display: grid;
+    gap: 8px;
+  }
+}
+
+.tech-content {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
