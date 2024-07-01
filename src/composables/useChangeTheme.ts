@@ -11,6 +11,7 @@ const useChangeTheme = () => {
   const { isMobile } = useScreenSize();
 
   const grid = computed(() => isMobile.value ? 5 : 10);
+  const amount = computed(() => isMobile.value ? 1 : 1.5);
 
   const changeTheme = async () => {
     isPending.value = true;
@@ -33,7 +34,7 @@ const useChangeTheme = () => {
       background: 'var(--text)',
       stagger: {
         grid: [0, grid.value],
-        amount: 1.5
+        amount: amount.value
       },
       onComplete: toggleTheme
     })
@@ -45,7 +46,7 @@ const useChangeTheme = () => {
         ease: 'power1.inOut',
         stagger: {
           grid: [0, grid.value],
-          amount: 1.5
+          amount: amount.value
         }
       })
       .set('.transition-grid__element', {

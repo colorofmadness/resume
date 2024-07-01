@@ -4,7 +4,7 @@
 
     <teleport to="#teleports">
       <div v-if="isPending" class="transition-grid">
-        <div v-for="i of 100" :key="i" class="transition-grid__element" />
+        <div v-for="i of isMobile ? 25 : 100" :key="i" class="transition-grid__element" />
       </div>
     </teleport>
   </div>
@@ -15,11 +15,13 @@ import { VIcon } from '@components/ui';
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import useChangeTheme from '@/composables/useChangeTheme';
+import { useScreenSize } from '@/composables';
 
 import useGlobalStore from '@/store/global';
 
 const store = useGlobalStore();
 const { isDark } = storeToRefs(store);
+const { isMobile } = useScreenSize();
 
 const computedIcon = computed(() => {
   return isDark.value ? 'header/sun' : 'header/moon';
