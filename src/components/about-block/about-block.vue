@@ -1,12 +1,28 @@
 <template>
-  <div ref="containerElement" class="about-block container">
-    <div ref="photoEl" :style="photoStyle" class="wrapper wrapper-photo">
+  <div id="aboutBlock" ref="containerElement" class="about-block container">
+    <about-card
+      :options="{
+        initialValue: {
+          x: 270,
+          y: 288
+        }
+      }"
+      class="wrapper-photo"
+    >
       <v-screen>
         <template #title>Фото</template>
         <v-image :src="photo" />
       </v-screen>
-    </div>
-    <div ref="aboutEl" :style="aboutStyle" class="wrapper wrapper-about">
+    </about-card>
+    <about-card
+      :options="{
+        initialValue: {
+          x: 330,
+          y: 533
+        }
+      }"
+      class="wrapper-about"
+    >
       <v-screen>
         <template #title>Обо мне</template>
         <ol class="wrapper__list">
@@ -27,8 +43,16 @@
           </li>
         </ol>
       </v-screen>
-    </div>
-    <div ref="colabEl" :style="colabStyle" class="wrapper wrapper-colab">
+    </about-card>
+    <about-card
+      :options="{
+        initialValue: {
+          x: 596,
+          y: 313
+        }
+      }"
+      class="wrapper-colab"
+    >
       <v-screen>
         <template #title>Сотрудничество</template>
         <ol class="wrapper__list">
@@ -43,8 +67,16 @@
           </li>
         </ol>
       </v-screen>
-    </div>
-    <div ref="socialEl" :style="socialStyle" class="wrapper wrapper-social">
+    </about-card>
+    <about-card
+      :options="{
+        initialValue: {
+          x: 523,
+          y: 842
+        }
+      }"
+      class="wrapper-social"
+    >
       <v-screen>
         <template #title>Соцсети</template>
         <ol class="wrapper__list">
@@ -59,52 +91,16 @@
           </li>
         </ol>
       </v-screen>
-    </div>
+    </about-card>
+
   </div>
 </template>
 
 <script lang="ts" setup>
 import { VImage, VScreen } from '@components/ui';
-import { useDraggable } from '@vueuse/core';
-import { ref } from 'vue';
 import photo from '@assets/images/photo-main.jpg';
 
-const photoEl = ref<HTMLElement | null>(null);
-const aboutEl = ref<HTMLElement | null>(null);
-const colabEl = ref<HTMLElement | null>(null);
-const socialEl = ref<HTMLElement | null>(null);
-const containerElement = ref<HTMLElement | null>(null);
-
-const { style: photoStyle } = useDraggable(photoEl, {
-  containerElement,
-  initialValue: {
-    x: 270,
-    y: 288
-  }
-});
-const { style: aboutStyle } = useDraggable(aboutEl, {
-  containerElement,
-  initialValue: {
-    x: 330,
-    y: 533
-  }
-});
-
-const { style: colabStyle } = useDraggable(colabEl, {
-  containerElement,
-  initialValue: {
-    x: 596,
-    y: 313
-  }
-});
-
-const { style: socialStyle } = useDraggable(socialEl, {
-  containerElement,
-  initialValue: {
-    x: 523,
-    y: 842
-  }
-});
+import AboutCard from './about-card/about-card.vue';
 </script>
 
 <style lang="scss" scoped src="./about-block.scss" />

@@ -1,5 +1,6 @@
-import { nextTick, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import gsap from 'gsap';
+import { useScreenSize } from '@/composables/useScreenSize';
 
 import useGlobalStore from '@/store/global';
 
@@ -7,6 +8,10 @@ const useChangeTheme = () => {
   const isPending = ref(false);
   const store = useGlobalStore();
   const { toggleTheme } = store;
+  const { isMobile } = useScreenSize();
+
+  const grid = computed(() => isMobile.value ? 5 : 10);
+  const amount = computed(() => isMobile.value ? 1 : 1.5);
 
   const changeTheme = async () => {
     isPending.value = true;
@@ -28,8 +33,8 @@ const useChangeTheme = () => {
       ease: 'power1.inOut',
       background: 'var(--text)',
       stagger: {
-        grid: [0, 10],
-        amount: 1.5
+        grid: [0, grid.value],
+        amount: amount.value
       },
       onComplete: toggleTheme
     })
@@ -40,8 +45,8 @@ const useChangeTheme = () => {
         borderRadius: '50%',
         ease: 'power1.inOut',
         stagger: {
-          grid: [0, 10],
-          amount: 1.5
+          grid: [0, grid.value],
+          amount: amount.value
         }
       })
       .set('.transition-grid__element', {
