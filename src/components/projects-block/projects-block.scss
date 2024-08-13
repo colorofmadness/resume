@@ -1,0 +1,13 @@
+.project-broken {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 35px;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  overflow: hidden;
+}

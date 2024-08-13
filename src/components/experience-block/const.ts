@@ -19,7 +19,8 @@ export const RESUME_LIST: Resume[] = [
   {
     company: 'C&U',
     date: {
-      start: new Date('3/1/24')
+      start: new Date('3/1/24'),
+      end: new Date('7/1/24')
     },
     role: 'Тех.лид, Frontend-разработчик',
     about: [
