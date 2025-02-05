@@ -11,7 +11,21 @@
     >
       <v-screen>
         <template #title>Фото</template>
-        <v-image :src="photo" />
+        <v-image :src="photo" use-fullscreen />
+      </v-screen>
+    </about-card>
+    <about-card
+      :options="{
+        initialValue: {
+          x: 886,
+          y: 656
+        }
+      }"
+      class="wrapper-photo"
+    >
+      <v-screen>
+        <template #title>Дитятко</template>
+        <v-image :src="loki" use-fullscreen />
       </v-screen>
     </about-card>
     <about-card
@@ -27,6 +41,7 @@
         <template #title>Обо мне</template>
         <ol class="wrapper__list">
           <li>Привет, меня зовут Владимир, занимаюсь Frontend разработкой с 2020 года.</li>
+          <li>Отец «любимого ангелочка» по кличке Локи.</li>
           <li>
             Я получаю удовольствие от создания продуманных интерфейсов. Поэтому постоянно стараюсь
             открывать для себя что-то новое.
@@ -92,13 +107,13 @@
         </ol>
       </v-screen>
     </about-card>
-
   </div>
 </template>
 
 <script lang="ts" setup>
 import { VImage, VScreen } from '@components/ui';
 import photo from '@assets/images/photo-main.jpg';
+import loki from '@assets/images/loki.jpg';
 
 import AboutCard from './about-card/about-card.vue';
 </script>

@@ -3,7 +3,7 @@
     <div class="exp-block__title">
       <v-title :is="isMobile ? 'h2' : 'h1'">Опыт работы</v-title>
       <v-title :is="isMobile ? 'h3' : 'h2'" color="text-80">
-        {{ getWorkTime(new Date('12/1/2020')) }}
+        {{ getWorkTime(new Date(2020, 5, 1)) }}
       </v-title>
     </div>
 
@@ -51,14 +51,44 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useScreenSize } from '@/composables';
 
-import dateFormat from '@/helpers/format';
+import { dateFormat, declOfNum } from '@/helpers/format';
 
 dayjs.extend(relativeTime);
 
 const { isMobile } = useScreenSize();
 
+const getTimeForm = (value: number, unit: 'mount' | 'year') => {
+  const titles = unit === 'year' ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев'];
+
+  return `${value} ${declOfNum(value, titles)}`;
+};
+
 const getWorkTime = (startDate: Date, endDate: Date = new Date()) => {
-  return dayjs(startDate).from(endDate, true);
+  const start = dayjs(startDate);
+  const end = dayjs(endDate);
+
+  const years = end.diff(start, 'year');
+
+  const months = end.subtract(years, 'year').diff(start, 'month');
+
+  const adjustedYears = years + (months >= 0 ? 0 : -1);
+  const adjustedMonths = months >= 0 ? months + 1 : months + 12;
+
+  const parts = [];
+
+  if (adjustedYears > 0) {
+    parts.push(getTimeForm(adjustedYears, 'year'));
+  }
+
+  if (adjustedMonths > 0) {
+    parts.push(getTimeForm(adjustedMonths, 'mount'));
+  }
+
+  if (adjustedYears === 0 && adjustedMonths === 12) {
+    return '1 год';
+  }
+
+  return parts.length > 0 ? parts.join(' ') : '0 лет';
 };
 
 const dateToString = (startDate: Date, endDate?: Date) => {

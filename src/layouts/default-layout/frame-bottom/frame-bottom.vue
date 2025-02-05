@@ -26,7 +26,7 @@ import VThemeSwitch from '@components/v-theme-switch';
 import { VIcon } from '@components/ui';
 import { useTimestamp } from '@vueuse/core';
 
-import dateFormat from '@/helpers/format';
+import { dateFormat } from '@/helpers/format';
 
 const timestamp = useTimestamp({ offset: 5 });
 </script>
