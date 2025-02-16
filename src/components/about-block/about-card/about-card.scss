@@ -1,5 +1,11 @@
+@use '@assets/style/mixins' as *;
+
 .wrapper {
   --v-card-height: 100%;
   position: absolute;
   width: 100%;
+
+  @include mobile {
+    position: relative;
+  }
 }

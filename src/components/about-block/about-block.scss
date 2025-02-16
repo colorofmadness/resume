@@ -1,5 +1,6 @@
+@use '@assets/style/mixins' as *;
+
 .about-block {
-  height: 100%;
   position: relative;
   width: 100%;
   display: flex;
@@ -19,6 +20,11 @@
     background: color-mix(in srgb, var(--background) 90%, transparent);
     backdrop-filter: blur(4px);
   }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 30px;
+  }
 }
 
 .wrapper {
@@ -33,11 +39,23 @@
       cursor: pointer;
       height: 100%;
       width: 100%;
+
+      @include mobile {
+        cursor: default;
+      }
+    }
+
+    @include mobile {
+      max-width: initial;
     }
   }
 
   &-about {
     max-width: 667px;
+
+    @include mobile {
+      order: -1;
+    }
   }
 
   &-colab {
@@ -50,6 +68,15 @@
 
   &-tech {
     max-width: 450px;
+  }
+
+  &-about,
+  &-colab,
+  &-social,
+  &-tech {
+    @include mobile {
+      max-width: initial;
+    }
   }
 
   &__list {
