@@ -20,7 +20,9 @@
           <v-title is="h5" color="text-80">{{ resume.role }}</v-title>
           <p v-if="resume.city || resume.site" class="resume-block__info">
             {{ resume.city }},
-            <a v-if="resume.site" :href="resume.site" target="_blank">{{ resume.site }}</a>
+            <a v-if="resume.site" :href="`https://${resume.site}`" target="_blank">
+              {{ resume.site }}
+            </a>
           </p>
           <div v-for="(about, index) of resume.about" :key="index" class="resume-block__item">
             <div class="resume-block__about">

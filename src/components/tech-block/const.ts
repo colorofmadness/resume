@@ -31,10 +31,6 @@ const MOCK_DATA: TTechList[] = [
       {
         name: 'TypeScript',
         icon: 'tech/ts'
-      },
-      {
-        name: 'PHP',
-        icon: 'tech/php'
       }
     ]
   },

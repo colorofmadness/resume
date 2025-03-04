@@ -18,8 +18,11 @@ export type Resume = {
 export const RESUME_LIST: Resume[] = [
   {
     company: 'ООО "СЭНДБОКС"',
+    city: 'Москва',
+    site: 'leapcrm.ru',
     date: {
-      start: new Date(2024, 6, 1)
+      start: new Date(2024, 6, 1),
+      end: new Date(2025, 1, 1)
     },
     role: 'Frontend-разработчик',
     about: [
@@ -34,15 +37,16 @@ export const RESUME_LIST: Resume[] = [
           'Работа с дизайнерами для решения задач по созданию интерфейсов и пользовательского опыта.',
           'Участие в планировании и управлении проектами, связанными с фронтенд-разработкой.',
           'Анализ и документирование требований, а также создание технических спецификаций для фронтенд-составляющих приложений.',
-          'Тестирование и отладка фронтенд-части приложений.',
-          'Анализ и документирование требований, а также создание технических спецификаций для фронтенд-составляющих приложений.'
+          'Тестирование и отладка фронтенд-части приложений.'
         ],
-        tech: 'Vue 2, Nuxt 2, Vuex, SCSS'
+        tech: 'Vue 2, Nuxt 2, Vuex, SCSS, FSD'
       }
     ]
   },
   {
     company: 'C&U',
+    city: 'Москва',
+    site: 'app.c-and-u.co',
     date: {
       start: new Date(2024, 2, 1),
       end: new Date(2024, 6, 1)
@@ -59,7 +63,7 @@ export const RESUME_LIST: Resume[] = [
           'Подготовка проекта для передачи в работу команде.',
           'Консультация по вариантам решения задач.',
           'Распределение задач между разработчиками.',
-          'Проводил код ревью и подготавливал код к деплою.'
+          'Проведение код ревью и подготовка кода к деплою.'
         ],
         tech: 'Vue 3, TypeScript, Vite, Pinia, SCSS, PWA.'
       },
@@ -147,7 +151,7 @@ export const RESUME_LIST: Resume[] = [
           'Работа с гугл аналитикой, подготовка данных и отправка событий.',
           'SEO оптимизация.'
         ],
-        tech: 'Vue 2, Vuex, Rest API, Angular, Webpack, Gulp, SCSS, SSR.'
+        tech: 'Vue 2, Vuex, Nuxt 2, Rest API, Angular, Webpack, Gulp, SCSS.'
       },
       {
         target: 'Разработка интернет-магазина парфюмерии и косметики.',
@@ -162,7 +166,7 @@ export const RESUME_LIST: Resume[] = [
           'Код ревью участников команды.',
           'Подготовка кода к деплою.'
         ],
-        tech: 'Vue 2, Vuex, Rest API, Axios, Webpack, SCSS.'
+        tech: 'Vue 2, Vuex, Nuxt 2, Rest API, Axios, Webpack, SCSS.'
       }
     ]
   }
