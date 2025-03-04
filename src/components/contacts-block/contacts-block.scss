@@ -17,6 +17,10 @@
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
+
+    @include mobile {
+      padding: 40px 16px 70px;
+    }
   }
 
   &__col {
