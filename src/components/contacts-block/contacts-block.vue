@@ -42,7 +42,7 @@
 
 <script lang="ts" setup>
 import { VCard } from '@components/ui';
-import ContactQr from '@components/contacts-block/contact-qr/contact-qr.vue';
+import ContactQr from '@components/contacts-block/contact-qr';
 import { useScreenSize } from '@/composables';
 
 const { activeBreakpoint } = useScreenSize();
