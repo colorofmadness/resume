@@ -1,5 +1,9 @@
 <template>
-  <button :class="['btn', { 'btn--disabled': disabled }]" :disabled="disabled" :type="type">
+  <button
+    :class="[$style['btn'], { [$style['btn--disabled']]: disabled }]"
+    :disabled="disabled"
+    :type="type"
+  >
     <slot />
   </button>
 </template>
@@ -10,4 +14,4 @@ import { defaultProps, IButtonProps } from './types';
 withDefaults(defineProps<IButtonProps>(), defaultProps);
 </script>
 
-<style lang="scss" scoped src="./v-button.scss" />
+<style lang="postcss" module src="./v-button.module.pcss" />

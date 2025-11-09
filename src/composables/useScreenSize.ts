@@ -8,7 +8,8 @@ const breakpoints: Record<TResolutions, number> = {
   laptop: 1080,
   desktop: 1280
 };
-export const useScreenSize = () => {
+
+const useScreenSize = () => {
   const screenSize = useBreakpoints<TResolutions>(breakpoints);
 
   const activeBreakpoint: ComputedRef<TResolutions> =
@@ -21,3 +22,5 @@ export const useScreenSize = () => {
     isMobile
   };
 };
+
+export default useScreenSize;

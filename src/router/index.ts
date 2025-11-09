@@ -1,17 +1,55 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import MainPage from '@pages/main-page/';
 
 export const routes = [
   {
     path: '/',
     name: 'main',
     meta: {
-      title: 'index',
-      ext: '.html',
-      menuTitle: 'Главная',
-      showInNav: true
+      breadcrumb: 'index.html'
     },
-    component: MainPage
+    component: () => import('@pages/main-page/'),
+    children: [
+      {
+        name: 'about',
+        path: '/about',
+        meta: {
+          breadcrumb: 'README.md'
+        },
+        component: () => import('@components/about-block')
+      },
+      {
+        name: 'resume',
+        path: '/resume',
+        meta: {
+          breadcrumb: 'resume.pdf'
+        },
+        component: () => import('@components/experience-block')
+      },
+      {
+        name: 'tech',
+        path: '/tech',
+        meta: {
+          breadcrumb: 'package.json'
+        },
+        component: () => import('@components/tech-block')
+      },
+      {
+        name: 'projects',
+        path: '/projects',
+        meta: {
+          breadcrumb: 'projects.exe'
+        },
+        component: () => import('@components/projects-block')
+      },
+      {
+        name: 'contacts',
+        path: '/contacts',
+        meta: {
+          breadcrumb: 'contact.vcf'
+        },
+        component: () => import('@components/contacts-block')
+      }
+    ]
   }
 ];
 

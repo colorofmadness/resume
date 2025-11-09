@@ -1,0 +1,96 @@
+.about-block {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .title {
+    text-align: center;
+  }
+
+  [data-screen-content] {
+    background: color-mix(in srgb, var(--background) 75%, transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  [data-screen-header] {
+    background: color-mix(in srgb, var(--background) 90%, transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  @mixin mobile {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.wrapper {
+  &-photo {
+    max-width: 282px;
+
+    [data-screen-contentt] {
+      aspect-ratio: 1 / 1;
+    }
+
+    [data-image] {
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+
+      @mixin mobile {
+        cursor: default;
+      }
+    }
+
+    @mixin mobile {
+      max-width: initial;
+    }
+  }
+
+  &-about {
+    max-width: 667px;
+
+    @mixin mobile {
+      order: -1;
+    }
+  }
+
+  &-colab {
+    max-width: 570px;
+  }
+
+  &-social {
+    max-width: 284px;
+  }
+
+  &-tech {
+    max-width: 450px;
+  }
+
+  &-about,
+  &-colab,
+  &-social,
+  &-tech {
+    @mixin mobile {
+      max-width: initial;
+    }
+  }
+
+  &__list {
+    list-style-position: inside;
+    padding: 16px;
+    display: grid;
+    gap: 8px;
+
+    u {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  }
+}
+
+.tech-content {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}

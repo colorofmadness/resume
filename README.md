@@ -46,12 +46,12 @@ yarn build
     │   │   │   │   └── index.ts
     │   │   │   │   └── types.ts
     │   │   │   │   └── v-button.vue
-    │   │   │   │   └── v-button.scss
+    │   │   │   │   └── v-button.module.css
     │   │   │   ├── v-input
     │   │   │   │   └── index.ts
     │   │   │   │   └── types.ts
     │   │   │   │   └── v-input.vue
-    │   │   │   │   └── v-input.scss
+    │   │   │   │   └── v-input.module.css
     │   │   │   └── ...
     │   ├── composables # Папка с хуками приложения
     │   │   ├── useModal.ts
@@ -66,7 +66,7 @@ yarn build
     │   │   │   └── index.ts
     │   │   │   └── types.ts
     │   │   │   └── news.vue
-    │   │   │   └── news.scss
+    │   │   │   └── news.module.css
     │   │   └── ...
     │   ├── main.js
     └── └── App.vue
@@ -80,8 +80,8 @@ v-tabs # папка главного компонента
 │  ├── index.ts # индексный файл дочернего компонента
 │  ├── types.ts # типы дочернего компонента
 │  ├── v-tab.vue # Код дочернего компонента
-│  └── v-tab.scss # Стили дочернего компонента
-├── v-tabs.scss # Стили главного комонента
+│  └── v-tab.module.css # Стили дочернего компонента
+├── v-tabs.module.css # Стили главного комонента
 ├── index.ts # индексный файл главного компонента
 ├── types.ts # типы главного компонента
 └── v-tabs.vue # Код главного компонента
@@ -125,11 +125,11 @@ const styles = computed(() => ({
 }));
 </script>
 
-<style lang="scss" scoped src="./v-icon.scss" />
+<style lang="postcss" module src="./v-icon.module.pcss" />
 
 ```
 
-### v-icon.scss
+### v-icon.module.css
 
 ```
 .icon {

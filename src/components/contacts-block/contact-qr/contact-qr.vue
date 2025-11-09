@@ -1,5 +1,5 @@
 <template>
-  <div class="qr">
+  <div :class="$style['qr']">
     <v-icon :name="iconQrName" :size="150" />
 
     <a :href="href" target="_blank">
@@ -16,4 +16,4 @@ import IQrProps from './types';
 defineProps<IQrProps>();
 </script>
 
-<style lang="scss" scoped src="./contact-qr.scss" />
+<style lang="postcss" module src="./contact-qr.module.pcss" />

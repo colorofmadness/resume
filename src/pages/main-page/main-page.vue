@@ -1,9 +1,18 @@
 <template>
-  <div class="grid-container">
-    <nav v-if="isOpen" class="navigation">
-      <ul class="navigation__list">
-        <li v-for="link of LINKS" :key="link.id" :style="link.style" class="navigation__list-item">
-          <router-link :to="`#${link.id}`" class="navigation__list-link" title="Home" />
+  <div :class="$style['grid-container']">
+    <nav v-if="isOpen" :class="$style['navigation']">
+      <ul :class="$style['navigation__list']">
+        <li
+          v-for="link of LINKS"
+          :key="link.id"
+          :class="$style['navigation__list-item']"
+          :style="link.style"
+        >
+          <router-link
+            :class="$style['navigation__list-link']"
+            :title="link.name"
+            :to="{ name: link.id }"
+          />
         </li>
       </ul>
     </nav>
@@ -13,78 +22,35 @@
       </inner-layout>
     </tab-item>
 
-    <tab-item id="current" :style="[currentView?.style, { visibility: 'hidden' }]" current>
+    <tab-item
+      id="current"
+      :style="[currentLink?.style, { visibility: isOpen ? 'hidden' : 'visible' }]"
+      current
+    >
       <inner-layout>
-        <component :is="currentView?.component" />
+        <router-view v-slot="{ Component }">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+        </router-view>
       </inner-layout>
     </tab-item>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, shallowRef, watch } from 'vue';
 import TabItem from '@components/main-page/tab-item/tab-item.vue';
-import { LINKS, type TLinks } from '@components/main-page/const';
-import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
+import useAnimation from '@composables/useAnimation';
 
 import InnerLayout from '@/layouts/inner-layout';
 
 import useGlobalStore from '@/store/global';
 
-import animation from './animation';
-
 const store = useGlobalStore();
-const { openModal, closeModal } = store;
 const { isOpen } = storeToRefs(store);
 
-const currentView = shallowRef<TLinks | null>(null);
-const route = useRoute();
-
-const openMenu = () => {
-  if (!currentView.value) return;
-  animation('current', currentView.value.id, currentView.value.style['--span']);
-  openModal();
-  currentView.value = null;
-};
-
-const selectView = (link: TLinks) => {
-  currentView.value = link;
-  animation(link.id, 'current', link.style['--span']);
-  closeModal();
-};
-
-const findLinkByHash = (hash: string): TLinks | undefined => {
-  return LINKS.find((el) => el.id === hash.slice(1));
-};
-
-onMounted(() => {
-  if (route.hash) {
-    const link: TLinks | undefined = findLinkByHash(route.hash);
-    if (!link) return;
-    selectView(link);
-  }
-});
-
-watch(
-  () => route.hash,
-  (value, oldValue) => {
-    if (value !== oldValue) {
-      const link: TLinks | undefined = findLinkByHash(value);
-      let timeout = 0;
-
-      if (currentView.value) {
-        openMenu();
-        timeout = 300;
-      }
-
-      if (!link) return;
-      setTimeout(() => {
-        selectView(link);
-      }, timeout);
-    }
-  }
-);
+const { LINKS, currentLink } = useAnimation();
 </script>
 
-<style lang="scss" src="./main-page.scss" />
+<style lang="postcss" module src="./main-page.module.pcss" />

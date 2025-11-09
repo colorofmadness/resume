@@ -1,0 +1,33 @@
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:hover {
+    scale: 1.2;
+    color: var(--accent);
+  }
+}
+
+.transition-grid {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  z-index: var(--z-index-modal);
+
+  @mixin mobile {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+
+  &__element {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background-color: var(--text);
+  }
+}

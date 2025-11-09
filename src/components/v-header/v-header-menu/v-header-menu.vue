@@ -1,42 +1,34 @@
 <template>
-  <div class="frame-header__menu">
+  <div :class="$style['frame-header__menu']">
+    <v-breadcrumb v-if="isMobile" />
     <button
-      :class="['frame-header__burger', { 'frame-header__burger--active': isOpen }]"
+      :class="[
+        $style['frame-header__burger'],
+        { [$style['frame-header__burger--active']]: isOpen }
+      ]"
       tabindex="1"
       @click="toggle"
     >
-      <span class="frame-header__wrap">
-        <span v-for="i of 3" :key="i" class="frame-header__line" />
+      <span :class="$style['frame-header__wrap']">
+        <span v-for="i of 3" :key="i" :class="$style['frame-header__line']" />
       </span>
     </button>
-    <nav :class="['frame-header__nav', { 'frame-header__nav--open': isOpen }]">
-      <ul class="frame-header__nav-list">
-        <li v-for="(link, idx) of LINKS" :key="link.id" class="frame-header__nav-item">
-          <template v-if="isMobile">
-            <span>0{{ idx + 1 }}.</span>
-            <router-link
-              :class="[
-              'frame-header__nav-link',
-              { 'frame-header__nav-link--active': isAnchorActive(`#${link.id}`) }
-            ]"
-              :to="`#${link.id}`"
-              @click="toggle"
-            >
+    <nav :class="[$style['frame-header__nav'], { [$style['frame-header__nav--open']]: isOpen }]">
+      <ul :class="$style['frame-header__nav-list']">
+        <li v-for="(link, idx) of LINKS" :key="link.id" :class="$style['frame-header__nav-item']">
+          <span v-if="isMobile">0{{ idx + 1 }}.</span>
+          <router-link
+            :active-class="$style['frame-header__nav-link--active']"
+            :class="[$style['frame-header__nav-link']]"
+            :data-tooltip="link.name"
+            :to="{ name: link.id }"
+            @click="toggle"
+          >
+            <template v-if="isMobile">
               {{ link.name }}
-            </router-link>
-          </template>
-          <template v-else>
-            <router-link
-              :class="[
-                'frame-header__nav-link',
-                { 'frame-header__nav-link--active': isAnchorActive(`#${link.id}`) }
-              ]"
-              :data-tip="link.name"
-              :to="`#${link.id}`"
-            >
-              <v-icon :name="link.icon" :size="18" />
-            </router-link>
-          </template>
+            </template>
+            <v-icon v-else :name="link.icon" :size="18" />
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -44,19 +36,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useIsOpen, useScreenSize } from '@/composables';
+import { useIsOpen, useScreenSize } from '@composables';
 import { LINKS } from '@components/main-page/const';
 import { VIcon } from '@components/ui';
-import { useRoute } from 'vue-router';
+import VBreadcrumb from '@components/v-breadcrumb';
 
 const { isOpen, toggle } = useIsOpen();
 const { isMobile } = useScreenSize();
-
-const route = useRoute();
-
-const isAnchorActive = (anchor: string) => {
-  return route.hash === anchor;
-};
 </script>
 
-<style lang="scss" scoped src="./v-header-menu.scss" />
+<style lang="postcss" module src="./v-header-menu.module.pcss" />

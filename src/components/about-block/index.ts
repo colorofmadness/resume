@@ -1,3 +1,3 @@
-import AboutBlock from './about-block.vue';
+import AboutBlock from './about-block-slide.vue';
 
 export default AboutBlock;

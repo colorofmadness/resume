@@ -1,8 +1,8 @@
 <template>
   <transition name="fade">
-    <div v-show="isOpen" class="frame-absolute">
-      <div v-for="i of 2" :key="i" class="frame-absolute__spotlight-box">
-        <div class="frame-absolute__spotlight" />
+    <div v-show="isOpen" :class="$style['frame-absolute']">
+      <div v-for="i of 2" :key="i" :class="$style['frame-absolute__spotlight-box']">
+        <div :class="$style['frame-absolute__spotlight']" data-spotlight />
       </div>
     </div>
   </transition>
@@ -27,7 +27,7 @@ onMounted(() => {
   });
 
   tl.from(
-    '.frame-absolute__spotlight',
+    '[data-spotlight]',
     {
       scale: 0.5,
       stagger: {
@@ -41,4 +41,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped src="./spotlight.scss" />
+<style lang="postcss" module src="./spotlight.module.pcss" />

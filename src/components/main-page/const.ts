@@ -1,9 +1,14 @@
-import { Component, defineAsyncComponent } from 'vue';
+import { type Component } from 'vue';
+import AboutBlock from '@components/about-block';
+import ExperienceBlock from '@components/experience-block';
+import TechBlock from '@components/tech-block';
+import ProjectsBlock from '@components/projects-block';
+import ContactsBlock from '@components/contacts-block';
 
 export type TLinks = {
   id: string;
-  name: string;
   icon: string;
+  name: string;
   style: {
     '--x': number;
     '--y': number;
@@ -22,7 +27,7 @@ export const LINKS: TLinks[] = [
       '--y': 10,
       '--span': 8
     },
-    component: defineAsyncComponent(() => import('@components/about-block'))
+    component: AboutBlock
   },
   {
     id: 'resume',
@@ -33,7 +38,7 @@ export const LINKS: TLinks[] = [
       '--y': 2,
       '--span': 5
     },
-    component: defineAsyncComponent(() => import('@components/experience-block'))
+    component: ExperienceBlock
   },
   {
     id: 'tech',
@@ -44,7 +49,7 @@ export const LINKS: TLinks[] = [
       '--y': 2,
       '--span': 4
     },
-    component: defineAsyncComponent(() => import('@components/tech-block'))
+    component: TechBlock
   },
   {
     id: 'projects',
@@ -55,7 +60,7 @@ export const LINKS: TLinks[] = [
       '--y': 7,
       '--span': 8
     },
-    component: defineAsyncComponent(() => import('@components/projects-block'))
+    component: ProjectsBlock
   },
   {
     id: 'contacts',
@@ -66,6 +71,6 @@ export const LINKS: TLinks[] = [
       '--y': 16,
       '--span': 4
     },
-    component: defineAsyncComponent(() => import('@components/contacts-block'))
+    component: ContactsBlock
   }
 ];

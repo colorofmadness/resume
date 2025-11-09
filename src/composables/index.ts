@@ -1,4 +1,4 @@
-import { useScreenSize } from '@/composables/useScreenSize';
-import useIsOpen from '@/composables/useIsOpen';
+import useScreenSize from './useScreenSize';
+import useIsOpen from './useIsOpen';
 
 export { useScreenSize, useIsOpen };

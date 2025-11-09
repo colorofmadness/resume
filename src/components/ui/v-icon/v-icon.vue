@@ -1,12 +1,12 @@
 <template>
   <svg
+    :class="$style.icon"
     :height="height ?? size"
-    :style="styles"
+    :style="computedStyles"
     :width="width ?? size"
     aria-hidden="true"
-    class="icon"
   >
-    <use :xlink:href="`#${icon}`" />
+    <use :xlink:href="`#${iconHash}`" />
   </svg>
 </template>
 
@@ -19,9 +19,9 @@ const props = withDefaults(defineProps<IIconProps>(), {
   size: 24
 });
 
-const icon = ref('');
+const iconHash = ref('');
 
-const styles = computed(() => ({
+const computedStyles = computed(() => ({
   minWidth: `${props.width ?? props.size}px`,
   minHeight: `${props.height ?? props.size}px`
 }));
@@ -32,7 +32,7 @@ async function getIcon() {
 
     const rawIcon = await iconsImport[`/src/assets/icons/${props.name}.svg`]();
 
-    icon.value = rawIcon.default;
+    iconHash.value = rawIcon.default;
   } catch {
     console.error(`Icon '${props.name}' doesn't exist in 'assets/icons'`);
   }
@@ -41,4 +41,4 @@ async function getIcon() {
 watchEffect(getIcon);
 </script>
 
-<style lang="scss" scoped src="./v-icon.scss" />
+<style lang="postcss" module src="./v-icon.module.pcss" />

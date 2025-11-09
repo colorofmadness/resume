@@ -1,9 +1,9 @@
 <template>
   <div
+    :class="$style['card']"
     :style="{
       '--card-background': `color-mix(in srgb, var(--background), var(--primary) ${color?.split('-')[1]}%)`
     }"
-    class="card"
     v-bind="attrs"
   >
     <slot />
@@ -23,4 +23,4 @@ const attrs = useAttrs();
 withDefaults(defineProps<ICardProps>(), defaultProps);
 </script>
 
-<style lang="scss" scoped src="./v-card.scss" />
+<style lang="postcss" module src="./v-card.module.pcss" />

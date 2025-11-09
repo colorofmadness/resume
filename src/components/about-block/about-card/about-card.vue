@@ -1,5 +1,5 @@
 <template>
-  <div ref="target" :style="!isMobile ? style : null" class="wrapper">
+  <div ref="target" :class="$style['wrapper']" :style="!isMobile ? style : null">
     <slot />
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useDraggable, useParentElement } from '@vueuse/core';
-import { useScreenSize } from '@/composables';
+import { useScreenSize } from '@composables';
 
 import IAboutCardProps from '@components/about-block/about-card/types';
 
@@ -24,4 +24,4 @@ const { style } = useDraggable(target, {
 });
 </script>
 
-<style lang="scss" scoped src="./about-card.scss" />
+<style lang="postcss" module src="./about-card.module.pcss" />

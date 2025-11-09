@@ -13,5 +13,3 @@ import { RouterView } from 'vue-router';
 
 import DefaultLayout from '@/layouts/default-layout';
 </script>
-
-<style lang="scss"></style>

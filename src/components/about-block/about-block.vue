@@ -1,13 +1,13 @@
 <template>
-  <div id="aboutBlock" ref="containerElement" class="about-block container">
+  <div id="aboutBlock" ref="containerElement" :class="$style['about-block']">
     <about-card
+      :class="$style['wrapper-photo']"
       :options="{
         initialValue: {
           x: 270,
           y: 288
         }
       }"
-      class="wrapper-photo"
     >
       <v-screen>
         <template #title>Фото</template>
@@ -15,13 +15,13 @@
       </v-screen>
     </about-card>
     <about-card
+      :class="$style['wrapper-photo']"
       :options="{
         initialValue: {
           x: 886,
           y: 656
         }
       }"
-      class="wrapper-photo"
     >
       <v-screen>
         <template #title>Дитятко</template>
@@ -29,67 +29,87 @@
       </v-screen>
     </about-card>
     <about-card
+      :class="$style['wrapper-about']"
       :options="{
         initialValue: {
           x: 330,
           y: 533
         }
       }"
-      class="wrapper-about"
     >
       <v-screen>
-        <template #title>Обо мне</template>
-        <ol class="wrapper__list">
-          <li>Привет, меня зовут Владимир, занимаюсь Frontend разработкой с 2020 года.</li>
-          <li>Отец «любимого ангелочка» по кличке Локи.</li>
+        <template #title>Обо Мне</template>
+        <ul :class="$style['wrapper__list']">
           <li>
-            Обладаю системным видением разработки веб-приложений, работал с различными подходами и
-            стеком в B2C и B2B-сегментах.
+            <strong>5+ лет опыта</strong> в Full-Cycle Frontend разработке B2B/B2C web-приложений.
+            Глубокий экспертный фокус на стеке <u>Vue 3, TypeScript, Vite</u> и
+            SCSS/Styled-Components.
           </li>
-          <li>Имею опыт управления командой и наставничества.</li>
           <li>
-            Умею проектировать архитектуру, оптимизировать производительность и внедрять best
-            practices в команде.
+            <strong>Специализация на UI-библиотеках:</strong> Опыт
+            <u>проектирования архитектуры, разработки, масштабирования</u> и документирования
+            внутренних UI-библиотек (Vue 3, PrimeVue).
           </li>
-        </ol>
+          <li>
+            <strong>Опыт техлида и наставника:</strong> Эффективное <u>руководство командами</u> (до
+            5 Frontend-разработчиков), включая менторинг, Code Review и внедрение best practices
+            (FSD, чистый код).
+          </li>
+          <li>
+            <strong>Системность и производительность:</strong> Применяю системный подход к
+            архитектуре, активно занимаюсь <u>оптимизацией производительности</u> (Vue, Nuxt) и
+            поддержкой поддерживаемости кода.
+          </li>
+        </ul>
       </v-screen>
     </about-card>
     <about-card
+      :class="$style['wrapper-colab']"
       :options="{
         initialValue: {
           x: 596,
           y: 313
         }
       }"
-      class="wrapper-colab"
     >
       <v-screen>
-        <template #title>Сотрудничество</template>
-        <ol class="wrapper__list">
+        <template #title>Soft Skills</template>
+        <ul :class="$style['wrapper__list']">
           <li>
-            Я предпочитаю сотрудничать с компаниями, которым необходимы технические знания в
-            сочетании с пониманием дизайна и эстетики.
+            <strong>Проактивное взаимодействие:</strong> Успешная коммуникация с
+            кросс-функциональными командами (Backend, PM, QA, UX/UI) для
+            <u>быстрого согласования требований</u> и разрешения технических споров.
           </li>
           <li>
-            Я добиваюсь наилучших результатов в партнерстве, основанном на взаимопонимании и тесном
-            сотрудничестве между всеми вовлеченными сторонами, особенно в проектировании и
-            разработке.
+            <strong>Менторинг и Код-ревью:</strong> Опыт
+            <u>наставничества (менторства)</u> Frontend-разработчиков и проведение эффективного Code
+            Review, направленного на поддержание чистоты кода и общих стандартов.
           </li>
-        </ol>
+          <li>
+            <strong>Технический кругозор:</strong> Способность к
+            <u>быстрому освоению новых технологий</u> и инструментов (например, переход на Vue
+            3/Vite, работа с FSD).
+          </li>
+          <li>
+            <strong>Системный подход:</strong> Высокий уровень ответственности при
+            <u>проектировании архитектуры</u>
+            сложных B2B/B2C систем и планировании релизов.
+          </li>
+        </ul>
       </v-screen>
     </about-card>
     <about-card
+      :class="$style['wrapper-social']"
       :options="{
         initialValue: {
           x: 524,
           y: 795
         }
       }"
-      class="wrapper-social"
     >
       <v-screen>
         <template #title>Соцсети</template>
-        <ol class="wrapper__list">
+        <ol :class="$style['wrapper__list']">
           <li>
             <a href="https://github.com/colorofmadness" target="_blank">GitHub</a>
           </li>
@@ -113,4 +133,4 @@ import loki from '@assets/images/loki.jpg';
 import AboutCard from './about-card/about-card.vue';
 </script>
 
-<style lang="scss" scoped src="./about-block.scss" />
+<style lang="postcss" module src="./about-block.module.pcss" />

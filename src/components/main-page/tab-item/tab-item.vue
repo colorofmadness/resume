@@ -1,6 +1,6 @@
 <template>
-  <v-screen :id="id" :class="['section', { 'section--active': current }]">
-    <div class="section__content">
+  <v-screen :id="id" :class="[$style['section'], { [$style['section--active']]: current }]">
+    <div :class="$style['section__content']" data-tab-content>
       <slot />
     </div>
   </v-screen>
@@ -14,4 +14,4 @@ import type { ITabItemProps } from './types';
 defineProps<ITabItemProps>();
 </script>
 
-<style lang="scss" scoped src="./tab-item.scss" />
+<style lang="postcss" module src="./tab-item.module.pcss" />

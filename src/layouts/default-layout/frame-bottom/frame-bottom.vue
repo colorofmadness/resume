@@ -1,21 +1,21 @@
 <template>
-  <div class="frame-bottom">
-    <div class="frame-bottom__theme">
+  <div :class="$style['frame-bottom']">
+    <div :class="$style['frame-bottom__theme']">
       <v-theme-switch />
     </div>
-    <aside class="frame-bottom__info">
-      <div class="frame-bottom__time">
+    <aside :class="$style['frame-bottom__info']">
+      <div :class="$style['frame-bottom__time']">
         {{ dateFormat(timestamp, 'Пермь HH:mm') }}
       </div>
-      <div class="frame-bottom__links">
-        <a class="frame-bottom__link" href="https://vk.com/colorofmadness" target="_blank">
-          <v-icon :size="16" name="social/vk" />
-        </a>
-        <a class="frame-bottom__link" href="https://t.me/colorofmadness" target="_blank">
-          <v-icon :size="16" name="social/telegram" />
-        </a>
-        <a class="frame-bottom__link" href="https://github.com/colorofmadness" target="_blank">
-          <v-icon :size="16" name="social/git" />
+      <div :class="$style['frame-bottom__links']">
+        <a
+          v-for="(link, idx) in links"
+          :key="idx"
+          :class="$style['frame-bottom__link']"
+          :href="link.site"
+          target="_blank"
+        >
+          <v-icon :name="link.icon" :size="18" />
         </a>
       </div>
     </aside>
@@ -29,6 +29,20 @@ import { useTimestamp } from '@vueuse/core';
 import { dateFormat } from '@/helpers/format';
 
 const timestamp = useTimestamp({ offset: 5 });
+const links = [
+  {
+    site: 'https://vk.com/colorofmadness',
+    icon: 'social/vk'
+  },
+  {
+    site: 'https://t.me/colorofmadness',
+    icon: 'social/telegram'
+  },
+  {
+    site: 'https://github.com/colorofmadness',
+    icon: 'social/git'
+  }
+];
 </script>
 
-<style lang="scss" scoped src="./frame-bottom.scss" />
+<style lang="postcss" module src="./frame-bottom.module.pcss" />

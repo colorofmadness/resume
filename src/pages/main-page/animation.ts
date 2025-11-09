@@ -63,7 +63,7 @@ const animation = (fromId: string, toId: string, span: number) => {
       'scale1'
     )
     .to(
-      clone.querySelector('.card__header'),
+      clone.querySelector('[data-screen-header]'),
       {
         translateY: isOpen.value ? '-100%' : 0,
         height: isOpen.value ? 0 : '40px',
@@ -73,7 +73,7 @@ const animation = (fromId: string, toId: string, span: number) => {
       'scale1'
     )
     .to(
-      clone.querySelector('.section__content'),
+      clone.querySelector('[data-tab-content]'),
       {
         borderRadius: isOpen.value ? 0 : 16,
         scale: isOpen.value ? 1 : (1 / 20) * span

@@ -1,10 +1,10 @@
 <template>
-  <div class="frame">
+  <div :class="$style['frame']">
     <spotlight />
-    <div class="frame-main">
+    <div :class="$style['frame-main']">
       <v-header />
       <frame-top />
-      <div class="frame-content">
+      <div :class="$style['frame-content']">
         <slot />
       </div>
       <frame-bottom />
@@ -20,4 +20,4 @@ import FrameBottom from './frame-bottom';
 import Spotlight from './spotlight';
 </script>
 
-<style lang="scss" scoped src="./default-layout.scss" />
+<style lang="postcss" module src="./default-layout.module.pcss" />

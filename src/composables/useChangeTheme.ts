@@ -1,8 +1,9 @@
 import { computed, nextTick, ref } from 'vue';
 import gsap from 'gsap';
-import { useScreenSize } from '@/composables/useScreenSize';
 
 import useGlobalStore from '@/store/global';
+
+import useScreenSize from './useScreenSize';
 
 const useChangeTheme = () => {
   const isPending = ref(false);
@@ -10,8 +11,8 @@ const useChangeTheme = () => {
   const { toggleTheme } = store;
   const { isMobile } = useScreenSize();
 
-  const grid = computed(() => isMobile.value ? 5 : 10);
-  const amount = computed(() => isMobile.value ? 1 : 1.5);
+  const grid = computed(() => (isMobile.value ? 5 : 10));
+  const amount = computed(() => (isMobile.value ? 1 : 1.5));
 
   const changeTheme = async () => {
     isPending.value = true;
@@ -27,7 +28,7 @@ const useChangeTheme = () => {
       }
     });
 
-    tl.from('.transition-grid__element', {
+    tl.from('[data-grid]', {
       scale: 0,
       borderRadius: '50%',
       ease: 'power1.inOut',
@@ -38,7 +39,7 @@ const useChangeTheme = () => {
       },
       onComplete: toggleTheme
     })
-      .to('.transition-grid__element', {
+      .to('[data-grid]', {
         delay: 0.5,
         scale: 0,
         background: 'var(--text)',
@@ -49,7 +50,7 @@ const useChangeTheme = () => {
           amount: amount.value
         }
       })
-      .set('.transition-grid__element', {
+      .set('[data-grid]', {
         clearProps: 'all'
       });
   };

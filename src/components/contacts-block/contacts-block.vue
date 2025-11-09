@@ -1,7 +1,7 @@
 <template>
-  <div class="contacts-block">
-    <div class="contacts-block__container">
-      <div class="contacts-block__col">
+  <div :class="$style['contacts-block']">
+    <div :class="$style['contacts-block__container']">
+      <div :class="$style['contacts-block__col']">
         <v-card color="primary-5">
           <contact-qr
             href="https://t.me/colorofmadness"
@@ -10,7 +10,7 @@
           />
         </v-card>
       </div>
-      <div class="contacts-block__col">
+      <div :class="$style['contacts-block__col']">
         <v-card color="primary-5">
           <contact-qr
             href="tel:79026423467"
@@ -26,7 +26,7 @@
           />
         </v-card>
       </div>
-      <div class="contacts-block__col">
+      <div :class="$style['contacts-block__col']">
         <v-card v-if="activeBreakpoint === 'desktop'" color="primary-15" />
         <v-card color="primary-5">
           <contact-qr
@@ -43,9 +43,9 @@
 <script lang="ts" setup>
 import { VCard } from '@components/ui';
 import ContactQr from '@components/contacts-block/contact-qr';
-import { useScreenSize } from '@/composables';
+import { useScreenSize } from '@composables';
 
 const { activeBreakpoint } = useScreenSize();
 </script>
 
-<style lang="scss" scoped src="./contacts-block.scss" />
+<style lang="postcss" module src="./contacts-block.module.pcss" />

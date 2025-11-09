@@ -1,5 +1,5 @@
 <template>
-  <component :is="is" :class="['title', `title--${color}`]">
+  <component :is="is" :class="[$style['title'], $style[`title--${color}`]]">
     <slot />
   </component>
 </template>
@@ -10,4 +10,4 @@ import { defaultProps, type ITitleProps } from './types';
 withDefaults(defineProps<ITitleProps>(), defaultProps);
 </script>
 
-<style lang="scss" scoped src="./v-title.scss" />
+<style lang="postcss" module src="./v-title.module.pcss" />

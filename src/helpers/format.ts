@@ -5,7 +5,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.locale(ru);
 dayjs.extend(relativeTime);
 
-const dateFormat = (
+export const dateFormat = (
   date: Date | string | number | undefined | null,
   format: string = 'DD.MM.YYYY HH:mm'
 ): string => {
@@ -21,7 +21,7 @@ const dateFormat = (
   return parsedDate.format(format);
 };
 
-const declOfNum = (number: number, titles: Array<string>): string => {
+export const declOfNum = (number: number, titles: Array<string>): string => {
   const cases = [2, 0, 1, 1, 1, 2];
 
   return titles[
@@ -35,7 +35,7 @@ const getTimeForm = (value: number, unit: 'mount' | 'year') => {
   return `${value} ${declOfNum(value, titles)}`;
 };
 
-const getWorkTime = (startDate: Date, endDate: Date = new Date()) => {
+export const getWorkTime = (startDate: Date, endDate: Date = new Date()) => {
   const start = dayjs(startDate);
   const end = dayjs(endDate);
 
@@ -62,5 +62,3 @@ const getWorkTime = (startDate: Date, endDate: Date = new Date()) => {
 
   return parts.length > 0 ? parts.join(' ') : '0 лет';
 };
-
-export { dateFormat, declOfNum, getWorkTime };

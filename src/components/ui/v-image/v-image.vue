@@ -1,8 +1,8 @@
 <template>
-  <figure class="v-image">
+  <figure :class="$style['v-image']" data-image>
     <img
       ref="img"
-      :class="['v-image__img', { 'v-image__img--fullscreen': isFullscreen }]"
+      :class="[$style['v-image__img'], { [$style['v-image__img--fullscreen']]: isFullscreen }]"
       :src="src"
       alt="img"
       @click="handleImageClick"
@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useFullscreen } from '@vueuse/core';
-import { useScreenSize } from '@/composables';
+import { useScreenSize } from '@composables';
 
 import { IImageProps } from './types';
 
@@ -30,4 +30,4 @@ const handleImageClick = () => {
 };
 </script>
 
-<style lang="scss" scoped src="./v-image.scss" />
+<style lang="postcss" module src="./v-image.module.pcss" />

@@ -28,6 +28,12 @@
       ],
       "@components/*": [
         "./src/components/*"
+      ],
+      "@composables": [
+        "./src/composables"
+      ],
+      "@composables/*": [
+        "./src/composables/*"
       ]
     }
   },
@@ -35,7 +41,8 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/**/*.pcss"
   ],
   "references": [
     {

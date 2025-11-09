@@ -1,8 +1,8 @@
 <template>
-  <div class="tech-block container">
+  <div :class="[$style['tech-block'], 'container']">
     <v-title :is="isMobile ? 'h2' : 'h1'">Технический стэк</v-title>
 
-    <div class="tech-block__content">
+    <div :class="$style['tech-block__content']">
       <tech-list
         v-for="(data, index) of MOCK_DATA"
         :key="index"
@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import VTitle from '@components/ui/v-title/v-title.vue';
-import { useScreenSize } from '@/composables';
+import { useScreenSize } from '@composables';
 
 import TechList from './tech-list';
 import MOCK_DATA from './const';
@@ -23,4 +23,4 @@ import MOCK_DATA from './const';
 const { isMobile } = useScreenSize();
 </script>
 
-<style lang="scss" scoped src="./tech-block.scss" />
+<style lang="postcss" module src="./tech-block.module.pcss" />

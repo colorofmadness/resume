@@ -1,14 +1,9 @@
 <template>
-  <div class="frame-top">
-    <div class="frame-top__actions">
-      <button class="action">
-        <v-icon :size="16" name="header/resize" />
-      </button>
-      <button class="action" @click="toggle">
-        <v-icon :name="computedIcon" :size="16" />
-      </button>
-      <button class="action" @click="closeWindow">
-        <v-icon :size="16" name="header/close" />
+  <div :class="$style['frame-top']">
+    <v-breadcrumb />
+    <div :class="$style['frame-top__actions']">
+      <button v-for="button of actionButtons" :key="button.icon" :class="$style['action']">
+        <v-icon :name="button.icon" :size="16" @click="button.action" />
       </button>
     </div>
   </div>
@@ -19,6 +14,7 @@ import { VIcon } from '@components/ui';
 import { useFullscreen } from '@vueuse/core';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import VBreadcrumb from '@components/v-breadcrumb';
 
 const { toggle, isFullscreen } = useFullscreen();
 const router = useRouter();
@@ -28,6 +24,18 @@ const computedIcon = computed(() => (isFullscreen.value ? 'header/windowed' : 'h
 const closeWindow = () => {
   router.push('/');
 };
+
+const actionButtons = [
+  {
+    icon: 'header/resize',
+    action: () => {}
+  },
+  {
+    icon: computedIcon.value,
+    action: toggle
+  },
+  { icon: 'header/close', action: closeWindow }
+];
 </script>
 
-<style lang="scss" scoped src="./frame-top.scss" />
+<style lang="postcss" module src="./frame-top.module.pcss" />

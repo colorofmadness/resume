@@ -10,14 +10,8 @@ declare module '*.vue' {
 
 declare module 'vue-router' {
   interface RouteMeta {
-    title: string;
-    ext: string;
-    menuTitle: string;
-    showInNav?: boolean;
+    breadcrumb: string;
   }
 }
-
-declare module '*.scss';
-declare module '*.png';
 
 export {};

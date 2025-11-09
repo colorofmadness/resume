@@ -1,7 +1,7 @@
 <template>
-  <div class="tech-list">
+  <div :class="$style['tech-list']">
     <h4>{{ title }}</h4>
-    <div class="tech-list__container">
+    <div :class="$style['tech-list__container']">
       <v-button v-for="(item, index) of items" :key="index">
         <v-icon :name="item.icon" />
         {{ item.name }}
@@ -18,4 +18,4 @@ import { ITechListProps } from './types';
 defineProps<ITechListProps>();
 </script>
 
-<style lang="scss" scoped src="./tech-list.scss" />
+<style lang="postcss" module src="./tech-list.module.pcss" />
