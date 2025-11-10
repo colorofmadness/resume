@@ -1,15 +1,17 @@
 import { useRoute } from 'vue-router';
 import { LINKS, TLinks } from '@components/main-page/const';
 import { computed, onMounted, watch } from 'vue';
-import animation from '@pages/main-page/animation';
 
 import useGlobalStore from '@/store/global';
+
+import animation from './animation';
+
 
 const findLinkById = (routeName: string): TLinks | undefined => {
   return LINKS.find((el) => el.id === routeName);
 };
 
-const useAnimation = () => {
+const usePageAnimation = () => {
   const store = useGlobalStore();
   const { openModal, closeModal } = store;
   const route = useRoute();
@@ -51,4 +53,4 @@ const useAnimation = () => {
   };
 };
 
-export default useAnimation;
+export default usePageAnimation;

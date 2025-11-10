@@ -41,7 +41,7 @@
 <script lang="ts" setup>
 import TabItem from '@components/main-page/tab-item/tab-item.vue';
 import { storeToRefs } from 'pinia';
-import useAnimation from '@composables/useAnimation';
+import { usePageAnimation } from '@composables';
 
 import InnerLayout from '@/layouts/inner-layout';
 
@@ -50,7 +50,7 @@ import useGlobalStore from '@/store/global';
 const store = useGlobalStore();
 const { isOpen } = storeToRefs(store);
 
-const { LINKS, currentLink } = useAnimation();
+const { LINKS, currentLink } = usePageAnimation();
 </script>
 
 <style lang="postcss" module src="./main-page.module.pcss" />
