@@ -21,7 +21,9 @@ export default defineConfig({
     postcss: {
       plugins: [
         postcssMixins({
-          mixinsFiles: fileURLToPath(new URL('./src/assets/style/_mixins.pcss', import.meta.url))
+          mixinsFiles: fileURLToPath(
+            new URL('./src/shared/styles/lib/_mixins.pcss', import.meta.url)
+          )
         }),
         postcssNesting
       ]
@@ -29,11 +31,12 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@app': fileURLToPath(new URL('./src/app', import.meta.url)),
       '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
-      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
-      '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
-      '@composables': fileURLToPath(new URL('./src/composables', import.meta.url))
+      '@widgets': fileURLToPath(new URL('./src/widgets', import.meta.url)),
+      '@features': fileURLToPath(new URL('./src/features', import.meta.url)),
+      '@entities': fileURLToPath(new URL('./src/entities', import.meta.url)),
+      '@shared': fileURLToPath(new URL('./src/shared', import.meta.url))
     }
   }
 });

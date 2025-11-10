@@ -53,17 +53,13 @@
         "newlinesBetween": "always",
         "groups": [
           "module",
-          "/types($|/)/",
-          "/^@/helpers($|/)/",
-          "/^@/api($|/)/",
-          "/^@/contexts($|/)/",
-          "/^@/hooks($|/)/",
-          "/^@/layouts($|/)/",
-          "/^@/ui($|/)/",
-          "/^@/components($|/)/",
-          "/^@/composables($|/)/",
-          "/^@/store($|/)/",
-          "/^@/assets($|/)/",
+          "/^@app($|/)/",
+          "/^@pages($|/)/",
+          "/^@widgets($|/)/",
+          "/^@features($|/)/",
+          "/^@entities($|/)/",
+          "/^@shared($|/)/",
+          "/model/($|[^/])/",
           [
             "parent",
             "sibling",
@@ -82,32 +78,20 @@
       }
     ],
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/ban-ts-comment": "off"
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports",
+        "disallowTypeAnnotations": true
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true,
         "project": "./"
-      },
-      "alias": {
-        "map": [
-          [
-            "@pages",
-            "@assets",
-            "@components",
-            "@composables",
-            "@ui",
-            "@",
-            "./src"
-          ]
-        ],
-        "extensions": [
-          ".js",
-          ".ts",
-          ".vue",
-          ".module.pcss"
-        ]
       }
     }
   }

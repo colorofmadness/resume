@@ -17,23 +17,23 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./src/*"
+      "@app/*": [
+        "src/app/*"
       ],
       "@pages/*": [
-        "./src/pages/*"
+        "src/pages/*"
       ],
-      "@assets/*": [
-        "./src/assets/*"
+      "@widgets/*": [
+        "src/widgets/*"
       ],
-      "@components/*": [
-        "./src/components/*"
+      "@features/*": [
+        "src/features/*"
       ],
-      "@composables": [
-        "./src/composables"
+      "@entities/*": [
+        "src/entities/*"
       ],
-      "@composables/*": [
-        "./src/composables/*"
+      "@shared/*": [
+        "src/shared/*"
       ]
     }
   },
