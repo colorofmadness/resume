@@ -37,4 +37,4 @@ const computedIcon = computed(() => {
 const { changeTheme, isPending } = useTheme();
 </script>
 
-<style lang="postcss" module src="../FThemeSwitcher.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

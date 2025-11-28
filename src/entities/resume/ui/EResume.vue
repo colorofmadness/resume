@@ -55,4 +55,4 @@ const dateToString = (startDate: Date, endDate?: Date) => {
 };
 </script>
 
-<style lang="postcss" module src="../EResume.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

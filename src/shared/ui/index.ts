@@ -10,8 +10,11 @@ import type { ITitleProps, THeader } from './title';
 import STitle from './title';
 import type { IScreenSlots } from './screen';
 import SScreen from './screen';
+import SSpotlight from './spotlight';
+import type { ITerminalProps, TCommand, TTypeBusListener } from './terminal';
+import STerminal from './terminal';
 
-export { SButton, SIcon, SCard, SImage, STitle, SScreen };
+export { SButton, SIcon, SCard, SImage, STitle, SScreen, SSpotlight, STerminal };
 export type {
   IScreenSlots,
   ITitleProps,
@@ -20,5 +23,8 @@ export type {
   TColor,
   ICardProps,
   IIconProps,
-  IButtonProps
+  IButtonProps,
+  ITerminalProps,
+  TTypeBusListener,
+  TCommand
 };

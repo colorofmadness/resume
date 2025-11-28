@@ -10,4 +10,4 @@ import { defaultProps, type ITitleProps } from '../types';
 withDefaults(defineProps<ITitleProps>(), defaultProps);
 </script>
 
-<style lang="postcss" module src="../STitle.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

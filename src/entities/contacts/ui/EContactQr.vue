@@ -16,4 +16,4 @@ import type IContactQrProps from '../model/types';
 defineProps<IContactQrProps>();
 </script>
 
-<style lang="postcss" module src="../EContactQr.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

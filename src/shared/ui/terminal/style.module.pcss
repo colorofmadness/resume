@@ -1,0 +1,42 @@
+.terminal {
+  font-family: Cascadia Code, sans-serif;
+  font-size: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__command-response {
+  }
+
+  &__commands {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-list {
+    }
+
+    &-item {
+    }
+  }
+
+  &__prompt {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+
+    &-label {
+      color: var(--accent);
+    }
+
+    &-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      flex: 1;
+      caret-color: var(--accent);
+    }
+  }
+}

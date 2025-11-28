@@ -9,9 +9,10 @@
 </template>
 
 <script lang="ts" setup>
-import { defaultProps, IButtonProps } from '../types';
+import type { IButtonProps } from '../types';
+import { defaultProps } from '../types';
 
 withDefaults(defineProps<IButtonProps>(), defaultProps);
 </script>
 
-<style lang="postcss" module src="../SButton.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

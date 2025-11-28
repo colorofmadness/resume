@@ -1,6 +1,6 @@
 <template>
   <SScreen :id="id" :class="[$style['section'], { [$style['section--active']]: current }]">
-    <div :class="$style['section__content']" data-tab-content>
+    <div :class="$style['section-content']" data-tab-content>
       <slot />
     </div>
   </SScreen>
@@ -14,4 +14,4 @@ import type IPageNavProps from '../model/types';
 defineProps<IPageNavProps>();
 </script>
 
-<style lang="postcss" module src="../EPageNav.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

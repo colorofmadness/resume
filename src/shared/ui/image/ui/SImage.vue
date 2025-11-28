@@ -1,5 +1,5 @@
 <template>
-  <figure :class="$style['image']" data-image>
+  <figure :class="$style['v-image']" data-image>
     <img
       ref="img"
       :class="[$style['v-image__img'], { [$style['v-image__img--fullscreen']]: isFullscreen }]"
@@ -31,4 +31,4 @@ const handleImageClick = () => {
 };
 </script>
 
-<style lang="postcss" module src="../SImage.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

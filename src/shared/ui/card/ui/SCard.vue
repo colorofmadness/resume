@@ -24,4 +24,4 @@ const attrs = useAttrs();
 withDefaults(defineProps<ICardProps>(), defaultProps);
 </script>
 
-<style lang="postcss" module src="../SCard.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

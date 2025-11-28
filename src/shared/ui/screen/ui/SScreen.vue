@@ -18,13 +18,12 @@
 
 <script lang="ts" setup>
 import { useScreenSize } from '@shared/lib/composables';
-import IScreenSlots from '../types';
 
-
+import type IScreenSlots from '../types';
 import SIcon from '../../icon';
 
 defineSlots<IScreenSlots>();
 const { isMobile } = useScreenSize();
 </script>
 
-<style lang="postcss" module src="../SScreen.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

@@ -18,4 +18,4 @@ import type { ITechListProps } from '../model/types';
 defineProps<ITechListProps>();
 </script>
 
-<style lang="postcss" module src="../ETechList.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

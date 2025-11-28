@@ -1,5 +1,5 @@
 <template>
-  <w-inner-layout>
+  <WInnerLayout>
     <div :class="[$style['exp-block'], 'container']">
       <div :class="$style['exp-block__title']">
         <STitle :is="isMobile ? 'h2' : 'h1'">Опыт работы</STitle>
@@ -12,11 +12,11 @@
         <resume-block v-for="(resume, key) of RESUME_LIST" :key="key" :resume="resume" />
       </div>
     </div>
-  </w-inner-layout>
+  </WInnerLayout>
 </template>
 
 <script lang="ts" setup>
-import WInnerLayout from '@widgets/inner-layout/ui';
+import WInnerLayout from '@widgets/layout/inner-layout';
 
 import ResumeBlock, { RESUME_LIST } from '@entities/resume';
 
@@ -27,4 +27,4 @@ import { getWorkTime } from '@shared/lib/utils/format';
 const { isMobile } = useScreenSize();
 </script>
 
-<style lang="postcss" module src="../PResume.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

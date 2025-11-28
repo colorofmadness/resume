@@ -41,4 +41,4 @@ async function getIcon() {
 watchEffect(getIcon);
 </script>
 
-<style lang="postcss" module src="../SIcon.module.pcss" />
+<style lang="postcss" module src="../style.module.pcss" />

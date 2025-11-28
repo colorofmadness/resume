@@ -1,15 +1,11 @@
 <template>
-  <w-default-layout>
-    <router-view v-slot="{ Component }">
-      <transition mode="out-in" name="fade">
-        <component :is="Component" />
-      </transition>
-    </router-view>
-  </w-default-layout>
+  <RouterView v-slot="{ Component }">
+    <Transition mode="out-in" name="fade">
+      <Component :is="Component" />
+    </Transition>
+  </RouterView>
 </template>
 
 <script lang="ts" setup>
 import { RouterView } from 'vue-router';
-
-import WDefaultLayout from '@widgets/default-layout/ui';
 </script>

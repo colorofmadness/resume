@@ -22,7 +22,7 @@ export default defineConfig({
       plugins: [
         postcssMixins({
           mixinsFiles: fileURLToPath(
-            new URL('./src/shared/styles/lib/_mixins.pcss', import.meta.url)
+            new URL('./src/shared/styles/lib/mixins.pcss', import.meta.url)
           )
         }),
         postcssNesting

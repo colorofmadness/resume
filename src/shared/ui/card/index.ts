@@ -1,5 +1,4 @@
-import { ICardProps, TColor } from './types';
-
+import type { ICardProps, TColor } from './types';
 import SCard from './ui';
 
 export type { ICardProps, TColor };

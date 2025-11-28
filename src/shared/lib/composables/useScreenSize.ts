@@ -1,5 +1,6 @@
 import { useBreakpoints } from '@vueuse/core';
-import { computed, ComputedRef } from 'vue';
+import type { ComputedRef } from 'vue';
+import { computed } from 'vue';
 
 export type TResolutions = 'mobile' | 'desktop' | 'tablet' | 'laptop';
 const breakpoints: Record<TResolutions, number> = {

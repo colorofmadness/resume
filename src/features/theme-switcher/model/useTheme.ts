@@ -1,5 +1,6 @@
 import { computed, nextTick, ref } from 'vue';
 import gsap from 'gsap';
+
 import useGlobalStore from '@app/providers/store/global';
 
 import useScreenSize from '@shared/lib/composables/useScreenSize';
