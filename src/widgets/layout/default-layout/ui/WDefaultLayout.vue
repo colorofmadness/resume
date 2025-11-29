@@ -13,7 +13,10 @@
 </template>
 
 <script lang="ts" setup>
-import { WFrameBottom, WFrameSpotlight, WFrameTop, WHeader } from '../../components';
+import WHeader from './WHeader.vue';
+import WFrameBottom from './WFrameBottom.vue';
+import WFrameSpotlight from './WFrameSpotlight.vue';
+import WFrameTop from './WFrameTop.vue';
 </script>
 
 <style lang="postcss" module src="../styles.module.pcss" />

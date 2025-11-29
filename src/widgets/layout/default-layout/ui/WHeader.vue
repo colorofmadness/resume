@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { SIcon } from '@shared/ui';
 
-import WHeaderMenu from '../components';
+import WHeaderMenu from './WHeaderMenu.vue';
 </script>
 
-<style lang="postcss" module src="../style.module.pcss" />
+<style lang="postcss" module src="../styles.module.pcss" />

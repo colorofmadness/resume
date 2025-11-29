@@ -30,7 +30,8 @@ const closeWindow = () => {
 const actionButtons = [
   {
     icon: 'header/resize',
-    action: () => {}
+    action: () => {
+    }
   },
   {
     icon: computedIcon.value,
@@ -40,4 +41,4 @@ const actionButtons = [
 ];
 </script>
 
-<style lang="postcss" module src="../style.module.pcss" />
+<style lang="postcss" module src="../styles.module.pcss" />
