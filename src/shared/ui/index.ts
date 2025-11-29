@@ -8,7 +8,7 @@ import type { IImageProps } from './image';
 import SImage from './image';
 import type { ITitleProps, THeader } from './title';
 import STitle from './title';
-import type { IScreenSlots } from './screen';
+import type { IScreenProps, IScreenSlots } from './screen';
 import SScreen from './screen';
 import SSpotlight from './spotlight';
 import type { ITerminalProps, TCommand, TTypeBusListener } from './terminal';
@@ -16,6 +16,7 @@ import STerminal from './terminal';
 
 export { SButton, SIcon, SCard, SImage, STitle, SScreen, SSpotlight, STerminal };
 export type {
+  IScreenProps,
   IScreenSlots,
   ITitleProps,
   THeader,

@@ -1,28 +1,31 @@
 <template>
-  <div :class="$style['screen']">
-    <div :class="$style['screen__header']" data-screen-header>
+  <div :id="id" :class="[$style['screen'], { [$style['screen--active']]: isActive }]">
+    <div :class="$style['screen__header']">
       <div :class="$style['screen__header-tile']">
         <slot name="title" />
       </div>
       <div :class="$style['screen__header-actions']">
-        <s-icon :size="isMobile ? 12 : 16" name="header/resize" />
-        <s-icon :size="isMobile ? 12 : 16" name="header/fullscreen" />
-        <s-icon :size="isMobile ? 12 : 16" name="header/close" />
+        <SIcon :size="isMobile ? 12 : 16" name="header/resize" />
+        <SIcon :size="isMobile ? 12 : 16" name="header/fullscreen" />
+        <SIcon :size="isMobile ? 12 : 16" name="header/close" />
       </div>
     </div>
-    <div :class="$style['screen__content']" data-screen-content>
-      <slot />
+    <div :class="$style['screen-content']">
+      <div :class="$style['screen-content__section']">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useScreenSize } from '@shared/lib/composables';
-
-import type IScreenSlots from '../types';
+import { useScreenSize } from '../../../lib/composables';
+import type { IScreenProps, IScreenSlots } from '../types';
 import SIcon from '../../icon';
 
 defineSlots<IScreenSlots>();
+defineProps<IScreenProps>();
+
 const { isMobile } = useScreenSize();
 </script>
 

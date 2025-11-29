@@ -1,88 +1,44 @@
 import gsap from 'gsap';
-import { useElementBounding } from '@vueuse/core';
+import Flip from 'gsap/Flip';
 import { storeToRefs } from 'pinia';
+import { nextTick } from 'vue';
 
 import useGlobalStore from '@app/providers/store/global';
 
-const calculatePosition = (element: HTMLElement) => {
-  const { top, left, width, height } = useElementBounding(element);
+import type { TLinks } from '@shared/config/nav-links';
 
-  return {
-    top: top.value,
-    left: left.value,
-    width: width.value,
-    height: height.value
-  };
-};
+gsap.registerPlugin(Flip);
 
-const animation = (fromId: string, toId: string, span: number) => {
+const animation = async (link: TLinks) => {
   const store = useGlobalStore();
+  const { openModal, closeModal } = store;
   const { isOpen } = storeToRefs(store);
 
-  const { body } = document;
+  if (!link) return;
 
-  const toHero = document.getElementById(toId);
-  const fromHero = document.getElementById(fromId);
+  const fromHero = document.getElementById(link.id);
+  if (!fromHero) return;
 
-  if (!toHero || !fromHero) return;
-
-  const clone = fromHero.cloneNode(true) as HTMLElement;
-  const from = calculatePosition(fromHero);
-  const to = calculatePosition(toHero);
-
-  const onComplete = () => {
-    body.removeChild(clone);
-  };
-
-  const onStart = () => {
-    body.appendChild(clone);
-  };
-
-  const tl = gsap.timeline({
-    onComplete,
-    onStart,
-    defaults: {
-      duration: 0.3,
-      ease: 'power1'
-    }
+  const state = Flip.getState(fromHero, {
+    props: 'borderRadius, border'
   });
-  tl.set([fromHero, toHero], { visibility: 'hidden' })
-    .fromTo(
-      clone,
-      {
-        position: 'fixed',
-        zIndex: 100,
-        backgroundColor: 'var(--background)',
-        ...from
-      },
-      {
-        translateX: to.left - from.left,
-        translateY: to.top - from.top,
-        width: to.width,
-        height: to.height,
-        borderWidth: isOpen.value ? '0px' : '1px'
-      },
-      'scale1'
-    )
-    .to(
-      clone.querySelector('[data-screen-header]'),
-      {
-        translateY: isOpen.value ? '-100%' : 0,
-        height: isOpen.value ? 0 : '40px',
-        visibility: isOpen.value ? 'hidden' : 'visible',
-        opacity: isOpen.value ? 0 : 1
-      },
-      'scale1'
-    )
-    .to(
-      clone.querySelector('[data-tab-content]'),
-      {
-        borderRadius: isOpen.value ? 0 : 16,
-        scale: isOpen.value ? 1 : (1 / 20) * span
-      },
-      'scale1'
-    )
-    .set(toHero, { visibility: 'visible' });
+
+  if (isOpen.value) {
+    closeModal();
+  } else {
+    openModal();
+  }
+
+  await nextTick();
+
+  Flip.from(state, {
+    duration: 0.3,
+    ease: 'power2.out',
+    absolute: true,
+    nested: false,
+    scale: true,
+    zIndex: 100
+  });
 };
 
 export default animation;

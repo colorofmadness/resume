@@ -1,7 +1,10 @@
-interface IScreenSlots {
+export interface IScreenSlots {
   default(): any;
 
   title(): any;
 }
 
-export default IScreenSlots;
+export interface IScreenProps {
+  id: string;
+  isActive: boolean;
+}

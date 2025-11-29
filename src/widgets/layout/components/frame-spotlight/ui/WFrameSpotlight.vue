@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-show="isOpen" :class="$style['frame-absolute']">
+    <div v-show="!isOpen" :class="$style['frame-absolute']">
       <div v-for="i of 2" :key="i" :class="$style['frame-absolute__spotlight-box']">
         <SSpotlight data-spotlight />
       </div>

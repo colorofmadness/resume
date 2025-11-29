@@ -4,7 +4,8 @@ import { useDark } from '@vueuse/core';
 import { useIsOpen } from '@shared/lib/composables';
 
 const useGlobalStore = defineStore('global', () => {
-  const { isOpen, openModal, closeModal } = useIsOpen(true);
+  const { isOpen, openModal, closeModal } = useIsOpen(false);
+
   const isDark = useDark({
     attribute: 'data-theme',
     selector: 'html',

@@ -1,5 +1,5 @@
-import type IScreenSlots from './types';
+import type { IScreenProps, IScreenSlots } from './types';
 import VScreen from './ui';
 
-export type { IScreenSlots };
+export type { IScreenSlots, IScreenProps };
 export default VScreen;

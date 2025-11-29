@@ -1,10 +1,4 @@
-import { type Component } from 'vue';
-
-import PAbout from '@pages/about';
-import PResume from '@pages/resume';
-import PTech from '@pages/tech';
-import PContacts from '@pages/contacts';
-import PProjects from '@pages/projects';
+import { type Component, defineAsyncComponent } from 'vue';
 
 export type TLinks = {
   id: string;
@@ -28,7 +22,7 @@ export const LINKS: TLinks[] = [
       '--y': 10,
       '--span': 8
     },
-    component: PAbout
+    component: defineAsyncComponent(() => import('@pages/about'))
   },
   {
     id: 'resume',
@@ -39,7 +33,7 @@ export const LINKS: TLinks[] = [
       '--y': 2,
       '--span': 5
     },
-    component: PResume
+    component: defineAsyncComponent(() => import('@pages/resume'))
   },
   {
     id: 'tech',
@@ -50,7 +44,7 @@ export const LINKS: TLinks[] = [
       '--y': 2,
       '--span': 4
     },
-    component: PTech
+    component: defineAsyncComponent(() => import('@pages/tech'))
   },
   {
     id: 'projects',
@@ -61,7 +55,7 @@ export const LINKS: TLinks[] = [
       '--y': 7,
       '--span': 8
     },
-    component: PProjects
+    component: defineAsyncComponent(() => import('@pages/projects'))
   },
   {
     id: 'contacts',
@@ -72,6 +66,6 @@ export const LINKS: TLinks[] = [
       '--y': 16,
       '--span': 4
     },
-    component: PContacts
+    component: defineAsyncComponent(() => import('@pages/contacts'))
   }
 ];
