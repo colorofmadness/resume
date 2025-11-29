@@ -1,3 +1,3 @@
-import WDefaultLayout from './ui';
+import WDefaultLayout from './ui/WDefaultLayout.vue';
 
 export default WDefaultLayout;

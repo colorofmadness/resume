@@ -1,10 +1,10 @@
 <template>
   <WDefaultLayout>
-    <WMainView />
+    <WScreenNavigator />
   </WDefaultLayout>
 </template>
 
 <script lang="ts" setup>
 import WDefaultLayout from '@widgets/layout/default-layout';
-import WMainView from '@widgets/main/main-view';
+import WScreenNavigator from '@widgets/screen-navigator';
 </script>

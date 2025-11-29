@@ -5,11 +5,11 @@ import { nextTick } from 'vue';
 
 import useGlobalStore from '@app/providers/store/global';
 
-import type { TLinks } from '@shared/config/nav-links';
+import type { TLink } from '@shared/config/nav-links';
 
 gsap.registerPlugin(Flip);
 
-const animation = async (link: TLinks) => {
+const animation = async (link: TLink) => {
   const store = useGlobalStore();
   const { openModal, closeModal } = store;
   const { isOpen } = storeToRefs(store);

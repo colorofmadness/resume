@@ -1,6 +1,6 @@
 import { type Component, defineAsyncComponent } from 'vue';
 
-export type TLinks = {
+export type TLink = {
   id: string;
   icon: string;
   name: string;
@@ -12,7 +12,7 @@ export type TLinks = {
   component: Component;
 };
 
-export const LINKS: TLinks[] = [
+export const LINKS: TLink[] = [
   {
     id: 'about',
     icon: 'menu/about',

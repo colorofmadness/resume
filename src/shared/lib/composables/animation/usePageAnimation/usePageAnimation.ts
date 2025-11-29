@@ -3,11 +3,11 @@ import { computed, onMounted, watch } from 'vue';
 
 import useGlobalStore from '@app/providers/store/global';
 
-import { LINKS, type TLinks } from '@shared/config/nav-links';
+import { LINKS, type TLink } from '@shared/config/nav-links';
 
 import animation from './animation';
 
-const findLinkById = (routeName: string): TLinks | undefined => {
+const findLinkById = (routeName: string): TLink | undefined => {
   return LINKS.find((el) => el.id === routeName);
 };
 
