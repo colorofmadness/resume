@@ -1,6 +1,6 @@
-import type { ResumeItem } from './types';
+import type ResumeItem from '../api/types/resume';
 
-const RESUME_LIST: ResumeItem[] = [
+export const RESUME_LIST: ResumeItem[] = [
   {
     company: '01.tech',
     city: 'Санкт-Петербург',
@@ -119,4 +119,4 @@ const RESUME_LIST: ResumeItem[] = [
   }
 ];
 
-export default RESUME_LIST;
+export const CAREER_START_DATE = new Date(2020, 5, 1);

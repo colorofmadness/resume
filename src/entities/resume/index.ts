@@ -1,9 +1,7 @@
-import type { IResumeProps, ResumeItem } from './model/types';
-import RESUME_LIST from './model/const';
+import type IResumeProps from './model/types';
 
-import EResume from './ui';
+import EResumeBlock from './ui/EResumeBlock.vue';
 
-export type { ResumeItem, IResumeProps };
-export { RESUME_LIST };
+export type { IResumeProps };
 
-export default EResume;
+export default EResumeBlock;

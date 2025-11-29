@@ -2,9 +2,9 @@
   <div :class="$style['resume-block']">
     <div :class="$style['resume-block__date']">
       <STitle is="h4" color="text">
-        {{ dateToString(resume.date.start, resume.date.end) }}
+        {{ formattedDateRange }}
       </STitle>
-      <span>{{ getWorkTime(resume.date.start, resume.date.end) }}</span>
+      <span>{{ duration }}</span>
     </div>
     <div :class="$style['resume-block__container']">
       <STitle is="h4" color="text">{{ resume.company }}</STitle>
@@ -38,21 +38,28 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue';
+
 import { STitle } from '@shared/ui';
 import { dateFormat, getWorkTime } from '@shared/lib/utils/format';
 
-import type { IResumeProps } from '../model/types';
+import type IResumeProps from '../model/types';
 
-defineProps<IResumeProps>();
+const props = defineProps<IResumeProps>();
 
-const dateToString = (startDate: Date, endDate?: Date) => {
+const formattedDateRange = computed(() => {
   const template = 'MMMM YYYY';
-
-  const start = dateFormat(startDate, template);
-  const end = endDate ? dateFormat(endDate, template) : 'По настоящее время';
-
+  const start = dateFormat(props.resume.date.start, template);
+  const end = props.resume.date.end
+    ? dateFormat(props.resume.date.end, template)
+    : 'По настоящее время';
   return `${start} — ${end}`;
-};
+});
+
+const duration = computed(() =>
+  getWorkTime(props.resume.date.start, props.resume.date.end)
+);
+
 </script>
 
-<style lang="postcss" module src="../style.module.pcss" />
+<style lang="postcss" module src="../styles.module.pcss" />

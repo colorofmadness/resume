@@ -1,22 +1,7 @@
-type ResumeItem = {
-  date: {
-    start: Date;
-    end?: Date;
-  };
-  company: string;
-  city?: string;
-  site?: string;
-  role: string;
-  about: {
-    target: string;
-    task?: string[];
-    command?: string;
-    achievement: string;
-  }[];
-};
+import type IResumeItem from '@shared/api/types/resume';
 
 interface IResumeProps {
-  resume: ResumeItem;
+  resume: IResumeItem;
 }
 
-export type { IResumeProps, ResumeItem };
+export default IResumeProps;
