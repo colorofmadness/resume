@@ -1,7 +1,7 @@
 export interface IScreenSlots {
-  default(): any;
+  default(): unknown;
 
-  title(): any;
+  title(): unknown;
 }
 
 export interface IScreenProps {

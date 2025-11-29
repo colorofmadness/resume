@@ -1,5 +1,5 @@
 import type { ITitleProps, THeader } from './types';
-import STitle from './ui';
+import STitle from './ui/STitle.vue';
 
-export { ITitleProps, THeader };
+export type { ITitleProps, THeader };
 export default STitle;

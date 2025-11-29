@@ -4,7 +4,6 @@ export type TCommand = {
 };
 
 export type TTypeBusListener = 'response' | 'command';
-export type TPayloadBusListener = string;
 
 export interface ITerminalProps {
   welcomeMessage: string;

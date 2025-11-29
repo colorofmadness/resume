@@ -42,7 +42,7 @@ defineProps<ITerminalProps>();
 
 const commandText = ref<string>('');
 const commands = ref<TCommand[]>([]);
-const inputRef = useTemplateRef('input');
+const inputRef = useTemplateRef<HTMLInputElement>('input');
 
 const responseListener = (event: TTypeBusListener, payload: string) => {
   if (event === 'response' && commands.value.length > 0 && !!payload) {
@@ -75,4 +75,4 @@ const onKeydown = (event: KeyboardEvent) => {
 };
 </script>
 
-<style lang="postcss" module src="../style.module.pcss" />
+<style lang="postcss" module src="../styles.module.pcss" />

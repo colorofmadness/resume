@@ -26,19 +26,25 @@ const computedStyles = computed(() => ({
   minHeight: `${props.height ?? props.size}px`
 }));
 
-async function getIcon() {
-  try {
-    const iconsImport: Record<string, any> = import.meta.glob('/src/shared/assets/icons/**/**.svg');
+const iconsImport = import.meta.glob<{
+  default: string;
+}>(
+  '/src/shared/assets/icons/**/*.svg',
+  { eager: true }
+);
 
-    const rawIcon = await iconsImport[`/src/shared/assets/icons/${props.name}.svg`]();
+const resolveIcon = () => {
+  const path = `/src/shared/assets/icons/${props.name}.svg`;
+  const iconModule = iconsImport[path];
 
-    iconHash.value = rawIcon.default;
-  } catch {
+  if (iconModule) {
+    iconHash.value = iconModule.default;
+  } else {
     console.error(`Icon '${props.name}' doesn't exist in 'assets/icons'`);
   }
-}
+};
 
-watchEffect(getIcon);
+watchEffect(resolveIcon);
 </script>
 
-<style lang="postcss" module src="../style.module.pcss" />
+<style lang="postcss" module src="../styles.module.pcss" />

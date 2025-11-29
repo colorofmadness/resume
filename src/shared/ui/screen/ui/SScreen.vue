@@ -29,4 +29,4 @@ defineProps<IScreenProps>();
 const { isMobile } = useScreenSize();
 </script>
 
-<style lang="postcss" module src="../style.module.pcss" />
+<style lang="postcss" module src="../styles.module.pcss" />

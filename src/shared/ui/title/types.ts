@@ -6,7 +6,7 @@ export interface ITitleProps {
   color?: TColor;
 }
 
-export const defaultProps = {
-  is: 'h1' as THeader,
-  color: 'accent' as TColor
+export const defaultProps: ITitleProps = {
+  is: 'h1',
+  color: 'accent'
 };

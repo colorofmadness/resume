@@ -24,6 +24,6 @@ export interface ICardProps {
   color?: TColor;
 }
 
-export const defaultProps = {
-  color: 'primary' as TColor
+export const defaultProps: ICardProps = {
+  color: 'primary'
 };

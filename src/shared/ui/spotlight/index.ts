@@ -1,3 +1,3 @@
-import SSpotlight from './ui';
+import SSpotlight from './ui/SSpotlight.vue';
 
 export default SSpotlight;
