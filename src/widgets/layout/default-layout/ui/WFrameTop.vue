@@ -16,7 +16,7 @@ import { useRouter } from 'vue-router';
 
 import FRouteTitle from '@features/route-title';
 
-import { SIcon } from '@shared/ui';
+import SIcon from '@shared/ui/icon';
 
 const { toggle, isFullscreen } = useFullscreen();
 const router = useRouter();

@@ -26,7 +26,7 @@ import { useTimestamp } from '@vueuse/core';
 
 import FThemeSwitcher from '@features/theme-switcher';
 
-import { SIcon } from '@shared/ui';
+import SIcon from '@shared/ui/icon';
 import { dateFormat } from '@shared/lib/utils/format';
 
 const timestamp = useTimestamp({ offset: 5 });

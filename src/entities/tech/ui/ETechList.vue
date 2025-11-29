@@ -11,7 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import { SButton, SIcon } from '@shared/ui';
+import SIcon from '@shared/ui/icon';
+import SButton from '@shared/ui/button';
 
 import type { ITechListProps } from '../model/types';
 

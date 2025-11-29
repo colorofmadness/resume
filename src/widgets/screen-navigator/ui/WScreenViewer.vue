@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { SScreen } from '@shared/ui';
+import SScreen from '@shared/ui/screen';
 
 import type { IScreenViewerProps } from '../model/types';
 

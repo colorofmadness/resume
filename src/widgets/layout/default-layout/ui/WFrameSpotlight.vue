@@ -15,7 +15,7 @@ import { storeToRefs } from 'pinia';
 
 import useGlobalStore from '@app/providers/store/global';
 
-import { SSpotlight } from '@shared/ui';
+import SSpotlight from '@shared/ui/spotlight';
 
 const store = useGlobalStore();
 const { isOpen } = storeToRefs(store);

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { SIcon } from '@shared/ui';
+import SIcon from '@shared/ui/icon';
 
 import WHeaderMenu from './WHeaderMenu.vue';
 </script>

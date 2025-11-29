@@ -11,7 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import { SCard, SIcon } from '@shared/ui';
+import SCard from '@shared/ui/card';
+import SIcon from '@shared/ui/icon';
 
 import type IContactQrProps from '../model/types';
 

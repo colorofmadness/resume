@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts" setup>
-import { SImage } from '@shared/ui';
+import SImage from '@shared/ui/image';
 import life from '@shared/assets/images/t1.png';
 import work from '@shared/assets/images/t2.png';
 import useSplitter from '@shared/lib/composables/useSplitter';

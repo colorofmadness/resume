@@ -21,7 +21,7 @@ import WInnerLayout from '@widgets/layout/inner-layout';
 import ETechList, { MOCK_DATA } from '@entities/tech';
 
 import { useScreenSize } from '@shared/lib/composables';
-import { STitle } from '@shared/ui';
+import STitle from '@shared/ui/title';
 
 const { isMobile } = useScreenSize();
 </script>

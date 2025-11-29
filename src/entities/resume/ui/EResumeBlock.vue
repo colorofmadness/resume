@@ -40,7 +40,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
-import { STitle } from '@shared/ui';
+import STitle from '@shared/ui/title';
 import { dateFormat, getWorkTime } from '@shared/lib/utils/format';
 
 import type IResumeProps from '../model/types';

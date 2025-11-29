@@ -40,7 +40,8 @@ import FRouteTitle from '@features/route-title/ui';
 
 import { LINKS } from '@shared/config/nav-links';
 import { useIsOpen, useScreenSize } from '@shared/lib/composables';
-import { SIcon } from '@shared/ui';
+import SIcon from '@shared/ui/icon';
+
 
 const { isOpen, toggle } = useIsOpen();
 const { isMobile } = useScreenSize();

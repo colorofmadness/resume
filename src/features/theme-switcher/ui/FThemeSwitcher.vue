@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style['switch']" @click="changeTheme">
+  <button :class="$style['switch']" @click="changeTheme">
     <SIcon :name="computedIcon" :size="18" />
 
     <Teleport to="#teleports">
@@ -12,7 +12,7 @@
         />
       </div>
     </Teleport>
-  </div>
+  </button>
 </template>
 
 <script lang="ts" setup>
@@ -22,7 +22,7 @@ import { storeToRefs } from 'pinia';
 import useGlobalStore from '@app/providers/store/global';
 
 import { useScreenSize } from '@shared/lib/composables';
-import { SIcon } from '@shared/ui';
+import SIcon from '@shared/ui/icon';
 
 import useTheme from '../model/useTheme';
 
