@@ -1,3 +1,3 @@
-import PContacts from './ui';
+import PContacts from './ui/PContacts.vue';
 
 export default PContacts;

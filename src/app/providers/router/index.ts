@@ -47,7 +47,7 @@ export const routes = [
         meta: {
           breadcrumb: 'contact.vcf'
         },
-        component: () => import('@pages/contacts/ui')
+        component: () => import('@pages/contacts')
       }
     ]
   }

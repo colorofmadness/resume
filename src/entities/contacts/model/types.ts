@@ -1,7 +1,7 @@
 interface IContactQrProps {
-  iconQrName: string;
+  iconName: string;
   href: string;
-  linkName: string;
+  label: string;
 }
 
 export default IContactQrProps;
