@@ -1,7 +1,7 @@
-import type { TLink } from '@shared/config/nav-links';
+import type { TScreenLink } from './links';
 
 export type TNavigator = {
-  links: TLink[]
+  links: TScreenLink[]
 }
 
 export interface IScreenViewerProps extends TNavigator {

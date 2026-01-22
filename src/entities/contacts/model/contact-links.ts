@@ -1,4 +1,4 @@
-export const CONTACT_LINKS = {
+const CONTACT_LINKS = {
   telegram: {
     href: 'https://t.me/colorofmadness',
     icon: 'contacts/telegram',
@@ -20,3 +20,6 @@ export const CONTACT_LINKS = {
     label: 'vladandmir.ya@gmail.com'
   }
 };
+
+export default CONTACT_LINKS;
+

@@ -4,11 +4,12 @@ import { storeToRefs } from 'pinia';
 import { nextTick } from 'vue';
 
 import useUiStore from '@shared/model/ui';
-import type { TLink } from '@shared/config/nav-links';
+
+import type { TScreenLink } from './links';
 
 gsap.registerPlugin(Flip);
 
-const animation = async (link: TLink) => {
+const animation = async (link: TScreenLink) => {
   const store = useUiStore();
   const { openModal, closeModal } = store;
   const { isOpen } = storeToRefs(store);
@@ -41,3 +42,4 @@ const animation = async (link: TLink) => {
 };
 
 export default animation;
+

@@ -2,11 +2,11 @@ import { useRoute } from 'vue-router';
 import { computed, onMounted, watch } from 'vue';
 
 import useUiStore from '@shared/model/ui';
-import { LINKS, type TLink } from '@shared/config/nav-links';
 
+import { LINKS, type TScreenLink } from './links';
 import animation from './animation';
 
-const findLinkById = (routeName: string): TLink | undefined => {
+const findLinkById = (routeName: string): TScreenLink | undefined => {
   return LINKS.find((el) => el.id === routeName);
 };
 

@@ -1,7 +1,7 @@
 import { useRoute } from 'vue-router';
 import { watch } from 'vue';
 
-import { useTypewriterAnimation } from '@shared/lib/composables/animation';
+import useTypewriterAnimation from '@shared/lib/composables/animation';
 
 const TYPING_SPEED = 80;
 

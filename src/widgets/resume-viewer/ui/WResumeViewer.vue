@@ -20,12 +20,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
-import EResumeBlock from '@entities/resume';
+import EResumeBlock, { CAREER_START_DATE, RESUME_LIST } from '@entities/resume';
 
 import STitle from '@shared/ui/title';
 import { useScreenSize } from '@shared/lib/composables';
 import { getWorkTime } from '@shared/lib/utils/format';
-import { CAREER_START_DATE, RESUME_LIST } from '@shared/config/resume';
 
 const { isMobile } = useScreenSize();
 

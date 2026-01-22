@@ -9,7 +9,8 @@
 import { storeToRefs } from 'pinia';
 
 import useUiStore from '@shared/model/ui';
-import { usePageAnimation } from '@shared/lib/composables/animation';
+
+import usePageAnimation from '../model/usePageAnimation';
 
 import WScreenViewer from './WScreenViewer.vue';
 import WNavigatorMenu from './WNavigationMenu.vue';

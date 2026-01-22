@@ -1,5 +1,3 @@
-import { type Component, defineAsyncComponent } from 'vue';
-
 export type TLink = {
   id: string;
   icon: string;
@@ -9,7 +7,6 @@ export type TLink = {
     '--y': number;
     '--span': number;
   };
-  component: Component;
 };
 
 export const LINKS: TLink[] = [
@@ -21,8 +18,7 @@ export const LINKS: TLink[] = [
       '--x': 2,
       '--y': 10,
       '--span': 8
-    },
-    component: defineAsyncComponent(() => import('@pages/about'))
+    }
   },
   {
     id: 'resume',
@@ -32,8 +28,7 @@ export const LINKS: TLink[] = [
       '--x': 2,
       '--y': 2,
       '--span': 5
-    },
-    component: defineAsyncComponent(() => import('@pages/resume'))
+    }
   },
   {
     id: 'tech',
@@ -43,8 +38,7 @@ export const LINKS: TLink[] = [
       '--x': 13,
       '--y': 2,
       '--span': 4
-    },
-    component: defineAsyncComponent(() => import('@pages/tech'))
+    }
   },
   {
     id: 'projects',
@@ -54,8 +48,7 @@ export const LINKS: TLink[] = [
       '--x': 11,
       '--y': 7,
       '--span': 8
-    },
-    component: defineAsyncComponent(() => import('@pages/projects'))
+    }
   },
   {
     id: 'contacts',
@@ -65,7 +58,6 @@ export const LINKS: TLink[] = [
       '--x': 14,
       '--y': 16,
       '--span': 4
-    },
-    component: defineAsyncComponent(() => import('@pages/contacts'))
+    }
   }
 ];

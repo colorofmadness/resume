@@ -36,11 +36,10 @@
 </template>
 
 <script lang="ts" setup>
-import EContactQr from '@entities/contacts';
+import EContactQr, { CONTACT_LINKS } from '@entities/contacts';
 
 import SCard from '@shared/ui/card';
 import { useScreenSize } from '@shared/lib/composables';
-import { CONTACT_LINKS } from '@shared/config/contacts';
 
 const { activeBreakpoint } = useScreenSize();
 </script>
