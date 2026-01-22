@@ -1,8 +1,7 @@
 import { useRoute } from 'vue-router';
 import { computed, onMounted, watch } from 'vue';
 
-import useGlobalStore from '@app/providers/store/global';
-
+import useUiStore from '@shared/model/ui';
 import { LINKS, type TLink } from '@shared/config/nav-links';
 
 import animation from './animation';
@@ -13,7 +12,7 @@ const findLinkById = (routeName: string): TLink | undefined => {
 
 const usePageAnimation = () => {
   const route = useRoute();
-  const store = useGlobalStore();
+  const store = useUiStore();
   const { openModal } = store;
   const currentLink = computed(() => findLinkById(String(route.name)));
 

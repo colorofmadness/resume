@@ -19,14 +19,13 @@
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 
-import useGlobalStore from '@app/providers/store/global';
-
+import useThemeStore from '@shared/model/theme';
 import { useScreenSize } from '@shared/lib/composables';
 import SIcon from '@shared/ui/icon';
 
 import useTheme from '../model/useTheme';
 
-const store = useGlobalStore();
+const store = useThemeStore();
 const { isDark } = storeToRefs(store);
 const { isMobile } = useScreenSize();
 

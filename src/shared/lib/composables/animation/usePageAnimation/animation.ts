@@ -3,14 +3,13 @@ import Flip from 'gsap/Flip';
 import { storeToRefs } from 'pinia';
 import { nextTick } from 'vue';
 
-import useGlobalStore from '@app/providers/store/global';
-
+import useUiStore from '@shared/model/ui';
 import type { TLink } from '@shared/config/nav-links';
 
 gsap.registerPlugin(Flip);
 
 const animation = async (link: TLink) => {
-  const store = useGlobalStore();
+  const store = useUiStore();
   const { openModal, closeModal } = store;
   const { isOpen } = storeToRefs(store);
 

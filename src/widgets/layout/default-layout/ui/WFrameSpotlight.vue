@@ -13,11 +13,10 @@ import { onMounted } from 'vue';
 import gsap from 'gsap';
 import { storeToRefs } from 'pinia';
 
-import useGlobalStore from '@app/providers/store/global';
-
+import useUiStore from '@shared/model/ui';
 import SSpotlight from '@shared/ui/spotlight';
 
-const store = useGlobalStore();
+const store = useUiStore();
 const { isOpen } = storeToRefs(store);
 
 onMounted(() => {

@@ -1,13 +1,12 @@
 import { computed, nextTick, ref } from 'vue';
 import gsap from 'gsap';
 
-import useGlobalStore from '@app/providers/store/global';
-
+import useThemeStore from '@shared/model/theme';
 import useScreenSize from '@shared/lib/composables/useScreenSize';
 
 const useTheme = () => {
   const isPending = ref(false);
-  const store = useGlobalStore();
+  const store = useThemeStore();
   const { toggleTheme } = store;
   const { isMobile } = useScreenSize();
 

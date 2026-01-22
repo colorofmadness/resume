@@ -1,11 +1,7 @@
 import { defineStore } from 'pinia';
 import { useDark } from '@vueuse/core';
 
-import { useIsOpen } from '@shared/lib/composables';
-
-const useGlobalStore = defineStore('global', () => {
-  const { isOpen, openModal, closeModal } = useIsOpen(false);
-
+const useThemeStore = defineStore('theme', () => {
   const isDark = useDark({
     attribute: 'data-theme',
     selector: 'html',
@@ -20,11 +16,9 @@ const useGlobalStore = defineStore('global', () => {
 
   return {
     isDark,
-    isOpen,
-    toggleTheme,
-    openModal,
-    closeModal
+    toggleTheme
   };
 });
 
-export default useGlobalStore;
+export default useThemeStore;
+

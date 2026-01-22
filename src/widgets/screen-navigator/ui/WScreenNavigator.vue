@@ -8,14 +8,13 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
 
-import useGlobalStore from '@app/providers/store/global';
-
+import useUiStore from '@shared/model/ui';
 import { usePageAnimation } from '@shared/lib/composables/animation';
 
 import WScreenViewer from './WScreenViewer.vue';
 import WNavigatorMenu from './WNavigationMenu.vue';
 
-const store = useGlobalStore();
+const store = useUiStore();
 const { isOpen } = storeToRefs(store);
 
 const { currentLink, LINKS } = usePageAnimation();

@@ -1,8 +1,7 @@
 .terminal {
   font-family: 'Cascadia Code', 'Fira Code', monospace;
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 20px;
+  font-size: 18px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -10,32 +9,30 @@
 
   &__command-response {
     margin-bottom: 8px;
+    color: var(--text-80);
   }
 
   &__commands {
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
 
-    &-list {
-    }
-
-    &-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+  &__command-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   &__prompt {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
 
     &-label {
-      color: var(--success);
+      color: var(--accent);
       font-weight: 700;
-      white-space: nowrap;
+      user-select: none;
     }
 
     &-input {
@@ -46,13 +43,8 @@
 
       font-family: inherit;
       font-size: inherit;
-
       color: var(--text);
-      caret-color: var(--warning);
-
-      &::placeholder {
-        color: var(--primary-40);
-      }
+      caret-color: var(--accent);
     }
   }
 }
