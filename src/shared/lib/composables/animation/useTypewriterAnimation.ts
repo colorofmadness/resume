@@ -10,10 +10,10 @@ const useTypewriterAnimation = (speed: number = 80) => {
   };
 
   const animateText = (text: string, onUpdate?: (char: string) => void) => {
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<void>((resolve) => {
       if (!text) {
         displayedText.value = '';
-        reject();
+        resolve();
         return;
       }
 

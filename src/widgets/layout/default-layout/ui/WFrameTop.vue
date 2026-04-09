@@ -27,7 +27,7 @@ const closeWindow = () => {
   router.push('/');
 };
 
-const actionButtons = [
+const actionButtons = computed(() => [
   {
     icon: 'header/resize',
     action: () => {
@@ -38,7 +38,7 @@ const actionButtons = [
     action: toggle
   },
   { icon: 'header/close', action: closeWindow }
-];
+]);
 </script>
 
 <style lang="postcss" module src="../styles.module.pcss" />

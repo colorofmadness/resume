@@ -29,7 +29,7 @@ export const declOfNum = (number: number, titles: Array<string>): string => {
   ];
 };
 
-const getTimeForm = (value: number, unit: 'mount' | 'year') => {
+const getTimeForm = (value: number, unit: 'month' | 'year') => {
   const titles = unit === 'year' ? ['год', 'года', 'лет'] : ['месяц', 'месяца', 'месяцев'];
 
   return `${value} ${declOfNum(value, titles)}`;
@@ -53,7 +53,7 @@ export const getWorkTime = (startDate: Date, endDate: Date = new Date()) => {
   }
 
   if (adjustedMonths > 0) {
-    parts.push(getTimeForm(adjustedMonths, 'mount'));
+    parts.push(getTimeForm(adjustedMonths, 'month'));
   }
 
   if (adjustedYears === 0 && adjustedMonths === 12) {

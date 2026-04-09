@@ -32,18 +32,22 @@
       grid-area: var(--y, 1) / var(--x, 1) / span var(--span, 1) / span var(--span, 1);
     }
 
-    &-item:hover &-link,
-    &-link:focus-visible {
-      outline: 0.3rem solid hsl(210deg 100% 60%);
-      outline-offset: 0.25em;
-    }
-
     &-link {
       height: 100%;
       width: 100%;
       display: grid;
       place-items: center;
       text-decoration: none;
+
+      &:focus-visible {
+        outline: 0.3rem solid hsl(210deg 100% 60%);
+        outline-offset: 0.25em;
+      }
+    }
+
+    &-item:hover &-link {
+      outline: 0.3rem solid hsl(210deg 100% 60%);
+      outline-offset: 0.25em;
     }
   }
 }

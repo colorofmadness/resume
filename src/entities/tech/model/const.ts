@@ -1,6 +1,6 @@
 import type { ITechListProps } from './types';
 
-const MOCK_DATA: ITechListProps[] = [
+const TECH_STACK_DATA: ITechListProps[] = [
   {
     title: 'Языки',
     items: [
@@ -135,4 +135,4 @@ const MOCK_DATA: ITechListProps[] = [
   }
 ];
 
-export default MOCK_DATA;
+export default TECH_STACK_DATA;

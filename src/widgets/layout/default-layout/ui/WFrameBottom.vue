@@ -14,6 +14,7 @@
           :class="$style['frame-bottom__link']"
           :href="link.site"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <SIcon :name="link.icon" :size="18" />
         </a>

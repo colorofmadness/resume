@@ -3,7 +3,7 @@
     <div :class="$style['qr']">
       <SIcon :name="iconName" :size="150" />
 
-      <a :href="href" target="_blank">
+      <a :href="href" target="_blank" rel="noopener noreferrer">
         {{ label }}
       </a>
     </div>

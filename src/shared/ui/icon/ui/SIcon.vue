@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import { computed, ref, watchEffect } from 'vue';
 
-import type IIconProps from '../types';
+import type { IIconProps } from '../types';
 
 const props = withDefaults(defineProps<IIconProps>(), {
   size: 24
@@ -28,16 +28,14 @@ const computedStyles = computed(() => ({
 
 const iconsImport = import.meta.glob<{
   default: string;
-}>(
-  '/src/shared/assets/icons/**/*.svg',
-  { eager: true }
-);
+}>('/src/shared/assets/icons/**/*.svg');
 
-const resolveIcon = () => {
+const resolveIcon = async () => {
   const path = `/src/shared/assets/icons/${props.name}.svg`;
-  const iconModule = iconsImport[path];
+  const iconLoader = iconsImport[path];
 
-  if (iconModule) {
+  if (iconLoader) {
+    const iconModule = await iconLoader();
     iconHash.value = iconModule.default;
   } else {
     console.error(`Icon '${props.name}' doesn't exist in 'assets/icons'`);

@@ -48,11 +48,14 @@ const getProjectsList = () => {
   return `Список доступных проектов:<br/>${list}`;
 };
 
+const escapeHtml = (str: string) =>
+  str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
 const getProjectDetails = (id?: string) => {
   if (!id) return 'Error: Please specify a project ID (e.g., "project memory")';
 
   const project = PROJECTS_LIST.find(p => p.id === id);
-  if (!project) return `Error: Project "${id}" not found. Type "projects" to see the list.`;
+  if (!project) return `Error: Project "${escapeHtml(id)}" not found. Type "projects" to see the list.`;
 
   return `
     Проект: <b>${project.name}</b><br/>
@@ -78,7 +81,7 @@ const commandHandler = (event: TTypeBusListener, payload: string) => {
   if (action) {
     response = action(arg);
   } else {
-    response = `Command not found: ${cmdName}. Type "help" for instructions.`;
+    response = `Command not found: ${escapeHtml(cmdName)}. Type "help" for instructions.`;
   }
 
   TerminalService.emit('response', response);

@@ -6,16 +6,16 @@
     "node": true
   },
   "extends": [
-    "prettier",
     "airbnb-base",
     "plugin:vue/vue3-essential",
     "@vue/eslint-config-typescript",
     "plugin:vue/vue3-recommended",
     "eslint:recommended",
     "@vue/typescript/recommended",
-    "@vue/eslint-config-prettier/skip-formatting",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "@vue/eslint-config-prettier/skip-formatting",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": "latest"
@@ -25,7 +25,7 @@
     "eslint-plugin-import-helpers"
   ],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
     "no-console": [
       "error",
       {

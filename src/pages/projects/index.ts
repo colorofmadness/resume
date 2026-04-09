@@ -1,3 +1,3 @@
-import PProjects from './ui/PProjects.vue';
+import PProjects from './ui';
 
 export default PProjects;

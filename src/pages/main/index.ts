@@ -1,3 +1,3 @@
-import PMain from './ui/PMain.vue';
+import PMain from './ui';
 
 export default PMain;

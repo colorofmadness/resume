@@ -9,12 +9,10 @@
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-areas:
-    'header top'
-    'header content'
-    'bottom bottom';
-  grid-template-columns: 40px 1fr;
-  grid-template-rows: 40px 1fr 40px;
+  grid-template:
+    'header top' 40px
+    'header content' 1fr
+    'bottom bottom' 40px / 40px 1fr;
   border: 1px solid var(--border);
   border-radius: 4px;
 
@@ -246,13 +244,6 @@
       display: block;
     }
 
-    &:hover,
-    &:focus-visible {
-      .frame-header__line {
-        width: 100%;
-      }
-    }
-
     &--active {
       .frame-header__line {
         width: 100%;
@@ -268,6 +259,13 @@
         &:last-child {
           transform: translateY(-5px) rotate(-45deg);
         }
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
+      .frame-header__line {
+        width: 100%;
       }
     }
   }

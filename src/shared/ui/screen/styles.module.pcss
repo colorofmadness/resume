@@ -12,44 +12,9 @@
   height: var(--v-card-height);
   overflow: hidden;
   border: 1px solid var(--border);
-
   position: relative;
   grid-area: var(--y) / var(--x) / span var(--span) / span var(--span);
   background: transparent;
-
-  &--active {
-    z-index: var(--z-index-modal);
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    border-width: 0;
-    border-radius: 0;
-    background-color: var(--background);
-
-    .screen__header {
-      height: 0;
-      visibility: hidden;
-      opacity: 0;
-      border: none;
-    }
-
-    .screen-content__section {
-      border-radius: 0;
-      scale: none;
-
-      @mixin mobile {
-        height: 100%;
-        width: 100%;
-      }
-    }
-
-    @mixin mobile {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-    }
-  }
 
   &__header {
     display: flex;
@@ -95,6 +60,40 @@
       @mixin mobile {
         width: calc(100dvw - 21px);
       }
+    }
+  }
+
+  &--active {
+    z-index: var(--z-index-modal);
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    border-width: 0;
+    border-radius: 0;
+    background-color: var(--background);
+
+    .screen__header {
+      height: 0;
+      visibility: hidden;
+      opacity: 0;
+      border: none;
+    }
+
+    .screen-content__section {
+      border-radius: 0;
+      scale: none;
+
+      @mixin mobile {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    @mixin mobile {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
     }
   }
 }

@@ -1,52 +1,33 @@
 <template>
   <div :class="$style['about-splitter']">
-    <div :class="[$style['about-splitter__layer'], $style['about-splitter__layer--bottom']]">
-      <div :class="$style['about-splitter__wrap']">
-        <div :class="$style['about-splitter__body']">
-          <h1>life</h1>
-        </div>
-        <div :class="$style['about-splitter__box']">
-          <div :class="$style['about-splitter__image']">
-            <SImage :src="life" alt="life" />
-          </div>
-          <div :class="$style['about-splitter__diamond']" />
-        </div>
-      </div>
-    </div>
-
-    <div
-      :class="[$style['about-splitter__layer'], $style['about-splitter__layer--top']]"
+    <SplitterPanel variant="bottom" :image="life" alt="life" :block="lifeBlock" />
+    <SplitterPanel
+      variant="top"
+      :image="work"
+      alt="work"
+      :block="workBlock"
       :style="topLayerStyle"
-    >
-      <div :class="$style['about-splitter__wrap']">
-        <div :class="$style['about-splitter__body']">
-          <h1>work</h1>
-        </div>
-        <div :class="$style['about-splitter__box']">
-          <div :class="$style['about-splitter__image']">
-            <SImage :src="work" alt="work" />
-          </div>
-          <div :class="$style['about-splitter__diamond']" />
-        </div>
-      </div>
-    </div>
-
-    <div
-      :class="$style['about-splitter__handle']"
-      :style="handleStyle"
-      @mousedown="onDragStart"
-      @mouseup="onDragEnd"
     />
+
+    <div :class="$style['about-splitter__handle']" :style="handleStyle" @mousedown="onDragStart" />
+
+    <FAboutNav />
   </div>
 </template>
 
 <script lang="ts" setup>
-import SImage from '@shared/ui/image';
-import life from '@shared/assets/images/t1.png';
-import work from '@shared/assets/images/t2.png';
-import useSplitter from '@shared/lib/composables/useSplitter';
+import FAboutNav from '@features/about-nav';
 
-const { handleStyle, topLayerStyle, onDragStart, onDragEnd } = useSplitter();
+import life from '@shared/assets/images/life.png';
+import work from '@shared/assets/images/work.png';
+
+import useAboutContent from '../model/useAboutContent';
+import useSplitterDrag from '../model/useSplitterDrag';
+
+import SplitterPanel from './SplitterPanel.vue';
+
+const { workBlock, lifeBlock } = useAboutContent();
+const { handleStyle, topLayerStyle, onDragStart } = useSplitterDrag();
 </script>
 
 <style lang="postcss" module src="../style.module.pcss" />

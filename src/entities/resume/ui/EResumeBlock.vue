@@ -13,19 +13,19 @@
       </STitle>
       <p v-if="resume.city || resume.site" :class="$style['resume-block__info']">
         {{ resume.city }},
-        <a v-if="resume.site" :href="`https://${resume.site}`" target="_blank">
+        <a v-if="resume.site" :href="`https://${resume.site}`" target="_blank" rel="noopener noreferrer">
           {{ resume.site }}
         </a>
       </p>
       <div
-        v-for="(about, index) of resume.about"
-        :key="index"
+        v-for="about of resume.about"
+        :key="about.target"
         :class="$style['resume-block__item']"
       >
         <div :class="$style['resume-block__about']">{{ about.target }}:</div>
         <div v-if="about.task?.length" :class="$style['resume-block__task']">
           <ol :class="$style['resume-block__task-list']">
-            <li v-for="(task, i) of about.task" :key="i">
+            <li v-for="task of about.task" :key="task">
               {{ task }}
             </li>
           </ol>

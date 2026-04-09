@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import createSvgSpritePlugin from 'vite-plugin-svg-sprite';
 import postcssNesting from 'postcss-nested';
 import postcssMixins from 'postcss-mixins';
+import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   plugins: [
@@ -25,8 +26,19 @@ export default defineConfig({
             new URL('./src/shared/styles/lib/mixins.pcss', import.meta.url)
           )
         }),
-        postcssNesting
+        postcssNesting,
+        autoprefixer
       ]
+    }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vue: ['vue', 'vue-router', 'pinia'],
+          gsap: ['gsap']
+        }
+      }
     }
   },
   resolve: {

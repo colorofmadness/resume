@@ -1,0 +1,29 @@
+.about-nav {
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+  }
+
+  &__item {
+    font-size: var(--h3-size);
+    color: var(--primary);
+    transition: all var(--transition);
+    cursor: pointer;
+    font-family: var(--secondary-font), sans-serif;
+
+    &--active {
+      color: var(--accent);
+      font-size: var(--h1-size);
+      list-style: disc;
+    }
+  }
+}

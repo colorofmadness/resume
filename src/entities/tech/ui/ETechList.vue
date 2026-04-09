@@ -2,7 +2,7 @@
   <div :class="$style['tech-list']">
     <h4>{{ title }}</h4>
     <div :class="$style['tech-list__container']">
-      <SButton v-for="(item, index) of items" :key="index">
+      <SButton v-for="item of items" :key="item.name">
         <SIcon :name="item.icon" />
         {{ item.name }}
       </SButton>

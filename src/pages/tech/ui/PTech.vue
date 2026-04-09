@@ -5,8 +5,8 @@
 
       <div :class="$style['tech-block__content']">
         <ETechList
-          v-for="(data, index) of MOCK_DATA"
-          :key="index"
+          v-for="data of TECH_STACK_DATA"
+          :key="data.title"
           :items="data.items"
           :title="data.title"
         />
@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import WInnerLayout from '@widgets/layout/inner-layout';
 
-import ETechList, { MOCK_DATA } from '@entities/tech';
+import ETechList, { TECH_STACK_DATA } from '@entities/tech';
 
 import { useScreenSize } from '@shared/lib/composables';
 import STitle from '@shared/ui/title';

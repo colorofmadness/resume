@@ -1,3 +1,3 @@
-import PResume from './ui/PResume.vue';
+import PResume from './ui';
 
 export default PResume;

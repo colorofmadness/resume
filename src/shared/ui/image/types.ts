@@ -1,6 +1,4 @@
-interface IImageProps {
+export interface IImageProps {
   src: string;
-  useFullscreen?: boolean;
+  alt: string;
 }
-
-export default IImageProps;
