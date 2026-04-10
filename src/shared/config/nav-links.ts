@@ -17,7 +17,7 @@ export const LINKS: TLink[] = [
     style: {
       '--x': 2,
       '--y': 10,
-      '--span': 8
+      '--span': 9
     }
   },
   {
@@ -25,19 +25,9 @@ export const LINKS: TLink[] = [
     icon: 'menu/work',
     name: 'Резюме',
     style: {
-      '--x': 2,
+      '--x': 3,
       '--y': 2,
-      '--span': 5
-    }
-  },
-  {
-    id: 'tech',
-    icon: 'menu/techs',
-    name: 'Тех стек',
-    style: {
-      '--x': 13,
-      '--y': 2,
-      '--span': 4
+      '--span': 6
     }
   },
   {
@@ -45,8 +35,8 @@ export const LINKS: TLink[] = [
     icon: 'menu/projects',
     name: 'Портфолио',
     style: {
-      '--x': 11,
-      '--y': 7,
+      '--x': 12,
+      '--y': 3,
       '--span': 8
     }
   },
@@ -55,9 +45,9 @@ export const LINKS: TLink[] = [
     icon: 'menu/contact',
     name: 'Контакты',
     style: {
-      '--x': 14,
-      '--y': 16,
-      '--span': 4
+      '--x': 13,
+      '--y': 14,
+      '--span': 6
     }
   }
 ];

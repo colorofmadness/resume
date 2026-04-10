@@ -26,14 +26,6 @@ export const routes = [
         component: () => import('@pages/resume')
       },
       {
-        name: 'tech',
-        path: '/tech',
-        meta: {
-          breadcrumb: 'package.json'
-        },
-        component: () => import('@pages/tech')
-      },
-      {
         name: 'projects',
         path: '/projects',
         meta: {

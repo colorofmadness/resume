@@ -9,7 +9,6 @@ export type TScreenLink = TNavLink & {
 const componentById = {
   about: () => import('@pages/about'),
   resume: () => import('@pages/resume'),
-  tech: () => import('@pages/tech'),
   projects: () => import('@pages/projects'),
   contacts: () => import('@pages/contacts')
 };

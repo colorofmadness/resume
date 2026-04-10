@@ -19,4 +19,4 @@ import useAboutNav from '../model/useAboutNav';
 const { selected, navLinks, navLinkLabels } = useAboutNav();
 </script>
 
-<style lang="postcss" module src="../style.module.pcss" />
+<style lang="postcss" module src="../styles.module.pcss" />
