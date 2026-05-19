@@ -1,0 +1,38 @@
+@define-mixin font $font-size: 16px, $line-height: 120%, $font-weight: 400, $font-style: normal, $font-family: inherit {
+  font-family: $font-family;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+  font-style: $font-style;
+}
+
+@define-mixin mobile {
+  @media screen and (width <= 767px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin laptop {
+  @media screen and (width <= 1280px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin background-cell $color: var(--text) {
+  &::before {
+    --size: 60px;
+    --line: color-mix(in lch, $color 8%, transparent);
+
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+    linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+    mask: linear-gradient(-15deg, transparent 40%, white);
+    top: 0;
+    transform-style: flat;
+    pointer-events: none;
+    z-index: -1;
+  }
+}

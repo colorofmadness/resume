@@ -1,0 +1,57 @@
+.terminal {
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+
+  &__spacer {
+    padding-bottom: 24px;
+  }
+
+  &__command-response {
+    margin-bottom: 8px;
+    color: var(--text-80);
+  }
+
+  &__commands {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__command-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__prompt {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    &-label {
+      color: var(--success);
+      font-weight: 700;
+      user-select: none;
+    }
+
+    &-command {
+      color: var(--text);
+    }
+
+    &-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      flex: 1;
+      font-family: inherit;
+      font-size: inherit;
+      color: var(--text);
+      caret-color: var(--success);
+    }
+  }
+}

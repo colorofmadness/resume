@@ -1,8 +1,8 @@
-# Шаблон для быстрого стартра
+# 💻 Резюме
 
 ## Требования для запуска в локальной среде:
 
-- Node js 18.16.0 версии или выше
+- Node js 22.18.0 версии или выше
 - Пакетный менеджер yarn. Установка: https://yarnpkg.com/getting-started/install
 
 ## Используемые команды:
@@ -29,111 +29,49 @@ yarn build
 
 ```
 ./
-└── app
-    ├── public # Папка с шаблонами и статичными фалами
-    ├── src # Весь исходный код проекта
-    │   ├── assets # Дополнительные статические ресурсы
-    │   │   └── fonts
-    │   │   └── style
-    │   │   └── icons
-    │   │   └── img
-    │   ├── components # Все vue компоненты проекта (*)
-    │   │   ├── component
-    │   │   ├── component
-    │   │   ├── ...
-    │   │   ├── UI # Простые ui эелементы интерфейса: кнопки, карточки, шильдики и т.д.
-    │   │   │   ├── v-button
-    │   │   │   │   └── index.ts
-    │   │   │   │   └── types.ts
-    │   │   │   │   └── v-button.vue
-    │   │   │   │   └── v-button.scss
-    │   │   │   ├── v-input
-    │   │   │   │   └── index.ts
-    │   │   │   │   └── types.ts
-    │   │   │   │   └── v-input.vue
-    │   │   │   │   └── v-input.scss
-    │   │   │   └── ...
-    │   ├── composables # Папка с хуками приложения
-    │   │   ├── useModal.ts
-    │   │   └── ...
-    │   ├── helpers # Папка с хелперами приложения
-    │   ├── layouts # Папка с лайаутами приложения
-    │   ├── router # Папка с маршрутами приложения
-    │   ├── store # Папка с хранилищями приложения
-    │   ├── services # Папка с api приложения
-    │   ├── pages # Папка со страницами проекта
-    │   │   ├── news
-    │   │   │   └── index.ts
-    │   │   │   └── types.ts
-    │   │   │   └── news.vue
-    │   │   │   └── news.scss
-    │   │   └── ...
-    │   ├── main.js
-    └── └── App.vue
-```
-
-## Пример структуры компонентов
-
-```
-v-tabs # папка главного компонента
-├── v-tab папка дочернего компонента
-│  ├── index.ts # индексный файл дочернего компонента
-│  ├── types.ts # типы дочернего компонента
-│  ├── v-tab.vue # Код дочернего компонента
-│  └── v-tab.scss # Стили дочернего компонента
-├── v-tabs.scss # Стили главного комонента
-├── index.ts # индексный файл главного компонента
-├── types.ts # типы главного компонента
-└── v-tabs.vue # Код главного компонента
-```
-
-## Пример кода компонентов
-
-### types.vue
-
-```
-interface IIconProps {
-  size?: string;
-  name: string;
-}
-
-export default IIconProps;
-
-```
-
-### v-icon.vue
-
-```
-<template>
-  <svg :height="size" :style="styles" :width="size" aria-hidden="true" class="icon">
-    <use :xlink:href="`#${name}`" />
-  </svg>
-</template>
-
-<script lang="ts" setup>
-import { computed } from 'vue';
-
-import IIconProps from '@ui/v-icon/types';
-
-const props = withDefaults(defineProps<IIconProps>(), {
-  size: '16'
-});
-
-const styles = computed(() => ({
-  minWidth: `${props.size}px`,
-  minHeight: `${props.size}px`
-}));
-</script>
-
-<style lang="scss" scoped src="./v-icon.scss" />
-
-```
-
-### v-icon.scss
-
-```
-.icon {
-  display: inline-block;
-}
-
+└── src # Весь исходный код проекта
+    ├── app # (Слой Приложения) Точка входа, инициализация провайдеров, роутинга
+    │   ├── App.vue
+    │   ├── main.ts # Инициализация Pinia, Router и глобальных стилей
+    │   ├── providers # Настройка Router и Store
+    │   │   ├── router/
+    │   │   └── store/
+    │   └── styles # Точка сбора глобальных стилей
+    │
+    ├── pages # (Слой Страниц) Соответствует URL-маршрутам. Собирает виджеты и фичи.
+    │   ├── AboutPage # /about
+    │   │   └── ui/AboutPage.vue
+    │   ├── ContactsPage # /contacts
+    │   │   └── ui/ContactsPage.vue
+    │   └── ProjectsPage # /projects (и другие страницы-блоки)
+    │       └── ui/ProjectsPage.vue
+    │
+    ├── widgets # (Слой Виджетов) Сложные, переиспользуемые блоки и макеты
+    │   ├── Header # Шапка сайта (Бывший v-header)
+    │   ├── DefaultLayout # Главная обертка страниц (Бывший default-layout)
+    │   └── FrameTop # Часть оформления окна
+    │
+    ├── features # (Слой Фич) Пользовательские сценарии
+    │   ├── PageTabs # Переключение между страницами/вкладками
+    │   ├── ThemeSwitcher # Смена темы
+    │   └── Breadcrumbs # Навигационная цепочка
+    │
+    ├── entities # (Слой Сущностей) Объекты предметной области
+    │   ├── ExperienceItem # Единица опыта
+    │   │   ├── ui/Card.vue
+    │   │   └── model/const.ts # Данные опыта
+    │   └── Tech # Список технологий
+    │       └── ui/TechList.vue
+    │
+    └── shared # (Слой Общего кода) Атомарные, универсальные элементы (UI Kit, утилиты)
+        ├── assets # Изображения, иконки, шрифты (Бывший src/assets/)
+        ├── config # Общая конфигурация (Например, константы роутов)
+        │   └── routes.ts 
+        ├── lib # Библиотека функций
+        │   ├── composables # Общие хуки (useScreenSize)
+        │   └── utils # Чистые хелперы (format.ts)
+        └── ui # UI Kit (Атомарные компоненты)
+            ├── VButton
+            ├── VIcon
+            └── VTitle
 ```

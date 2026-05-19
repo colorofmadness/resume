@@ -1,0 +1,90 @@
+:root {
+  --main-font: roboto, sans-serif;
+  --secondary-font: montserrat, sans-serif;
+  --transition: 0.2s ease;
+  --danger: #ff5f56;
+  --success: #27c93f;
+  --warning: #ffbd2e;
+  --gray: #7d7d7d;
+  --border: #444;
+  --z-index-content: 10;
+  --z-index-header: 50;
+  --z-index-modal: 100;
+  --z-index-loader: 1000;
+  --frame-padding: 8px;
+  --frame-radius: 4px;
+  --h1-size: 4.210rem; /* 67.36px */
+  --h2-size: 3.158rem; /* 50.56px */
+  --h3-size: 2.369rem; /* 37.92px */
+  --h4-size: 1.777rem; /* 28.48px */
+  --h5-size: 1.333rem; /* 21.28px */
+  --small-size: 0.750rem; /* 12px */
+
+  @mixin laptop {
+    --h1-size: 2.5rem;
+    --h2-size: 2rem;
+    --h3-size: 1.75rem;
+    --h4-size: 1.5rem;
+    --h5-size: 1.25rem;
+  }
+}
+
+:root[data-theme="light"] {
+  --text: #12161c;
+  --text-contrast: #e3e7ed;
+  --background: #e6e6ed;
+  --primary: #22252b;
+  --accent: #2d4bff;
+  --secondary: #cbd5e1;
+  --primary-5: rgb(34 37 43 / 5%);
+  --primary-10: rgb(34 37 43 / 10%);
+  --primary-15: rgb(34 37 43 / 15%);
+  --primary-20: rgb(34 37 43 / 20%);
+  --primary-25: rgb(34 37 43 / 25%);
+  --primary-30: rgb(34 37 43 / 30%);
+  --primary-35: rgb(34 37 43 / 35%);
+  --primary-40: rgb(34 37 43 / 40%);
+  --primary-45: rgb(34 37 43 / 45%);
+  --primary-50: rgb(34 37 43 / 50%);
+  --primary-55: rgb(34 37 43 / 55%);
+  --primary-60: rgb(34 37 43 / 60%);
+  --primary-65: rgb(34 37 43 / 65%);
+  --primary-70: rgb(34 37 43 / 70%);
+  --primary-75: rgb(34 37 43 / 75%);
+  --primary-80: rgb(34 37 43 / 80%);
+  --primary-85: rgb(34 37 43 / 85%);
+  --primary-90: rgb(34 37 43 / 90%);
+  --primary-95: rgb(34 37 43 / 95%);
+  --text-80: rgb(18 22 28 / 80%);
+  --text-50: rgb(18 22 28 / 50%);
+}
+
+:root[data-theme="dark"] {
+  --text: #e3e7ed;
+  --text-contrast: #12161c;
+  --background: #121212;
+  --primary: #dde7ff;
+  --accent: #3664fe;
+  --secondary: #1e1e24;
+  --primary-5: rgb(221 231 255 / 5%);
+  --primary-10: rgb(221 231 255 / 10%);
+  --primary-15: rgb(221 231 255 / 15%);
+  --primary-20: rgb(221 231 255 / 20%);
+  --primary-25: rgb(221 231 255 / 25%);
+  --primary-30: rgb(221 231 255 / 30%);
+  --primary-35: rgb(221 231 255 / 35%);
+  --primary-40: rgb(221 231 255 / 40%);
+  --primary-45: rgb(221 231 255 / 45%);
+  --primary-50: rgb(221 231 255 / 50%);
+  --primary-55: rgb(221 231 255 / 55%);
+  --primary-60: rgb(221 231 255 / 60%);
+  --primary-65: rgb(221 231 255 / 65%);
+  --primary-70: rgb(221 231 255 / 70%);
+  --primary-75: rgb(221 231 255 / 75%);
+  --primary-80: rgb(221 231 255 / 80%);
+  --primary-85: rgb(221 231 255 / 85%);
+  --primary-90: rgb(221 231 255 / 90%);
+  --primary-95: rgb(221 231 255 / 95%);
+  --text-80: rgb(227 231 237 / 80%);
+  --text-50: rgb(227 231 237 / 50%);
+}

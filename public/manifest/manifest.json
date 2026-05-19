@@ -6,9 +6,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "<Application Short Name>",
-  "short_name": "<Application Short Name>",
-  "description": "<Application description>",
+  "name": "Владимир Ярославцев | Frontend Developer",
+  "short_name": "Владимир Ярославцев",
+  "description": "Resume",
   "icons": [
     {
       "src": "48x48.svg",
