@@ -12,10 +12,10 @@
   }
 }
 
-@define-mixin background-cell {
+@define-mixin background-cell $color: var(--text) {
   &::before {
     --size: 60px;
-    --line: color-mix(in lch, var(--text) 8%, transparent);
+    --line: color-mix(in lch, $color 8%, transparent);
 
     content: '';
     height: 100%;

@@ -1,6 +1,6 @@
-import { inject, provide, ref, type InjectionKey, type Ref } from 'vue';
+import { inject, type InjectionKey, provide, ref, type Ref } from 'vue';
 
-export const navLinks = ['about', 'journey', 'interests', 'skills', 'contacts'] as const;
+export const navLinks = ['about', 'journey', 'interests', 'profile', 'contacts'] as const;
 
 export type NavLink = (typeof navLinks)[number];
 
@@ -8,7 +8,7 @@ export const navLinkLabels: Record<NavLink, string> = {
   about: 'Обо мне',
   journey: 'Путь',
   interests: 'Интересы',
-  skills: 'Навыки',
+  profile: 'Профиль',
   contacts: 'Контакты'
 };
 

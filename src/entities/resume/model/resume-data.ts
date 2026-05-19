@@ -58,7 +58,7 @@ export const RESUME_LIST: IResumeItem[] = [
       start: new Date(2023, 3, 1),
       end: new Date(2024, 6, 1)
     },
-    role: 'Тех.лид, Frontend-разработчик',
+    role: 'Ведущий Frontend-разработчик',
     about: [
       {
         target:
@@ -91,7 +91,7 @@ export const RESUME_LIST: IResumeItem[] = [
       start: new Date(2020, 5, 1),
       end: new Date(2023, 2, 1)
     },
-    role: 'Frontend-разработчик (1 год 11 месяцев),<br/> Тех.лид, Frontend-разработчик (1 год)',
+    role: 'Frontend-разработчик',
     about: [
       {
         target:
@@ -120,4 +120,3 @@ export const RESUME_LIST: IResumeItem[] = [
 ];
 
 export const CAREER_START_DATE = new Date(2020, 5, 1);
-
