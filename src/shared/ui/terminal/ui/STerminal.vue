@@ -12,9 +12,11 @@
         :key="command.text + i.toString()"
         :class="$style['terminal__command-item']"
       >
-        <span :class="$style['terminal__prompt-label']">{{ prompt }}</span>
-        <span>{{ command.text }}</span>
-        <div aria-live="polite" v-html="command.response" />
+        <div :class="$style['terminal__prompt']">
+          <span :class="$style['terminal__prompt-label']">{{ prompt }}</span>
+          <span :class="$style['terminal__prompt-command']">{{ command.text }}</span>
+        </div>
+        <div v-html="command.response" />
       </div>
     </div>
 
@@ -29,11 +31,13 @@
         @keydown="onKeydown"
       />
     </div>
+
+    <div ref="spacer" :class="$style['terminal__spacer']" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue';
+import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue';
 
 import TerminalService from '../terminalService';
 import type { ITerminalProps, TCommand, TTypeBusListener } from '../types';
@@ -43,21 +47,36 @@ defineProps<ITerminalProps>();
 const commandText = ref<string>('');
 const commands = ref<TCommand[]>([]);
 const inputRef = useTemplateRef<HTMLInputElement>('input');
+const spacerRef = useTemplateRef<HTMLDivElement>('spacer');
 
-const responseListener = (event: TTypeBusListener, payload: string) => {
+const scrollToBottom = () => spacerRef.value?.scrollIntoView({ behavior: 'auto', block: 'end' });
+
+watch(
+  commands,
+  () => {
+    nextTick(scrollToBottom);
+  },
+  { deep: true }
+);
+
+const responseListener = (event: TTypeBusListener, payload: unknown) => {
   if (event === 'response' && commands.value.length > 0 && !!payload) {
     const lastCommand = commands.value[commands.value.length - 1];
-    if (lastCommand.response) {
-      lastCommand.response += `<br>${payload}`;
-    } else {
-      lastCommand.response = payload;
+    if (lastCommand && typeof payload === 'string') {
+      lastCommand.response = lastCommand.response
+        ? `${lastCommand.response}<br>${payload}`
+        : payload;
     }
+  }
+  if (event === 'clear') {
+    commands.value = [];
   }
 };
 
 onMounted(() => {
   TerminalService.on(responseListener);
 });
+
 onBeforeUnmount(() => {
   TerminalService.off(responseListener);
 });

@@ -9,26 +9,16 @@
     align-items: flex-start;
   }
 
-  &__container {
-    display: flex;
-    width: 100%;
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, auto));
+    gap: 30px;
+
     justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
 
     @mixin mobile {
+      grid-template-columns: 1fr;
       padding: 40px 16px 70px;
-    }
-  }
-
-  &__col {
-    min-width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    min-height: 620px;
-
-    @mixin mobile {
       width: 100%;
     }
   }

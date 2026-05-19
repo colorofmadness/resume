@@ -7,6 +7,10 @@
   gap: 12px;
   color: var(--text);
 
+  &__spacer {
+    padding-bottom: 24px;
+  }
+
   &__command-response {
     margin-bottom: 8px;
     color: var(--text-80);
@@ -30,9 +34,13 @@
     align-items: center;
 
     &-label {
-      color: var(--accent);
+      color: var(--success);
       font-weight: 700;
       user-select: none;
+    }
+
+    &-command {
+      color: var(--text);
     }
 
     &-input {
@@ -43,7 +51,7 @@
       font-family: inherit;
       font-size: inherit;
       color: var(--text);
-      caret-color: var(--accent);
+      caret-color: var(--success);
     }
   }
 }
