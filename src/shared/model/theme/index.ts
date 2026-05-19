@@ -21,4 +21,3 @@ const useThemeStore = defineStore('theme', () => {
 });
 
 export default useThemeStore;
-

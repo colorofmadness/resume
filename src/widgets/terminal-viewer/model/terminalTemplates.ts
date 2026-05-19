@@ -1,6 +1,6 @@
 import type { IProject } from '@entities/project/model/types';
 
-import escapeHtml from '@shared/lib/string';
+import escapeHtml from '@shared/lib/utils/string';
 
 export const getCommandsTableHtml = (): string => `
   <table style="text-align: left; border-collapse: collapse; margin: 16px 0; width: 100%; max-width: 450px;">

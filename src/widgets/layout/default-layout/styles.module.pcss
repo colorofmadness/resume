@@ -3,6 +3,21 @@
   padding: var(--frame-padding);
   height: 100%;
   overflow: hidden;
+  transition: transform 0.4s ease;
+
+  &--resized {
+    overflow: visible;
+    transform: translateY(-60px) scale(0.9);
+  }
+}
+
+.frame-author {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-80);
+  text-align: center;
 }
 
 .frame-main {
@@ -306,10 +321,6 @@
       color: var(--gray);
       transition: var(--transition);
 
-      &:first-child {
-        pointer-events: none;
-      }
-
       &:hover {
         color: var(--accent);
       }
@@ -423,4 +434,3 @@
   opacity: 0;
   z-index: var(--z-index-loader);
 }
-
