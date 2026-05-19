@@ -6,8 +6,8 @@ export type TResolutions = 'mobile' | 'desktop' | 'tablet' | 'laptop';
 const breakpoints: Record<TResolutions, number> = {
   mobile: 0,
   tablet: 768,
-  laptop: 1080,
-  desktop: 1280
+  laptop: 1280,
+  desktop: 1600
 };
 
 const useScreenSize = () => {
@@ -17,10 +17,12 @@ const useScreenSize = () => {
     screenSize.active() as ComputedRef<TResolutions>;
 
   const isMobile = computed(() => activeBreakpoint.value === 'mobile');
+  const isTablet = computed(() => activeBreakpoint.value === 'tablet');
 
   return {
     activeBreakpoint,
-    isMobile
+    isMobile,
+    isTablet
   };
 };
 

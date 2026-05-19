@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="[$style['about-splitter__layer'], $style[`about-splitter__layer--${variant}`]]"
-    :style="style"
-  >
+  <div :class="[$style['about-splitter__layer'], $style[`about-splitter__layer--${variant}`]]">
     <div :class="$style['about-splitter__wrap']">
       <div :class="$style['about-splitter__box']">
         <div :class="$style['about-splitter__image']">
@@ -22,8 +19,6 @@
 </template>
 
 <script lang="ts" setup>
-import type { StyleValue } from 'vue';
-
 import SImage from '@shared/ui/image';
 
 import type { AboutBlock } from '../model/content';
@@ -33,7 +28,6 @@ defineProps<{
   image: string;
   alt: string;
   block: AboutBlock;
-  style?: StyleValue;
 }>();
 </script>
 

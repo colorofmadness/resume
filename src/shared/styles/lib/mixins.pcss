@@ -12,6 +12,12 @@
   }
 }
 
+@define-mixin laptop {
+  @media screen and (width <= 1280px) {
+    @mixin-content;
+  }
+}
+
 @define-mixin background-cell $color: var(--text) {
   &::before {
     --size: 60px;

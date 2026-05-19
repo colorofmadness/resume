@@ -43,8 +43,13 @@ export const getWorkTime = (startDate: Date, endDate: Date = new Date()) => {
 
   const months = end.subtract(years, 'year').diff(start, 'month');
 
-  const adjustedYears = years + (months >= 0 ? 0 : -1);
-  const adjustedMonths = months >= 0 ? months + 1 : months + 12;
+  let adjustedYears = years + (months >= 0 ? 0 : -1);
+  let adjustedMonths = months >= 0 ? months + 1 : months + 12;
+
+  if (adjustedMonths === 12) {
+    adjustedYears += 1;
+    adjustedMonths = 0;
+  }
 
   const parts = [];
 
@@ -54,10 +59,6 @@ export const getWorkTime = (startDate: Date, endDate: Date = new Date()) => {
 
   if (adjustedMonths > 0) {
     parts.push(getTimeForm(adjustedMonths, 'month'));
-  }
-
-  if (adjustedYears === 0 && adjustedMonths === 12) {
-    return '1 год';
   }
 
   return parts.length > 0 ? parts.join(' ') : '0 лет';

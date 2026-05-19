@@ -20,7 +20,8 @@
     "normalize.css": "^8.0.1",
     "pinia": "^2.1.7",
     "vue": "^3.5.13",
-    "vue-router": "^4.3.2"
+    "vue-router": "^4.3.2",
+    "swiper": "^12.1.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.7.2",

@@ -1,33 +1,15 @@
 <template>
-  <div :class="$style['about-splitter']">
-    <SplitterPanel variant="bottom" :image="life" alt="life" :block="lifeBlock" />
-    <SplitterPanel
-      variant="top"
-      :image="work"
-      alt="work"
-      :block="workBlock"
-      :style="topLayerStyle"
-    />
-
-    <div :class="$style['about-splitter__handle']" :style="handleStyle" @mousedown="onDragStart" />
-
-    <FAboutNav />
-  </div>
+  <WAboutSplitterMobile v-if="isTablet || isMobile" />
+  <WAboutSplitterDesktop v-else />
 </template>
 
 <script lang="ts" setup>
-import FAboutNav from '@features/about-nav';
+import { useScreenSize } from '@shared/lib/composables';
 
-import life from '@shared/assets/images/life.png';
-import work from '@shared/assets/images/work.png';
+import WAboutSplitterDesktop from './WAboutSplitterDesktop.vue';
+import WAboutSplitterMobile from './WAboutSplitterMobile.vue';
 
-import useAboutContent from '../model/useAboutContent';
-import useSplitterDrag from '../model/useSplitterDrag';
-
-import SplitterPanel from './SplitterPanel.vue';
-
-const { workBlock, lifeBlock } = useAboutContent();
-const { handleStyle, topLayerStyle, onDragStart } = useSplitterDrag();
+const { isTablet, isMobile } = useScreenSize();
 </script>
 
 <style lang="postcss" module src="../styles.module.pcss" />

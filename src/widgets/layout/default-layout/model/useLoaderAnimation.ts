@@ -1,5 +1,5 @@
 import gsap from 'gsap';
-import { ref, onMounted, useTemplateRef } from 'vue';
+import { onMounted, ref, useTemplateRef } from 'vue';
 
 const useLoaderAnimation = (onComplete: () => void) => {
   const progress = ref(0);
