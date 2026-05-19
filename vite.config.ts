@@ -35,16 +35,6 @@ export default defineConfig({
       ]
     }
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vue: ['vue', 'vue-router', 'pinia'],
-          gsap: ['gsap']
-        }
-      }
-    }
-  },
   resolve: {
     alias: {
       '@app': fileURLToPath(new URL('./src/app', import.meta.url)),
