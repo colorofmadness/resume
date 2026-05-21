@@ -6,7 +6,8 @@ export const RESUME_LIST: IResumeItem[] = [
     city: 'Санкт-Петербург',
     site: '01.tech',
     date: {
-      start: new Date(2025, 4, 1)
+      start: new Date(2025, 4, 1),
+      end: new Date(2026, 4, 1)
     },
     role: 'Ведущий Frontend-разработчик',
     about: [

@@ -7,12 +7,8 @@
     />
 
     <div v-if="commands.length" :class="$style['terminal__commands']">
-      <div
-        v-for="(command, i) of commands"
-        :key="command.text + i.toString()"
-        :class="$style['terminal__command-item']"
-      >
-        <div :class="$style['terminal__prompt']">
+      <div v-for="command of commands" :key="command.id" :class="$style['terminal__command-item']">
+        <div v-if="command.text" :class="$style['terminal__prompt']">
           <span :class="$style['terminal__prompt-label']">{{ prompt }}</span>
           <span :class="$style['terminal__prompt-command']">{{ command.text }}</span>
         </div>
@@ -20,10 +16,10 @@
       </div>
     </div>
 
-    <div :class="$style['terminal__prompt']">
+    <div v-if="!isLoading" :class="$style['terminal__prompt']">
       <span :class="$style['terminal__prompt-label']">{{ prompt }}</span>
       <input
-        ref="input"
+        ref="inputRef"
         v-model="commandText"
         :class="$style['terminal__prompt-input']"
         autocomplete="off"
@@ -32,7 +28,7 @@
       />
     </div>
 
-    <div ref="spacer" :class="$style['terminal__spacer']" />
+    <div ref="spacerRef" :class="$style['terminal__spacer']" />
   </div>
 </template>
 
@@ -45,11 +41,14 @@ import type { ITerminalProps, TCommand, TTypeBusListener } from '../types';
 defineProps<ITerminalProps>();
 
 const commandText = ref<string>('');
-const commands = ref<TCommand[]>([]);
-const inputRef = useTemplateRef<HTMLInputElement>('input');
-const spacerRef = useTemplateRef<HTMLDivElement>('spacer');
+const commands = ref<(TCommand & { id: string })[]>([]);
 
-const scrollToBottom = () => spacerRef.value?.scrollIntoView({ behavior: 'auto', block: 'end' });
+const inputRef = useTemplateRef<HTMLInputElement>('inputRef');
+const spacerRef = useTemplateRef<HTMLDivElement>('spacerRef');
+
+const scrollToBottom = () => {
+  spacerRef.value?.scrollIntoView({ behavior: 'auto', block: 'end' });
+};
 
 watch(
   commands,
@@ -59,36 +58,80 @@ watch(
   { deep: true }
 );
 
-const responseListener = (event: TTypeBusListener, payload: unknown) => {
-  if (event === 'response' && commands.value.length > 0 && !!payload) {
-    const lastCommand = commands.value[commands.value.length - 1];
-    if (lastCommand && typeof payload === 'string') {
-      lastCommand.response = lastCommand.response
-        ? `${lastCommand.response}<br>${payload}`
-        : payload;
-    }
-  }
-  if (event === 'clear') {
-    commands.value = [];
+const busListener = (event: TTypeBusListener, payload: unknown) => {
+  if (typeof payload !== 'string') return;
+
+  const lastCommand = commands.value.at(-1);
+
+  switch (event) {
+    case 'response':
+      if (!lastCommand) {
+        commands.value.push({ id: crypto.randomUUID(), text: '', response: payload });
+      } else {
+        lastCommand.response = lastCommand.response
+          ? `${lastCommand.response}<br>${payload}`
+          : payload;
+      }
+      break;
+
+    case 'update-response':
+      if (lastCommand && lastCommand.response) {
+        const lastBreakIndex = lastCommand.response.lastIndexOf('<br>');
+        if (lastBreakIndex === -1) {
+          lastCommand.response = payload;
+        } else {
+          lastCommand.response = lastCommand.response.substring(0, lastBreakIndex + 4) + payload;
+        }
+      }
+      break;
+
+    case 'clear':
+      commands.value = [];
+      break;
+
+    case 'set-command':
+      commandText.value = payload;
+      nextTick(() => inputRef.value?.focus());
+      break;
+
+    default:
+      break;
   }
 };
 
 onMounted(() => {
-  TerminalService.on(responseListener);
+  TerminalService.on(busListener);
+  inputRef.value?.focus();
 });
 
 onBeforeUnmount(() => {
-  TerminalService.off(responseListener);
+  TerminalService.off(busListener);
 });
 
-const onClick = () => {
+const onClick = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
+  if (target.classList.contains('terminal-command')) {
+    const { command } = target.dataset;
+    if (command) {
+      TerminalService.emit('set-command', command);
+      return;
+    }
+  }
   inputRef.value?.focus();
 };
 
 const onKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Enter' && commandText.value) {
-    commands.value.push({ text: commandText.value });
-    TerminalService.emit('command', commandText.value);
+  if (event.key === 'Enter') {
+    const trimmed = commandText.value.trim();
+    if (!trimmed) return;
+
+    commands.value.push({
+      id: crypto.randomUUID(),
+      text: trimmed,
+      response: ''
+    });
+
+    TerminalService.emit('command', trimmed);
     commandText.value = '';
   }
 };
