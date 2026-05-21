@@ -11,13 +11,11 @@ const createTerminalCmd = (cmd: string, display?: string): string => {
 export const getCommandsTableHtml = (): string => `
   <table class="terminal-commands-table">
     <tbody>
-      <tr><td>${createTerminalCmd('ls')}</td><td>посмотреть список проектов</td></tr>
-      <tr><td>${createTerminalCmd('cat')}</td><td>подробнее о проекте</td></tr>
+      <tr><td>${createTerminalCmd('ls')}</td><td>посмотреть список файлов</td></tr>
+      <tr><td>${createTerminalCmd('cat')}</td><td>просмотреть проект или файл</td></tr>
       <tr><td>${createTerminalCmd('run')}</td><td>запустить проект</td></tr>
       <tr><td>${createTerminalCmd('clear')}</td><td>очистить терминал</td></tr> 
       <tr><td>${createTerminalCmd('logout')}</td><td>выйти из системы</td></tr>
-      <tr><td>${createTerminalCmd('resume')}</td><td>открыть резюме</td></tr>
-      <tr><td>${createTerminalCmd('contacts')}</td><td>контактная информация</td></tr>
       <tr><td>${createTerminalCmd('help')}</td><td>показать справку</td></tr>
     </tbody>
   </table>
@@ -52,24 +50,31 @@ export const getProjectDetailsHtml = (project: IProject): string => {
   `;
 };
 
+export const getImageHtml = (url: string): string => {
+  return `<img src="${escapeHtml(url)}" style="max-width: 390px; height: auto; margin-top: 10px;" />`;
+};
+
 export const getProjectListHtml = (projects: IProject[]): string => {
-  if (projects.length === 0) return 'Список проектов пуст.';
+  const projectItems = projects.map((p) => {
+    const projectCmd = createTerminalCmd(`cat ${p.id}`, p.id);
+    return `dr-xr-xr-x 1 user user 4096 Jul 15 10:17 ${projectCmd}`;
+  });
 
-  const list = projects
-    .map((p, index) => {
-      const projectCmd = createTerminalCmd(`cat ${p.id}`, p.id);
-      return `${index}. ${projectCmd} - ${escapeHtml(p.name)}`;
-    })
-    .join('<br/>');
+  const fileItems = [
+    `-rw-r--r-- 1 user user    42 May 01 12:30 notes.txt`,
+    `-r--r--r-- 1 user user  232K Jan 12 11:28 ${createTerminalCmd('cat loki.jpg', 'loki.jpg')}`,
+    `-r--r--r-- 1 user user  232K Feb 03 16:45 ${createTerminalCmd('cat astrid.jpg', 'astrid.jpg')}`,
+    `-rw-r--r-- 1 user user   13K Jun 22 18:05 ${createTerminalCmd('cat resume.pdf', 'resume.pdf')}`,
+    `-rw-r--r-- 1 user user   13K Jun 22 18:05 secret_passwords_do_not_open.txt`,
+    `-r--r--r-- 1 user user  312K Apr 20 09:11 ${createTerminalCmd('cat loki&astrid.jpg', 'loki&astrid.jpg')}`,
+    `-rwxr-xr-x 1 user user  1.2M Jul 04 22:10 the_matrix.exe`,
+    `-rw-r--r-- 1 user user     0 Jul 15 10:21 .env`,
+    `-rw-r--r-- 1 user user     0 Jul 15 10:21 ${createTerminalCmd('cat contacts.vcf', 'contacts.vcf')}`
+  ];
 
-  const exampleCmd = createTerminalCmd(`cat ${projects[0].id}`);
+  const allItems = [...projectItems, ...fileItems].sort(() => Math.random() - 0.5);
 
-  return `
-    Список проектов:<br/>
-    ${list}<br/>
-    <br/>
-    Введите, например, ${exampleCmd} для подробной информации.
-  `;
+  return allItems.join('<br/>');
 };
 
 export const getErrorHtml = (message: string): string =>
@@ -91,3 +96,16 @@ export const getContactsHtml = (): string => `
   <span>Telegram:</span> 
   <a class="terminal-link" href="https://t.me/colorofmadness" target="_blank">@colorofmadness</a>
 `;
+
+export const getResumeHtml = (): string => {
+  const resumeUrl = 'https://hh.ru/resume/b92bbba8ff10845ac40039ed1f6c385a776e57';
+  return `
+    <div class="terminal-resume">
+      <span>ФИО: </span>Ярославцев Владимир Игоревич<br/>
+      <span>Должность: </span>Frontend-разработчик<br/>
+      <br/>
+      <span>Ссылка на полное резюме:</span> 
+      <a class="terminal-link" href="${escapeHtml(resumeUrl)}" target="_blank">${escapeHtml(resumeUrl)}</a>
+    </div>
+  `;
+};

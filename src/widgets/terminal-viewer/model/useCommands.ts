@@ -4,14 +4,19 @@ import { useLocalStorage } from '@vueuse/core';
 import PROJECTS_LIST from '@entities/project/model/projects';
 
 import { TerminalService, type TTypeBusListener } from '@shared/ui/terminal';
+import lokiImg from '@shared/assets/images/loki.jpg';
+import astridImg from '@shared/assets/images/astrid.jpg';
+import lokiAndAstridImg from '@shared/assets/images/loki&astrid.jpg';
 
 import {
   getContactsHtml,
   getErrorHtml,
   getHelpHtml,
+  getImageHtml,
   getInfoHtml,
   getProjectDetailsHtml,
   getProjectListHtml,
+  getResumeHtml,
   getSuccessHtml
 } from './terminalTemplates';
 
@@ -110,40 +115,47 @@ const useCommands = () => {
       });
   };
 
-  const catProject = (id?: string): string => {
-    const projectId = id?.trim();
-    if (!projectId) return getErrorHtml('Укажите ID проекта (например, "cat memory")');
+  const cat = (argument?: string): string | void => {
+    const arg = argument?.trim();
+    if (!arg) {
+      return getErrorHtml(
+        'Укажите ID проекта или имя файла (например, "cat memory" или "cat loki.jpg")'
+      );
+    }
 
-    const project = PROJECTS_LIST.find((p) => p.id === projectId);
-    if (!project) return getErrorHtml(`Проект "${projectId}" не найден. Введите "ls" для списка.`);
+    const images: Record<string, string> = {
+      'loki.jpg': lokiImg,
+      'astrid.jpg': astridImg,
+      'loki&astrid.jpg': lokiAndAstridImg
+    };
 
-    return getProjectDetailsHtml(project);
-  };
+    if (images[arg]) {
+      return getImageHtml(images[arg]);
+    }
 
-  const openResume = () => {
-    const RESUME_URL = 'https://hh.ru/resume/b92bbba8ff10845ac40039ed1f6c385a776e57';
-    TerminalService.emit('response', getInfoHtml('Открываю резюме...'));
+    if (arg === 'resume.pdf') {
+      return getResumeHtml();
+    }
 
-    isLoading.value = true;
+    if (arg === 'contacts.vcf') {
+      return getContactsHtml();
+    }
 
-    delay(1000)
-      .then(() => {
-        TerminalService.emit('response', getSuccessHtml('Ссылка готова!', RESUME_URL));
-      })
-      .finally(() => {
-        isLoading.value = false;
-      });
+    const project = PROJECTS_LIST.find((p) => p.id === arg);
+    if (project) {
+      return getProjectDetailsHtml(project);
+    }
+
+    return getErrorHtml(`Проект или файл "${arg}" не найден. Введите "ls" для списка.`);
   };
 
   const COMMANDS: Record<string, (arg?: string) => string | void> = {
     help: () => getHelpHtml(),
     ls: () => getProjectListHtml(PROJECTS_LIST),
-    cat: catProject,
+    cat,
     run: runProject,
     clear: () => TerminalService.emit('clear', ''),
-    resume: openResume,
-    logout,
-    contacts: () => getContactsHtml()
+    logout
   };
 
   const commandHandler = (event: TTypeBusListener, payload: string) => {
