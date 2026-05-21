@@ -2,7 +2,7 @@
   <div :class="[$style['frame'], { [$style['frame--resized']]: isResized }]">
     <WAppLoader v-if="showLoader" @complete="onLoaderComplete()" />
     <WFrameSpotlight />
-    <div :class="[$style['frame-main'], { [$style['frame-main--hidden']]: showLoader }]">
+    <div :class="$style['frame-main']">
       <WHeader />
       <WFrameTop />
       <div :class="$style['frame-content']">

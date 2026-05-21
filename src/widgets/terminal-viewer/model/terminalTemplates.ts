@@ -12,8 +12,8 @@ export const getCommandsTableHtml = (): string => `
   <table class="terminal-commands-table">
     <tbody>
       <tr><td>${createTerminalCmd('ls')}</td><td>посмотреть список проектов</td></tr>
-      <tr><td>${createTerminalCmd('cat [id]')}</td><td>подробнее о проекте</td></tr>
-      <tr><td>${createTerminalCmd('run [id]')}</td><td>запустить проект</td></tr>
+      <tr><td>${createTerminalCmd('cat')}</td><td>подробнее о проекте</td></tr>
+      <tr><td>${createTerminalCmd('run')}</td><td>запустить проект</td></tr>
       <tr><td>${createTerminalCmd('clear')}</td><td>очистить терминал</td></tr> 
       <tr><td>${createTerminalCmd('logout')}</td><td>выйти из системы</td></tr>
       <tr><td>${createTerminalCmd('resume')}</td><td>открыть резюме</td></tr>

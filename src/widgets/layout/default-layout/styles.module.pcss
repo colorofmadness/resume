@@ -32,10 +32,6 @@
   border-radius: var(--frame-radius);
   transition: opacity 0.4s ease;
 
-  &--hidden {
-    opacity: 0;
-  }
-
   @mixin mobile {
     grid-template-areas:
       'header header header'
@@ -433,4 +429,5 @@
   pointer-events: none;
   opacity: 0;
   z-index: var(--z-index-loader);
+  box-shadow: 0 0 0 100vmax var(--background);
 }

@@ -49,6 +49,37 @@ const spacerRef = useTemplateRef<HTMLDivElement>('spacerRef');
 const scrollToBottom = () => {
   spacerRef.value?.scrollIntoView({ behavior: 'auto', block: 'end' });
 };
+const onClick = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
+  if (target.classList.contains('terminal-command')) {
+    const { command } = target.dataset;
+    if (command) {
+      TerminalService.emit('set-command', command);
+      return;
+    }
+  }
+  inputRef.value?.focus();
+};
+
+const sendCommand = () => {
+  const trimmed = commandText.value.trim();
+  if (!trimmed) return;
+
+  commands.value.push({
+    id: crypto.randomUUID(),
+    text: trimmed,
+    response: ''
+  });
+
+  TerminalService.emit('command', trimmed);
+  commandText.value = '';
+};
+
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Enter') {
+    sendCommand();
+  }
+};
 
 watch(
   commands,
@@ -91,7 +122,7 @@ const busListener = (event: TTypeBusListener, payload: unknown) => {
 
     case 'set-command':
       commandText.value = payload;
-      nextTick(() => inputRef.value?.focus());
+      sendCommand();
       break;
 
     default:
@@ -107,34 +138,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   TerminalService.off(busListener);
 });
-
-const onClick = (event: MouseEvent) => {
-  const target = event.target as HTMLElement;
-  if (target.classList.contains('terminal-command')) {
-    const { command } = target.dataset;
-    if (command) {
-      TerminalService.emit('set-command', command);
-      return;
-    }
-  }
-  inputRef.value?.focus();
-};
-
-const onKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Enter') {
-    const trimmed = commandText.value.trim();
-    if (!trimmed) return;
-
-    commands.value.push({
-      id: crypto.randomUUID(),
-      text: trimmed,
-      response: ''
-    });
-
-    TerminalService.emit('command', trimmed);
-    commandText.value = '';
-  }
-};
 </script>
 
 <style lang="postcss" module src="../styles.module.pcss" />

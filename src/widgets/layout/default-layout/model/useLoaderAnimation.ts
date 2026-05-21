@@ -28,9 +28,18 @@ const useLoaderAnimation = (onComplete: () => void) => {
       ease: 'power1.in'
     });
 
+    tl.to(fillRef.value, { opacity: 0, duration: 0.1 })
+      .to(fillRef.value, { opacity: 1, duration: 0.1 })
+      .to(fillRef.value, { opacity: 0, duration: 0.1 })
+      .to(fillRef.value, { opacity: 1, duration: 0.1 })
+      .to(loaderRef.value, { autoAlpha: 0, duration: 0.1 });
+
     tl.call(() => {
-      if (!barRef.value || !borderRef.value) return;
+      if (!barRef.value || !borderRef.value || !overlayRef.value) return;
       const rect = barRef.value.getBoundingClientRect();
+
+      gsap.set(overlayRef.value, { backgroundColor: 'transparent' });
+
       gsap.set(borderRef.value, {
         top: rect.top,
         left: rect.left,
@@ -39,12 +48,6 @@ const useLoaderAnimation = (onComplete: () => void) => {
         opacity: 1
       });
     });
-
-    tl.to(fillRef.value, { opacity: 0, duration: 0.1 })
-      .to(fillRef.value, { opacity: 1, duration: 0.1 })
-      .to(fillRef.value, { opacity: 0, duration: 0.1 })
-      .to(fillRef.value, { opacity: 1, duration: 0.1 })
-      .to(loaderRef.value, { autoAlpha: 0, duration: 0.1 });
 
     const styles = getComputedStyle(document.documentElement);
     const framePadding = parseFloat(styles.getPropertyValue('--frame-padding'));
@@ -58,11 +61,6 @@ const useLoaderAnimation = (onComplete: () => void) => {
       borderRadius: frameRadius,
       duration: 1,
       ease: 'power2.inOut'
-    });
-
-    tl.to(overlayRef.value, {
-      opacity: 0,
-      duration: 0.15
     });
 
     tl.to(borderRef.value, {
