@@ -98,7 +98,7 @@ export const getContactsHtml = (): string => `
 `;
 
 export const getResumeHtml = (): string => {
-  const resumeUrl = 'https://hh.ru/resume/b92bbba8ff10845ac40039ed1f6c385a776e57';
+  const resumeUrl = 'https://hh.ru/resume/e5395570ff108bad680039ed1f6a5056426f4d';
   return `
     <div class="terminal-resume">
       <span>ФИО: </span>Ярославцев Владимир Игоревич<br/>
